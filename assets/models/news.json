@@ -1,0 +1,43 @@
+{
+    "current_page": 1,
+    "data": [
+      {
+        "id": 1,
+        "titre": "Grand Titre",
+        "contenu": "lorem",
+        "lien": "hhtp:://dsdsdsd.com",
+        "type": 1,
+        "categorie": 1,
+        "deleted_at": null,
+        "created_at": "2022-11-16T01:35:51.000000Z",
+        "updated_at": "2022-11-16T01:35:51.000000Z"
+      }
+    ],
+    "first_page_url": "http://infosnews.top-lum.com/api/news?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "http://infosnews.top-lum.com/api/news?page=1",
+    "links": [
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "active": false
+      },
+      {
+        "url": "http://infosnews.top-lum.com/api/news?page=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": null,
+        "label": "Next &raquo;",
+        "active": false
+      }
+    ],
+    "next_page_url": null,
+    "path": "http://infosnews.top-lum.com/api/news",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 1,
+    "total": 1
+  }

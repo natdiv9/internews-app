@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "741885815534",
+    "firebase_url": "https://cityverse-c32ce.firebaseio.com",
+    "project_id": "cityverse-c32ce",
+    "storage_bucket": "cityverse-c32ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741885815534:android:779bc854db25f3d35e21ff",
+        "android_client_info": {
+          "package_name": "tech.goomy.mediaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "741885815534-jusoknr6iu810rbg67vebahqru55qbo8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3byNewXSiU41eVlReWq4s8jrIFifFRgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "741885815534-jusoknr6iu810rbg67vebahqru55qbo8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
