@@ -54,21 +54,19 @@ class DrawerView extends GetView {
                                       ),
                                       _buildCeniSubNavBarMenu(
                                           'Canditature Presidentielle',
-                                          CeniSubTabsView.PRESIDENTIELLE),
+                                          'presidential'),
                                       _buildCeniSubNavBarMenu(
-                                          'Canditature Nationale',
-                                          CeniSubTabsView.NATIONALE),
+                                          'Canditature Nationale', 'national'),
                                       _buildCeniSubNavBarMenu(
                                           'Canditature Provinciale',
-                                          CeniSubTabsView.PROVINCIALE),
+                                          'provincial'),
+                                      _buildCeniSubNavBarMenu(
+                                          'Calendrier electoral', 'calendar'),
                                       _buildCeniSubNavBarMenu(
                                           'Centres D’enrolement',
-                                          CeniSubTabsView.CENTRES_ENROLEMENT),
+                                          'enrollment_centers'),
                                       _buildCeniSubNavBarMenu(
-                                          'Calendrier electoral',
-                                          CeniSubTabsView.CALENDRIER),
-                                      _buildCeniSubNavBarMenu('Logistique',
-                                          CeniSubTabsView.LOGISTIQUE)
+                                          'Centre de vote', 'vote_centers'),
                                     ]),
                               ),
                             ))
@@ -83,14 +81,6 @@ class DrawerView extends GetView {
   Widget _buildNavBarMenu(String title, IconData icon, String route) {
     return TextButton(
         onPressed: () {
-          // if (tab != _homeController.currentTab) {
-          //   _homeController.currentTab = tab;
-          // }
-
-          // if (tab == HomeTabsView.CENI) {
-          //   _homeController.isExpandedMenu = !_homeController.isExpandedMenu;
-          //   if (!_homeController.isExpandedMenu) _homeController.closeDrawer();
-          // }
           Get.offNamed("/home/$route");
         },
         style: TextButton.styleFrom(
@@ -140,9 +130,9 @@ class DrawerView extends GetView {
             )));
   }
 
-  Widget _buildCeniSubNavBarMenu(String title, CeniSubTabsView tab) {
+  Widget _buildCeniSubNavBarMenu(String title, String ceniSubRoute) {
     return Obx(() => Material(
-          color: (tab == _homeController.currentCeniTab)
+          color: (ceniSubRoute == _homeController.currentCeniPage)
               ? AppColorTheme.primaryColor.withOpacity(0.1)
               : Colors.transparent,
           borderRadius: const BorderRadius.only(
@@ -152,14 +142,8 @@ class DrawerView extends GetView {
               bottomRight: Radius.circular(40)),
           child: InkWell(
               onTap: () {
-                if (_homeController.currentTab != HomeTabsView.CENI) {
-                  _homeController.currentTab = HomeTabsView.CENI;
-                }
-                if (tab != _homeController.currentCeniTab) {
-                  _homeController.currentCeniTab = tab;
-                }
+                Get.offNamed("/home/ceni/?subpage=$ceniSubRoute");
                 _homeController.closeDrawer();
-                Get.offNamed("/home/other");
               },
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(0),
@@ -179,7 +163,7 @@ class DrawerView extends GetView {
                       Icon(
                         Icons.chevron_right,
                         size: 24,
-                        color: (tab == _homeController.currentCeniTab)
+                        color: (ceniSubRoute == _homeController.currentCeniPage)
                             ? AppColorTheme.primaryColor
                             : AppColorTheme.textColor.withOpacity(0.9),
                       ),
@@ -191,7 +175,8 @@ class DrawerView extends GetView {
                           title,
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
-                                  color: (tab == _homeController.currentCeniTab)
+                                  color: (ceniSubRoute ==
+                                          _homeController.currentCeniPage)
                                       ? AppColorTheme.primaryColor
                                       : AppColorTheme.textColor
                                           .withOpacity(0.9),

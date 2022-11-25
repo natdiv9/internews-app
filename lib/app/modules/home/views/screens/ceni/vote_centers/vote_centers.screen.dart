@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'controllers/logistics.controller.dart';
+import 'controllers/vote_centers.controller.dart';
 
-class LogisticsScreen extends GetView<LogisticsController> {
-  const LogisticsScreen({Key? key}) : super(key: key);
+class VoteCentersScreen extends GetView<LogisticsController> {
+  const VoteCentersScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +15,7 @@ class LogisticsScreen extends GetView<LogisticsController> {
       ),
       body: Center(
         child: Text(
-          'LogisticsScreen is working',
+          'Vote centers is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

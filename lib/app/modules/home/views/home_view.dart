@@ -38,7 +38,7 @@ class HomeView extends GetView<HomeController> {
                 case 'education':
                   return EducationScreen();
                 case 'ceni':
-                  return CeniScreen();
+                  return CeniScreen(subPage: controller.currentCeniPage);
                 default:
                   return WelcomeScreen();
               }
@@ -58,7 +58,7 @@ class HomeView extends GetView<HomeController> {
                       case 'education':
                         return EducationScreen();
                       case 'ceni':
-                        return CeniScreen();
+                        return CeniScreen(subPage: controller.currentCeniPage);
                       default:
                         return WelcomeScreen();
                     }
@@ -83,7 +83,7 @@ class HomeView extends GetView<HomeController> {
                     case 'education':
                       return EducationScreen();
                     case 'ceni':
-                      return CeniScreen();
+                      return CeniScreen(subPage: controller.currentCeniPage);
                     default:
                       return WelcomeScreen();
                   }
