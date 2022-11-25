@@ -13,6 +13,7 @@ dependencies:
   flutter: 
     sdk: flutter
   firebase_core: ^2.3.0
+  shimmer: ^2.0.0
 
 assets:
     - assets/images/

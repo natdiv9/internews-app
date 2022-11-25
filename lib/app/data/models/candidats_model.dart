@@ -1,6 +1,6 @@
-class NewsModel {
+class CandidatsModel {
   int? currentPage;
-  List<NewsData>? data;
+  List<CandidatsData>? data;
   String? firstPageUrl;
   int? from;
   int? lastPage;
@@ -13,7 +13,7 @@ class NewsModel {
   int? to;
   int? total;
 
-  NewsModel(
+  CandidatsModel(
       {this.currentPage,
       this.data,
       this.firstPageUrl,
@@ -28,12 +28,12 @@ class NewsModel {
       this.to,
       this.total});
 
-  NewsModel.fromJson(Map<String, dynamic> json) {
+  CandidatsModel.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
     if (json['data'] != null) {
-      data = <NewsData>[];
+      data = <CandidatsData>[];
       json['data'].forEach((v) {
-        data?.add(NewsData.fromJson(v));
+        data?.add(CandidatsData.fromJson(v));
       });
     }
     firstPageUrl = json['first_page_url'];
@@ -77,35 +77,35 @@ class NewsModel {
   }
 }
 
-class NewsData {
+class CandidatsData {
   int? id;
-  String? titre;
-  String? contenu;
-  String? lien;
-  int? type;
-  int? categorie;
+  int? candidature;
+  String? province;
+  String? partiPolitique;
+  String? description;
+  int? userId;
   dynamic deletedAt;
   String? createdAt;
   String? updatedAt;
 
-  NewsData(
+  CandidatsData(
       {this.id,
-      this.titre,
-      this.contenu,
-      this.lien,
-      this.type,
-      this.categorie,
+      this.candidature,
+      this.province,
+      this.partiPolitique,
+      this.description,
+      this.userId,
       this.deletedAt,
       this.createdAt,
       this.updatedAt});
 
-  NewsData.fromJson(Map<String, dynamic> json) {
+  CandidatsData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    titre = json['titre'];
-    contenu = json['contenu'];
-    lien = json['lien'];
-    type = json['type'];
-    categorie = json['categorie'];
+    candidature = json['candidature'];
+    province = json['province'];
+    partiPolitique = json['parti_politique'];
+    description = json['description'];
+    userId = json['user_id'];
     deletedAt = json['deleted_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
@@ -114,11 +114,11 @@ class NewsData {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
-    data['titre'] = titre;
-    data['contenu'] = contenu;
-    data['lien'] = lien;
-    data['type'] = type;
-    data['categorie'] = categorie;
+    data['candidature'] = candidature;
+    data['province'] = province;
+    data['parti_politique'] = partiPolitique;
+    data['description'] = description;
+    data['user_id'] = userId;
     data['deleted_at'] = deletedAt;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;

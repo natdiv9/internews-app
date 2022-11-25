@@ -10,7 +10,7 @@ abstract class Routes {
 
 abstract class _Paths {
   _Paths._();
-  static const HOME = '/home';
+  static const HOME = '/home/:page';
   static const NEWS_DETAILS = '/news-details';
   static const CANDIDATS_DETAILS = '/candidats-details';
 }

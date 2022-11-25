@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/modules/home/controllers/home_controller.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/introduce_text_view.dart';
+import 'package:mediaapp/app/widgets/views/news_card_shimmer.dart';
 import 'package:mediaapp/app/widgets/views/news_item_card_view.dart';
 
 import 'controllers/news.controller.dart';
@@ -20,123 +21,131 @@ class NewsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    controller.getAll();
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 32),
-      child: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 32),
+        child: Obx(
+          () => ListView(
 
-          //crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Tous les informations publiées par la CENI sont disponibles sur cette plateforme",
-              style: GoogleFonts.roboto(
-                  textStyle: const TextStyle(
-                      color: AppColorTheme.textColor,
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold)),
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.40,
-              width: double.infinity,
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  image: const DecorationImage(
-                      image: AssetImage('assets/images/vote.jpg'),
-                      fit: BoxFit.cover)),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            IntroduceTextView(),
-            const SizedBox(
-              height: 24,
-            ),
-            Row(
+              //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _lireLaSuiteButton(),
-              ],
-            ),
-            const SizedBox(
-              height: 32,
-            ),
-            Text(
-              'Plus d\infos',
-              style: GoogleFonts.roboto(
-                  textStyle: const TextStyle(
-                      color: AppColorTheme.textColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700)),
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            // _buildRecentNewsWidget(),
-            NewsItemCardView(),
-            const SizedBox(
-              height: 16,
-            ),
-            NewsItemCardView(),
-            const SizedBox(
-              height: 16,
-            ),
-            NewsItemCardView(),
-            const SizedBox(
-              height: 16,
-            ),
-            NewsItemCardView(),
-            const SizedBox(
-              height: 16,
-            ),
-            NewsItemCardView(),
-            const SizedBox(
-              height: 16,
-            ),
-            NewsItemCardView(),
-            const SizedBox(
-              height: 16,
-            ),
-            NewsItemCardView(),
-            const SizedBox(
-              height: 16,
-            ),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all(Size(150, 38)),
-                      overlayColor: MaterialStateProperty.all(
-                          AppColorTheme.secondayColor.withOpacity(0.7)),
-                      backgroundColor: MaterialStateProperty.all(
-                          AppColorTheme.primaryColor)),
-                  child: Text(
-                    'Voir plus',
-                    style: GoogleFonts.roboto(
-                        textStyle: const TextStyle(
-                            color: AppColorTheme.whiteColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400)),
-                  ),
+                Text(
+                  "Tous les informations publiées par internews sont disponibles sur cette plateforme",
+                  style: GoogleFonts.roboto(
+                      textStyle: const TextStyle(
+                          color: AppColorTheme.textColor,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold)),
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-          ]),
-    );
+                const SizedBox(
+                  height: 24,
+                ),
+                (controller.newsList.length > 0)
+                    ? Column(
+                        children: [
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.40,
+                            width: double.infinity,
+                            clipBehavior: Clip.hardEdge,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                image: const DecorationImage(
+                                    image: AssetImage('assets/images/vote.jpg'),
+                                    fit: BoxFit.cover)),
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          Text(
+                            controller.newsList[0].contenu!.substring(0, 300),
+                            textAlign: TextAlign.justify,
+                            style: GoogleFonts.roboto(
+                                textStyle: TextStyle(
+                                    color: AppColorTheme.textColor
+                                        .withOpacity(0.6),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400)),
+                          ),
+                        ],
+                      )
+                    : NewsCardShimmerWidget(),
+
+                const SizedBox(
+                  height: 24,
+                ),
+                Row(
+                  children: [
+                    _lireLaSuiteButton(),
+                  ],
+                ),
+                const SizedBox(
+                  height: 32,
+                ),
+                Text(
+                  'Plus d\infos',
+                  style: GoogleFonts.roboto(
+                      textStyle: const TextStyle(
+                          color: AppColorTheme.textColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700)),
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                // _buildRecentNewsWidget(),
+
+                (controller.newsList.length > 0)
+                    ? ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: controller.newsList.length,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              NewsItemCardView(
+                                newsData: controller.newsList[index],
+                              ),
+                              const SizedBox(
+                                height: 16,
+                              ),
+                            ],
+                          );
+                        })
+                    : const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                          minimumSize: MaterialStateProperty.all(Size(150, 38)),
+                          overlayColor: MaterialStateProperty.all(
+                              AppColorTheme.secondayColor.withOpacity(0.7)),
+                          backgroundColor: MaterialStateProperty.all(
+                              AppColorTheme.primaryColor)),
+                      child: Text(
+                        'Voir plus',
+                        style: GoogleFonts.roboto(
+                            textStyle: const TextStyle(
+                                color: AppColorTheme.whiteColor,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400)),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+              ]),
+        ));
   }
 
   OutlinedButton _lireLaSuiteButton() {
     return OutlinedButton(
-        onPressed: () {
-          afficher();
-        },
+        onPressed: () {},
         style: OutlinedButton.styleFrom(fixedSize: Size(300, 38)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -23,15 +23,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -50,21 +44,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAg0gTkHbZlCUnf3yp5AV09Ck0wRGSoyxw',
-    appId: '1:741885815534:web:6cd0c10d5028c3e9',
-    messagingSenderId: '741885815534',
-    projectId: 'cityverse-c32ce',
-    authDomain: 'cityverse-c32ce.firebaseapp.com',
-    databaseURL: 'https://cityverse-c32ce.firebaseio.com',
-    storageBucket: 'cityverse-c32ce.appspot.com',
+    apiKey: 'AIzaSyB6QKHawcf7OROB_KwIZCysCDqV00pQ8-g',
+    appId: '1:902429078369:web:899a9d4ca5f59789cf4b20',
+    messagingSenderId: '902429078369',
+    projectId: 'goomy-technology',
+    authDomain: 'goomy-technology.firebaseapp.com',
+    storageBucket: 'goomy-technology.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC3byNewXSiU41eVlReWq4s8jrIFifFRgU',
-    appId: '1:741885815534:android:779bc854db25f3d35e21ff',
-    messagingSenderId: '741885815534',
-    projectId: 'cityverse-c32ce',
-    databaseURL: 'https://cityverse-c32ce.firebaseio.com',
-    storageBucket: 'cityverse-c32ce.appspot.com',
+    apiKey: 'AIzaSyAsOpoubp-c7Tw2NE0GWcHF1WWvzhvf8OU',
+    appId: '1:902429078369:android:5ecb0a8718536d03cf4b20',
+    messagingSenderId: '902429078369',
+    projectId: 'goomy-technology',
+    storageBucket: 'goomy-technology.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyDuoDczouyaDkfPQRJtOrXGFvB24m-XdvY',
+    appId: '1:902429078369:ios:aac3e554660f0ad0cf4b20',
+    messagingSenderId: '902429078369',
+    projectId: 'goomy-technology',
+    storageBucket: 'goomy-technology.appspot.com',
+    iosClientId: '902429078369-qjhcf3t4m3k167o7cmnkhgcdt2edrjep.apps.googleusercontent.com',
+    iosBundleId: 'tech.goomy.mediaapp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDuoDczouyaDkfPQRJtOrXGFvB24m-XdvY',
+    appId: '1:902429078369:ios:aac3e554660f0ad0cf4b20',
+    messagingSenderId: '902429078369',
+    projectId: 'goomy-technology',
+    storageBucket: 'goomy-technology.appspot.com',
+    iosClientId: '902429078369-qjhcf3t4m3k167o7cmnkhgcdt2edrjep.apps.googleusercontent.com',
+    iosBundleId: 'tech.goomy.mediaapp',
   );
 }

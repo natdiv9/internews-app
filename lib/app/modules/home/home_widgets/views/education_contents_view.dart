@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
+import 'package:mediaapp/app/data/models/news_model.dart';
 
 class EducationContentsView extends GetView {
-  const EducationContentsView({Key? key}) : super(key: key);
+  EducationContentsView({Key? key, required this.newsEducation})
+      : super(key: key);
+  List<NewsData> newsEducation;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -13,10 +17,10 @@ class EducationContentsView extends GetView {
       child: AspectRatio(
         aspectRatio: 1,
         child: GridView.builder(
-            itemCount: 4,
+            itemCount: newsEducation.length,
             scrollDirection: Axis.vertical,
             primary: false,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 mainAxisSpacing: 16, crossAxisSpacing: 16, crossAxisCount: 2),
             itemBuilder: (context, index) {
               return Container(
@@ -40,16 +44,16 @@ class EducationContentsView extends GetView {
                         height: 198,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                                 image: AssetImage('assets/images/machine.jpg'),
                                 fit: BoxFit.cover)),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       Expanded(
                         child: Text(
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+                          newsEducation[index].contenu!.substring(0, 150),
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                                   color:
@@ -76,7 +80,7 @@ class EducationContentsView extends GetView {
                                   foregroundColor: AppColorTheme.secondayColor),
                               child: Row(
                                 children: [
-                                  Icon(Icons.ios_share),
+                                  const Icon(Icons.ios_share),
                                   Text(
                                     "Partager",
                                     style: GoogleFonts.roboto(

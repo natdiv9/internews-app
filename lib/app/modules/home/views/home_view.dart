@@ -22,6 +22,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: controller.scaffoldKey,
         appBar: Header(),
         drawer: Obx(
             () => controller.width < 1100 ? DrawerView() : const SizedBox()),

@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:mediaapp/app/data/models/news_model.dart';
 import 'package:mediaapp/app/widgets/views/news_item_card_view.dart';
 
 class RecentNewsView extends GetView {
-  const RecentNewsView({Key? key}) : super(key: key);
+  const RecentNewsView({
+    Key? key,
+    required this.newsList,
+  }) : super(key: key);
+  final List<NewsData> newsList;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        NewsItemCardView(),
-        SizedBox(
-          height: 16,
-        ),
-        NewsItemCardView(),
-        SizedBox(
-          height: 16,
-        ),
-        NewsItemCardView(),
-      ],
-    );
+    return ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: newsList.length,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              NewsItemCardView(
+                newsData: newsList[index],
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+            ],
+          );
+        });
   }
 }

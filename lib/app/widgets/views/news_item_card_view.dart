@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
+import 'package:mediaapp/app/data/models/news_model.dart';
 
 class NewsItemCardView extends GetView {
-  const NewsItemCardView({Key? key}) : super(key: key);
+  const NewsItemCardView({Key? key, this.newsData}) : super(key: key);
+  final NewsData? newsData;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -34,7 +36,7 @@ class NewsItemCardView extends GetView {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+                          newsData?.titre ?? 'Lorem ipsum dolor sit amet,',
                           style: GoogleFonts.roboto(
                               textStyle: const TextStyle(
                                   color: AppColorTheme.textColor,
@@ -46,7 +48,7 @@ class NewsItemCardView extends GetView {
                         ),
                         Expanded(
                           child: Text(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, consectetur',
+                            newsData?.contenu?.substring(0, 180) ?? '',
                             textAlign: TextAlign.start,
                             style: GoogleFonts.roboto(
                                 textStyle: TextStyle(

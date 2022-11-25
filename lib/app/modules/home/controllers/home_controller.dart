@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mediaapp/app/core/utils/enum_utils.dart';
 
@@ -17,6 +18,16 @@ class HomeController extends GetxController {
   final _width = Get.width.obs;
   double get width => _width.value;
   set width(double value) => _width.value = value;
+
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
+  openDrawer() {
+    scaffoldKey.currentState!.openDrawer();
+  }
+
+  closeDrawer() {
+    scaffoldKey.currentState!.closeDrawer();
+  }
 
   @override
   void onInit() {

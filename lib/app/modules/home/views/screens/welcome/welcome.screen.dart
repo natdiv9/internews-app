@@ -4,15 +4,16 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/education_contents_view.dart';
-import 'package:mediaapp/app/modules/home/home_widgets/views/introduce_text_view.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/key_words_view.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/main_banner_view.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/recent_news_view.dart';
+import 'package:mediaapp/app/widgets/views/news_card_shimmer.dart';
 
 import 'controllers/welcome.controller.dart';
 
 class WelcomeScreen extends GetView<WelcomeController> {
-  const WelcomeScreen({Key? key}) : super(key: key);
+  WelcomeScreen({Key? key}) : super(key: key);
+  final WelcomeController controller = Get.put(WelcomeController());
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,10 +29,7 @@ class WelcomeScreen extends GetView<WelcomeController> {
             const SizedBox(
               height: 24,
             ),
-            IntroduceTextView(),
-            const SizedBox(
-              height: 24,
-            ),
+            // IntroduceTextView(),
             Text(
               'Informations recentes',
               style: GoogleFonts.roboto(
@@ -43,7 +41,12 @@ class WelcomeScreen extends GetView<WelcomeController> {
             const SizedBox(
               height: 24,
             ),
-            RecentNewsView(),
+
+            Obx(() => controller.newsList.length > 0
+                ? RecentNewsView(
+                    newsList: controller.newsList.sublist(0, 4),
+                  )
+                : NewsCardShimmerWidget()),
             const SizedBox(
               height: 24,
             ),
@@ -58,7 +61,12 @@ class WelcomeScreen extends GetView<WelcomeController> {
             const SizedBox(
               height: 32,
             ),
-            EducationContentsView(),
+            Obx(() => controller.newsEducationList.length > 0
+                ? EducationContentsView(
+                    newsEducation: controller.newsEducationList.sublist(0, 4),
+                  )
+                : NewsCardShimmerWidget()),
+
             const SizedBox(
               height: 24,
             ),

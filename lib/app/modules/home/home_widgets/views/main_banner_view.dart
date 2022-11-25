@@ -25,7 +25,7 @@ class MainBannerView extends GetView {
           Padding(
             padding: const EdgeInsets.all(64),
             child: Text(
-              'Bienvenu sur le site officiel de la CENI qui vous tient informé sur toute l’actualité du processus électorale en RDC',
+              'Bienvenu sur le site officiel d\'internews qui vous tient informé sur toute l’actualité du processus électorale en RDC',
               textAlign: TextAlign.center,
               style: GoogleFonts.roboto(
                   textStyle: const TextStyle(

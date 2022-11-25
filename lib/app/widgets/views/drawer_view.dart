@@ -20,7 +20,7 @@ class DrawerView extends GetView {
           width: 300,
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               _buildNavBarMenu('Accueil', Icons.home, HomeTabsView.HOME),
@@ -51,7 +51,7 @@ class DrawerView extends GetView {
                                 child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 16,
                                       ),
                                       _buildCeniSubNavBarMenu(
@@ -91,10 +91,12 @@ class DrawerView extends GetView {
 
           if (tab == HomeTabsView.CENI) {
             _homeController.isExpandedMenu = !_homeController.isExpandedMenu;
+            if (!_homeController.isExpandedMenu) _homeController.closeDrawer();
           }
+          Get.toNamed("/home", arguments: 'Get is the best');
         },
         style: TextButton.styleFrom(
-          padding: EdgeInsets.all(0),
+          padding: const EdgeInsets.all(0),
           foregroundColor: AppColorTheme.primaryColor.withOpacity(0.1),
         ),
         clipBehavior: Clip.hardEdge,
@@ -104,7 +106,7 @@ class DrawerView extends GetView {
                   color: (tab == _homeController.currentTab)
                       ? AppColorTheme.primaryColor.withOpacity(0.1)
                       : Colors.transparent,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(0),
                       topRight: Radius.circular(40),
                       bottomLeft: Radius.circular(0),
@@ -145,7 +147,7 @@ class DrawerView extends GetView {
           color: (tab == _homeController.currentCeniTab)
               ? AppColorTheme.primaryColor.withOpacity(0.1)
               : Colors.transparent,
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(0),
               topRight: Radius.circular(40),
               bottomLeft: Radius.circular(0),
@@ -158,8 +160,9 @@ class DrawerView extends GetView {
                 if (tab != _homeController.currentCeniTab) {
                   _homeController.currentCeniTab = tab;
                 }
+                _homeController.closeDrawer();
               },
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(0),
                   topRight: Radius.circular(40),
                   bottomLeft: Radius.circular(0),
@@ -168,7 +171,7 @@ class DrawerView extends GetView {
               autofocus: true,
               overlayColor: MaterialStateProperty.all(
                   AppColorTheme.primaryColor.withOpacity(0.05)),
-              child: Container(
+              child: SizedBox(
                 height: 50,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),

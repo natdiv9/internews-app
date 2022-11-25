@@ -5,7 +5,7 @@ class NewsRepository {
 
   NewsRepository();
 
-  getAll() {
-    return api.getAll();
+  getAll({int type = 1}) {
+    return api.getAll(type: type);
   }
 }
