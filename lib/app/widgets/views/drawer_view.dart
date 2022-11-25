@@ -23,11 +23,9 @@ class DrawerView extends GetView {
               const SizedBox(
                 height: 12,
               ),
-              _buildNavBarMenu('Accueil', Icons.home, HomeTabsView.HOME),
-              _buildNavBarMenu(
-                  'Actualités', Icons.newspaper, HomeTabsView.NEWS),
-              _buildNavBarMenu(
-                  'Education', Icons.school, HomeTabsView.EDUCATION),
+              _buildNavBarMenu('Accueil', Icons.home, 'welcome'),
+              _buildNavBarMenu('Actualités', Icons.newspaper, 'news'),
+              _buildNavBarMenu('Education', Icons.school, 'education'),
               SingleChildScrollView(
                 child: Obx(() => ExpansionPanelList(
                       elevation: 0,
@@ -42,7 +40,7 @@ class DrawerView extends GetView {
                             isExpanded: _homeController.isExpandedMenu,
                             headerBuilder: (context, isExpanded) {
                               return _buildNavBarMenu(
-                                  'Ceni', Icons.how_to_vote, HomeTabsView.CENI);
+                                  'Ceni', Icons.how_to_vote, 'ceni');
                             },
                             body: SizedBox(
                               width: 300,
@@ -82,18 +80,18 @@ class DrawerView extends GetView {
         ));
   }
 
-  Widget _buildNavBarMenu(String title, IconData icon, HomeTabsView tab) {
+  Widget _buildNavBarMenu(String title, IconData icon, String route) {
     return TextButton(
         onPressed: () {
-          if (tab != _homeController.currentTab) {
-            _homeController.currentTab = tab;
-          }
+          // if (tab != _homeController.currentTab) {
+          //   _homeController.currentTab = tab;
+          // }
 
-          if (tab == HomeTabsView.CENI) {
-            _homeController.isExpandedMenu = !_homeController.isExpandedMenu;
-            if (!_homeController.isExpandedMenu) _homeController.closeDrawer();
-          }
-          Get.toNamed("/home", arguments: 'Get is the best');
+          // if (tab == HomeTabsView.CENI) {
+          //   _homeController.isExpandedMenu = !_homeController.isExpandedMenu;
+          //   if (!_homeController.isExpandedMenu) _homeController.closeDrawer();
+          // }
+          Get.offNamed("/home/$route");
         },
         style: TextButton.styleFrom(
           padding: const EdgeInsets.all(0),
@@ -103,7 +101,7 @@ class DrawerView extends GetView {
         child: Obx(() => Container(
               height: 50,
               decoration: BoxDecoration(
-                  color: (tab == _homeController.currentTab)
+                  color: (route == _homeController.currentPage)
                       ? AppColorTheme.primaryColor.withOpacity(0.1)
                       : Colors.transparent,
                   borderRadius: const BorderRadius.only(
@@ -117,7 +115,7 @@ class DrawerView extends GetView {
                   children: [
                     Icon(
                       icon,
-                      color: (tab == _homeController.currentTab)
+                      color: (route == _homeController.currentPage)
                           ? AppColorTheme.primaryColor
                           : AppColorTheme.textColor,
                     ),
@@ -129,7 +127,7 @@ class DrawerView extends GetView {
                         title,
                         style: GoogleFonts.roboto(
                             textStyle: TextStyle(
-                                color: (tab == _homeController.currentTab)
+                                color: (route == _homeController.currentPage)
                                     ? AppColorTheme.primaryColor
                                     : AppColorTheme.textColor,
                                 fontSize: 16,
@@ -161,6 +159,7 @@ class DrawerView extends GetView {
                   _homeController.currentCeniTab = tab;
                 }
                 _homeController.closeDrawer();
+                Get.offNamed("/home/other");
               },
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(0),

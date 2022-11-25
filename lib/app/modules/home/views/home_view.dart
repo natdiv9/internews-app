@@ -13,12 +13,12 @@ import '../controllers/home_controller.dart';
 class HomeView extends GetView<HomeController> {
   HomeView({Key? key}) : super(key: key);
 
-  final List<Widget> screens = [
-    WelcomeScreen(),
-    NewsScreen(),
-    EducationScreen(),
-    CeniScreen()
-  ];
+  // final List<Widget> screens = [
+  //   WelcomeScreen(),
+  //   NewsScreen(),
+  //   EducationScreen(),
+  //   CeniScreen()
+  // ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,20 +29,40 @@ class HomeView extends GetView<HomeController> {
         body: LayoutBuilder(builder: (context, constraints) {
           // controller.width = constraints.maxWidth;
           if (constraints.maxWidth < 500) {
-            return Obx(() => IndexedStack(
-                  index: controller.currentTab.index,
-                  children: screens,
-                ));
+            return Obx(() {
+              switch (controller.currentPage) {
+                case 'welcome':
+                  return WelcomeScreen();
+                case 'news':
+                  return NewsScreen();
+                case 'education':
+                  return EducationScreen();
+                case 'ceni':
+                  return CeniScreen();
+                default:
+                  return WelcomeScreen();
+              }
+            });
           } else if (constraints.maxWidth < 1100) {
             return Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   //flex: 2,
-                  child: Obx(() => IndexedStack(
-                        index: controller.currentTab.index,
-                        children: screens,
-                      )),
+                  child: Obx(() {
+                    switch (controller.currentPage) {
+                      case 'welcome':
+                        return WelcomeScreen();
+                      case 'news':
+                        return NewsScreen();
+                      case 'education':
+                        return EducationScreen();
+                      case 'ceni':
+                        return CeniScreen();
+                      default:
+                        return WelcomeScreen();
+                    }
+                  }),
                 ),
                 RightSideNavView(),
               ],
@@ -54,10 +74,20 @@ class HomeView extends GetView<HomeController> {
               DrawerView(),
               Expanded(
                 flex: 2,
-                child: Obx(() => IndexedStack(
-                      index: controller.currentTab.index,
-                      children: screens,
-                    )),
+                child: Obx(() {
+                  switch (controller.currentPage) {
+                    case 'welcome':
+                      return WelcomeScreen();
+                    case 'news':
+                      return NewsScreen();
+                    case 'education':
+                      return EducationScreen();
+                    case 'ceni':
+                      return CeniScreen();
+                    default:
+                      return WelcomeScreen();
+                  }
+                }),
               ),
               RightSideNavView(),
             ],

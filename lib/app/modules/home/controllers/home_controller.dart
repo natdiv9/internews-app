@@ -19,6 +19,11 @@ class HomeController extends GetxController {
   double get width => _width.value;
   set width(double value) => _width.value = value;
 
+  // Current page
+  final _currentPage = 'welcome'.obs;
+  String get currentPage => _currentPage.value;
+  set currentPage(String value) => _currentPage.value = value;
+
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
   openDrawer() {
@@ -32,6 +37,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    currentPage = Get.parameters['page']!;
   }
 
   @override
