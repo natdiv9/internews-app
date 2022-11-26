@@ -6,13 +6,15 @@ import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/data/models/news_model.dart';
 
 class NewsItemCardView extends GetView {
-  const NewsItemCardView({Key? key, this.newsData}) : super(key: key);
-  final NewsData? newsData;
+  const NewsItemCardView({Key? key, required this.newsData}) : super(key: key);
+  final NewsData newsData;
   @override
   Widget build(BuildContext context) {
     return Material(
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Get.offNamed('/news/?id=${newsData.id}');
+        },
         child: Container(
           height: 164,
           decoration: BoxDecoration(

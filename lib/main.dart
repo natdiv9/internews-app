@@ -12,7 +12,7 @@ void main() {
       title: "MediaApp",
       debugShowCheckedModeBanner: false,
       theme: appThemeData,
-      initialRoute: '/home/welcome',
+      initialRoute: '/welcome',
       getPages: AppPages.routes,
       defaultTransition: Transition.fade,
     ),

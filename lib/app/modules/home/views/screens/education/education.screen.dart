@@ -55,26 +55,26 @@ class EducationScreen extends GetView<EducationController> {
         const SizedBox(
           height: 24,
         ),
-        NewsItemCardView(),
-        const SizedBox(
-          height: 16,
-        ),
-        NewsItemCardView(),
-        const SizedBox(
-          height: 16,
-        ),
-        NewsItemCardView(),
-        const SizedBox(
-          height: 16,
-        ),
-        NewsItemCardView(),
-        const SizedBox(
-          height: 16,
-        ),
-        NewsItemCardView(),
-        const SizedBox(
-          height: 16,
-        ),
+        // NewsItemCardView(),
+        // const SizedBox(
+        //   height: 16,
+        // ),
+        // NewsItemCardView(),
+        // const SizedBox(
+        //   height: 16,
+        // ),
+        // NewsItemCardView(),
+        // const SizedBox(
+        //   height: 16,
+        // ),
+        // NewsItemCardView(),
+        // const SizedBox(
+        //   height: 16,
+        // ),
+        // NewsItemCardView(),
+        // const SizedBox(
+        //   height: 16,
+        // ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

@@ -4,13 +4,13 @@ part of 'app_pages.dart';
 abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
-  static const NEWS_DETAILS = _Paths.NEWS_DETAILS;
-  static const CANDIDATS_DETAILS = _Paths.CANDIDATS_DETAILS;
+  // static const NEWS_DETAILS = _Paths.NEWS_DETAILS;
+  // static const CANDIDATS_DETAILS = _Paths.CANDIDATS_DETAILS;
 }
 
 abstract class _Paths {
   _Paths._();
-  static const HOME = '/home/:page';
-  static const NEWS_DETAILS = '/news-details';
-  static const CANDIDATS_DETAILS = '/candidats-details';
+  static const HOME = '/:page';
+  // static const NEWS_DETAILS = '/news-details';
+  // static const CANDIDATS_DETAILS = '/candidats-details';
 }

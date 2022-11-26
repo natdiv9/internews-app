@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
-import 'package:mediaapp/app/core/utils/enum_utils.dart';
 import 'package:mediaapp/app/modules/home/controllers/home_controller.dart';
 
 class DrawerView extends GetView {
@@ -81,7 +80,7 @@ class DrawerView extends GetView {
   Widget _buildNavBarMenu(String title, IconData icon, String route) {
     return TextButton(
         onPressed: () {
-          Get.offNamed("/home/$route");
+          Get.offNamed("/$route");
         },
         style: TextButton.styleFrom(
           padding: const EdgeInsets.all(0),
@@ -142,7 +141,7 @@ class DrawerView extends GetView {
               bottomRight: Radius.circular(40)),
           child: InkWell(
               onTap: () {
-                Get.offNamed("/home/ceni/?subpage=$ceniSubRoute");
+                Get.offNamed("/ceni/?subpage=$ceniSubRoute");
                 _homeController.closeDrawer();
               },
               borderRadius: const BorderRadius.only(

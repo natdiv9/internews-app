@@ -5,6 +5,7 @@ import 'package:mediaapp/app/modules/home/views/screens/ceni/ceni.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/education/education.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/news/news.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/welcome/welcome.screen.dart';
+import 'package:mediaapp/app/modules/news_details/views/news_details_view.dart';
 import 'package:mediaapp/app/widgets/views/drawer_view.dart';
 import 'package:mediaapp/app/widgets/views/right_side_nav/right_side_nav_view.dart';
 import '../../../widgets/views/header.dart';
@@ -13,12 +14,6 @@ import '../controllers/home_controller.dart';
 class HomeView extends GetView<HomeController> {
   HomeView({Key? key}) : super(key: key);
 
-  // final List<Widget> screens = [
-  //   WelcomeScreen(),
-  //   NewsScreen(),
-  //   EducationScreen(),
-  //   CeniScreen()
-  // ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,40 +24,14 @@ class HomeView extends GetView<HomeController> {
         body: LayoutBuilder(builder: (context, constraints) {
           // controller.width = constraints.maxWidth;
           if (constraints.maxWidth < 500) {
-            return Obx(() {
-              switch (controller.currentPage) {
-                case 'welcome':
-                  return WelcomeScreen();
-                case 'news':
-                  return NewsScreen();
-                case 'education':
-                  return EducationScreen();
-                case 'ceni':
-                  return CeniScreen(subPage: controller.currentCeniPage);
-                default:
-                  return WelcomeScreen();
-              }
-            });
+            return Obx(() => _buildPage());
           } else if (constraints.maxWidth < 1100) {
             return Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   //flex: 2,
-                  child: Obx(() {
-                    switch (controller.currentPage) {
-                      case 'welcome':
-                        return WelcomeScreen();
-                      case 'news':
-                        return NewsScreen();
-                      case 'education':
-                        return EducationScreen();
-                      case 'ceni':
-                        return CeniScreen(subPage: controller.currentCeniPage);
-                      default:
-                        return WelcomeScreen();
-                    }
-                  }),
+                  child: Obx(() => _buildPage()),
                 ),
                 RightSideNavView(),
               ],
@@ -74,24 +43,30 @@ class HomeView extends GetView<HomeController> {
               DrawerView(),
               Expanded(
                 flex: 2,
-                child: Obx(() {
-                  switch (controller.currentPage) {
-                    case 'welcome':
-                      return WelcomeScreen();
-                    case 'news':
-                      return NewsScreen();
-                    case 'education':
-                      return EducationScreen();
-                    case 'ceni':
-                      return CeniScreen(subPage: controller.currentCeniPage);
-                    default:
-                      return WelcomeScreen();
-                  }
-                }),
+                child: Obx(() => _buildPage()),
               ),
               RightSideNavView(),
             ],
           );
         }));
+  }
+
+  Widget _buildPage() {
+    switch (controller.currentPage) {
+      case 'welcome':
+        return WelcomeScreen();
+      case 'news':
+        if (controller.currentDetailPageId != null &&
+            controller.currentDetailPageId != '') {
+          return NewsDetailsView();
+        }
+        return NewsScreen();
+      case 'education':
+        return EducationScreen();
+      case 'ceni':
+        return CeniScreen(subPage: controller.currentCeniPage);
+      default:
+        return WelcomeScreen();
+    }
   }
 }

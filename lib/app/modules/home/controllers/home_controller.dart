@@ -3,14 +3,6 @@ import 'package:get/get.dart';
 import 'package:mediaapp/app/core/utils/enum_utils.dart';
 
 class HomeController extends GetxController {
-  // final _currentTab = HomeTabsView.HOME.obs;
-  // HomeTabsView get currentTab => _currentTab.value;
-  // set currentTab(HomeTabsView value) => _currentTab.value = value;
-
-  // final _currentCeniTab = CeniSubTabsView.PRESIDENTIELLE.obs;
-  // CeniSubTabsView get currentCeniTab => _currentCeniTab.value;
-  // set currentCeniTab(CeniSubTabsView value) => _currentCeniTab.value = value;
-
   final _isExpandedMenu = false.obs;
   bool get isExpandedMenu => _isExpandedMenu.value;
   set isExpandedMenu(bool value) => _isExpandedMenu.value = value;
@@ -29,6 +21,11 @@ class HomeController extends GetxController {
   String get currentCeniPage => _currentCeniPage.value;
   set currentCeniPage(String value) => _currentCeniPage.value = value;
 
+  // Current detail page id
+  final _currentDetailPageId = ''.obs;
+  String get currentDetailPageId => _currentDetailPageId.value;
+  set currentDetailPageId(String value) => _currentDetailPageId.value = value;
+
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
   openDrawer() {
@@ -43,6 +40,12 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     currentPage = Get.parameters['page'] ?? 'welcome';
+    if (Get.parameters['id'] != null && Get.parameters['id'] != '') {
+      currentDetailPageId = Get.parameters['id']!;
+      return;
+    } else {
+      // currentDetailPageId = '';
+    }
     if (currentPage == 'ceni') {
       currentCeniPage = Get.parameters['subpage'] ?? 'presidential';
       isExpandedMenu = true;

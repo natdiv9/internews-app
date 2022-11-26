@@ -20,22 +20,22 @@ class AppPages {
       page: () => HomeView(),
       binding: HomeBinding(),
     ),
-    GetPage(
-      name: _Paths.NEWS_DETAILS,
-      page: () => const NewsDetailsView(),
-      binding: NewsDetailsBinding(),
-      children: [
-        GetPage(
-          name: _Paths.NEWS_DETAILS,
-          page: () => const NewsDetailsView(),
-          binding: NewsDetailsBinding(),
-        ),
-      ],
-    ),
-    GetPage(
-      name: _Paths.CANDIDATS_DETAILS,
-      page: () => const CandidatsDetailsView(),
-      binding: CandidatsDetailsBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.NEWS_DETAILS,
+    //   page: () => const NewsDetailsView(),
+    //   binding: NewsDetailsBinding(),
+    //   children: [
+    //     GetPage(
+    //       name: _Paths.NEWS_DETAILS,
+    //       page: () => const NewsDetailsView(),
+    //       binding: NewsDetailsBinding(),
+    //     ),
+    //   ],
+    // ),
+    // GetPage(
+    //   name: _Paths.CANDIDATS_DETAILS,
+    //   page: () => const CandidatsDetailsView(),
+    //   binding: CandidatsDetailsBinding(),
+    // ),
   ];
 }
