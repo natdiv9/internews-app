@@ -89,7 +89,7 @@ class PresidentialApplicationsScreen extends StatelessWidget {
                                           height: 16,
                                         ),
                                         Text(
-                                          "Candidat No",
+                                          '$index',
                                           style: GoogleFonts.roboto(
                                               textStyle: const TextStyle(
                                                   color:
@@ -101,7 +101,7 @@ class PresidentialApplicationsScreen extends StatelessWidget {
                                           height: 8,
                                         ),
                                         Text(
-                                          "Martin Fayulu",
+                                          "${controller.candidatsList[index].user!.firstName} ${controller.candidatsList[index].user!.lastName}",
                                           style: GoogleFonts.roboto(
                                               textStyle: const TextStyle(
                                                   color:
@@ -113,7 +113,7 @@ class PresidentialApplicationsScreen extends StatelessWidget {
                                           height: 8,
                                         ),
                                         Text(
-                                          "PARTI",
+                                          "${controller.candidatsList[index].partiPolitique}",
                                           style: GoogleFonts.roboto(
                                               textStyle: const TextStyle(
                                                   color:
