@@ -1,16 +1,18 @@
-# mediaapp
+# INTERNEWS APP
 
-A new Flutter project.
+Application mobile pour la sensibilisation au processus electoral de la population congolaise.
 
-## Getting Started
+## Prototype
 
-This project is a starting point for a Flutter application.
+Vous pouvez tester notre prototype en développement en liquant sur ce lien
 
-A few resources to get you started if this is your first Flutter project:
+- [UI Demo](https://internews.web.app)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Captures
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| Screen 1  |
+
+![This is an image](assets/screenshots/screen1.png)
+| Screen 2 |
+
+![This is an image](assets/screenshots/screen2.png)
