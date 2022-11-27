@@ -42,22 +42,35 @@ class NewsDetailsView extends StatelessWidget {
                               textStyle: TextStyle(
                                   color:
                                       AppColorTheme.textColor.withOpacity(0.3),
-                                  fontSize: 12,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w400)),
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SvgPicture.asset(
                               'assets/icons/like.svg',
                               color: AppColorTheme.textColor,
+                              width: 24,
+                              height: 24,
+                            ),
+                            const SizedBox(
+                              width: 16,
                             ),
                             SvgPicture.asset(
                               'assets/icons/dislike.svg',
                               color: AppColorTheme.textColor,
+                              width: 24,
+                              height: 24,
+                            ),
+                            const SizedBox(
+                              width: 16,
                             ),
                             SvgPicture.asset(
                               'assets/icons/share.svg',
                               color: AppColorTheme.textColor,
+                              width: 24,
+                              height: 24,
                             )
                           ],
                         )

@@ -16,7 +16,7 @@ class NewsProvider {
   //um exemplo rápido, aqui estamos recuperando todos os posts disponibilizados pela api(100)
   Future<NewsModel?> getAll({int type = 1}) async {
     try {
-      var uri = Uri.parse('${baseUrl}type=$type');
+      var uri = Uri.parse('${baseUrl}?type=$type');
       var response = await httpClient.get(uri);
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse =
