@@ -12,29 +12,26 @@ class CandidatsProvider {
   CandidatsProvider();
 
   //um exemplo rápido, aqui estamos recuperando todos os posts disponibilizados pela api(100)
-  Future<CandidatsModel?> getAll() async {
+  Future<CandidatsModel> getAll() async {
     try {
       var response = await httpClient.get(Uri.parse(baseUrl));
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse =
             Map<String, dynamic>.from(json.decode(response.body));
         CandidatsModel candidatsModel = CandidatsModel.fromJson(jsonResponse);
-        // if (kDebugMode) {
-        //   return jsonResponse.toString();
-        // }
-        // print('Le type de variable : ' + jsonResponse.runtimeType.toString());
-        // List<NewsModel> listMyModel = [];
 
+        // print('DATA FETCH CandidatsProvider');
+        // print(candidatsModel);
         return candidatsModel;
       } else {
         print('erro');
-        return null;
+        return Future.error('erro');
       }
     } catch (_) {
-      print('ERREURE - ');
+      print('ERREURE - CandidatsProvider');
 
       print(_.toString());
     }
-    return null;
+    return Future.error('error');
   }
 }

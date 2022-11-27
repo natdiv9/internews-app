@@ -7,9 +7,10 @@ import 'package:mediaapp/app/widgets/views/news_card_shimmer.dart';
 
 import 'controllers/provincial_applications.controller.dart';
 
-class ProvincialApplicationsScreen extends GetView {
+class ProvincialApplicationsScreen extends StatelessWidget {
   ProvincialApplicationsScreen({Key? key}) : super(key: key);
-  ProvincialApplicationsController controller =
+
+  final ProvincialApplicationsController controller =
       Get.put(ProvincialApplicationsController());
   @override
   Widget build(BuildContext context) {

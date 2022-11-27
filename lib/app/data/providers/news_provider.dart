@@ -34,7 +34,7 @@ class NewsProvider {
         return null;
       }
     } catch (_) {
-      print('ERREURE - ');
+      print('ERREURE - NewsProvider');
 
       print(_.toString());
     }

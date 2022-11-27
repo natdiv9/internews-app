@@ -5,7 +5,7 @@ class CandidatsRepository {
 
   CandidatsRepository();
 
-  getAll({int type = 1}) {
+  getAll() {
     return api.getAll();
   }
 }

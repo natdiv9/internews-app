@@ -1,6 +1,6 @@
-# INTERNEWS APP
+# INTERNEWS APP 🇨🇩
 
-Application mobile pour la sensibilisation au processus electoral de la population congolaise.
+Application web et mobile pour la sensibilisation au processus electoral de la population congolaise.
 
 ## Prototype
 

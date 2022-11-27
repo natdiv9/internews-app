@@ -7,7 +7,7 @@ import 'package:mediaapp/app/widgets/views/news_card_shimmer.dart';
 
 import 'controllers/national_applications.controller.dart';
 
-class NationalApplicationsScreen extends GetView {
+class NationalApplicationsScreen extends StatelessWidget {
   NationalApplicationsScreen({Key? key}) : super(key: key);
 
   NationalApplicationsController controller =
