@@ -85,8 +85,8 @@ class NewsData {
   int? type;
   int? categorie;
   dynamic deletedAt;
-  String? createdAt;
-  String? updatedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
 
   NewsData(
       {this.id,
@@ -107,8 +107,8 @@ class NewsData {
     type = json['type'];
     categorie = json['categorie'];
     deletedAt = json['deleted_at'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+    createdAt = DateTime.parse(json['created_at']);
+    updatedAt = DateTime.parse(json['updated_at']);
   }
 
   Map<String, dynamic> toJson() {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,38 +33,63 @@ class NewsDetailsView extends StatelessWidget {
                     const SizedBox(
                       height: 24,
                     ),
-                    Column(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.40,
-                          width: double.infinity,
-                          clipBehavior: Clip.hardEdge,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              image: const DecorationImage(
-                                  image: AssetImage('assets/images/vote.jpg'),
-                                  fit: BoxFit.cover)),
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
                         Text(
-                          controller.newsData.contenu!,
-                          textAlign: TextAlign.justify,
+                          'Publié par internews, ${controller.newsData.createdAt}',
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                                   color:
-                                      AppColorTheme.textColor.withOpacity(0.6),
-                                  fontSize: 16,
+                                      AppColorTheme.textColor.withOpacity(0.3),
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w400)),
                         ),
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              'assets/icons/like.svg',
+                              color: AppColorTheme.textColor,
+                            ),
+                            SvgPicture.asset(
+                              'assets/icons/dislike.svg',
+                              color: AppColorTheme.textColor,
+                            ),
+                            SvgPicture.asset(
+                              'assets/icons/share.svg',
+                              color: AppColorTheme.textColor,
+                            )
+                          ],
+                        )
                       ],
+                    ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.40,
+                      width: double.infinity,
+                      clipBehavior: Clip.hardEdge,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          image: const DecorationImage(
+                              image: AssetImage('assets/images/vote.jpg'),
+                              fit: BoxFit.cover)),
                     ),
                     const SizedBox(
                       height: 32,
                     ),
+                    Text(
+                      controller.newsData.contenu!,
+                      textAlign: TextAlign.justify,
+                      style: GoogleFonts.roboto(
+                          textStyle: TextStyle(
+                              color: AppColorTheme.textColor.withOpacity(0.6),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400)),
+                    ),
                     const SizedBox(
-                      height: 24,
+                      height: 32,
                     ),
                   ])
             : NewsCardShimmerWidget();
