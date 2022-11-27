@@ -13,13 +13,8 @@ class NewsScreen extends StatelessWidget {
   NewsScreen({Key? key}) : super(key: key);
   final NewsController controller = Get.put(NewsController());
 
-  afficher() {
-    controller.getAll();
-  }
-
   @override
   Widget build(BuildContext context) {
-    controller.getAll();
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
         child: Obx(

@@ -87,6 +87,7 @@ class CandidatsData {
   dynamic deletedAt;
   String? createdAt;
   String? updatedAt;
+  User? user;
 
   CandidatsData(
       {this.id,
@@ -97,7 +98,8 @@ class CandidatsData {
       this.userId,
       this.deletedAt,
       this.createdAt,
-      this.updatedAt});
+      this.updatedAt,
+      this.user});
 
   CandidatsData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -109,6 +111,7 @@ class CandidatsData {
     deletedAt = json['deleted_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
+    user = json['user'] != null ? User?.fromJson(json['user']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -119,6 +122,66 @@ class CandidatsData {
     data['parti_politique'] = partiPolitique;
     data['description'] = description;
     data['user_id'] = userId;
+    data['deleted_at'] = deletedAt;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (user != null) {
+      data['user'] = user?.toJson();
+    }
+    return data;
+  }
+}
+
+class User {
+  int? id;
+  String? name;
+  String? email;
+  dynamic emailVerifiedAt;
+  String? firstName;
+  String? lastName;
+  String? phoneNumber;
+  int? roles;
+  dynamic deletedAt;
+  dynamic createdAt;
+  dynamic updatedAt;
+
+  User(
+      {this.id,
+      this.name,
+      this.email,
+      this.emailVerifiedAt,
+      this.firstName,
+      this.lastName,
+      this.phoneNumber,
+      this.roles,
+      this.deletedAt,
+      this.createdAt,
+      this.updatedAt});
+
+  User.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    email = json['email'];
+    emailVerifiedAt = json['email_verified_at'];
+    firstName = json['first_name'];
+    lastName = json['last_name'];
+    phoneNumber = json['phone_number'];
+    roles = json['roles'];
+    deletedAt = json['deleted_at'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['email'] = email;
+    data['email_verified_at'] = emailVerifiedAt;
+    data['first_name'] = firstName;
+    data['last_name'] = lastName;
+    data['phone_number'] = phoneNumber;
+    data['roles'] = roles;
     data['deleted_at'] = deletedAt;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;

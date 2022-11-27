@@ -11,7 +11,7 @@ AppBar Header() {
     elevation: 0,
     scrolledUnderElevation: 2,
     centerTitle: false,
-    toolbarHeight: 84,
+    toolbarHeight: 85,
     title: Obx(
       () => Row(
         //mainAxisAlignment: MainAxisAlignment.spaceBetween,

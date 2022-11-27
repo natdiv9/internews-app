@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mediaapp/app/core/utils/enum_utils.dart';
 
 class HomeController extends GetxController {
   final _isExpandedMenu = false.obs;

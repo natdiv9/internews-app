@@ -19,6 +19,7 @@ class NewsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    getAll();
   }
 
   @override

@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
+import 'package:mediaapp/app/data/models/news_model.dart';
 
 class NewsDetailsController extends GetxController {
-  //TODO: Implement NewsDetailsController
+  final _newsDada = NewsData().obs;
+  NewsData get newsData => _newsDada.value;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +19,4 @@ class NewsDetailsController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

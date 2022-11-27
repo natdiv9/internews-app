@@ -1,43 +1,56 @@
 {
-    "current_page": 1,
-    "data": [
-      {
+  "current_page": 1,
+  "data": [
+    {
+      "id": 1,
+      "candidature": 1212,
+      "province": "Haut-katanga",
+      "parti_politique": "pprd",
+      "description": "lorem",
+      "user_id": 1,
+      "deleted_at": null,
+      "created_at": "2022-11-16T01:33:34.000000Z",
+      "updated_at": "2022-11-16T01:33:34.000000Z",
+      "user": {
         "id": 1,
-        "candidature": 1212,
-        "province": "Haut-katanga",
-        "parti_politique": "pprd",
-        "description": "lorem",
-        "user_id": 1,
+        "name": "zacchaeus",
+        "email": "zackabemba4@gmail.com",
+        "email_verified_at": null,
+        "first_name": "",
+        "last_name": "",
+        "phone_number": "",
+        "roles": 0,
         "deleted_at": null,
-        "created_at": "2022-11-16T01:33:34.000000Z",
-        "updated_at": "2022-11-16T01:33:34.000000Z"
+        "created_at": null,
+        "updated_at": null
       }
-    ],
-    "first_page_url": "http://infosnews.top-lum.com/api/candidats?page=1",
-    "from": 1,
-    "last_page": 1,
-    "last_page_url": "http://infosnews.top-lum.com/api/candidats?page=1",
-    "links": [
-      {
-        "url": null,
-        "label": "&laquo; Previous",
-        "active": false
-      },
-      {
-        "url": "http://infosnews.top-lum.com/api/candidats?page=1",
-        "label": "1",
-        "active": true
-      },
-      {
-        "url": null,
-        "label": "Next &raquo;",
-        "active": false
-      }
-    ],
-    "next_page_url": null,
-    "path": "http://infosnews.top-lum.com/api/candidats",
-    "per_page": 15,
-    "prev_page_url": null,
-    "to": 1,
-    "total": 1
-  }
+    }
+  ],
+  "first_page_url": "https:\/\/infosnews.top-lum.com\/api\/candidats?=1",
+  "from": 1,
+  "last_page": 1,
+  "last_page_url": "https:\/\/infosnews.top-lum.com\/api\/candidats?=1",
+  "links": [
+    {
+      "url": null,
+      "label": "&laquo; Previous",
+      "active": false
+    },
+    {
+      "url": "https:\/\/infosnews.top-lum.com\/api\/candidats?=1",
+      "label": "1",
+      "active": true
+    },
+    {
+      "url": null,
+      "label": "Next &raquo;",
+      "active": false
+    }
+  ],
+  "next_page_url": null,
+  "path": "https:\/\/infosnews.top-lum.com\/api\/candidats",
+  "per_page": 15,
+  "prev_page_url": null,
+  "to": 1,
+  "total": 1
+}

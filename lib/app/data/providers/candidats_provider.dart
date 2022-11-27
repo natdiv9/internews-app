@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:mediaapp/app/data/models/candidats_model.dart';
 
 //nossa url base
-const baseUrl = 'https://infosnews.top-lum.com/api/news';
+const baseUrl = 'https://infosnews.top-lum.com/api/candidats';
 
 //nossa classe responsável por encapsular os métodos http
 class CandidatsProvider {
