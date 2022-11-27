@@ -32,7 +32,6 @@ class PresidentialApplicationsController extends GetxController {
     _candidatsRepository.getAll().then((CandidatsModel data) {
       _candidatsModel.value = data;
       _candidatsList.value = _candidatsModel.value.data!;
-      // print(_candidatsList.value);
     });
   }
 }

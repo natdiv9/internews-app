@@ -3,7 +3,7 @@ import 'package:mediaapp/app/data/models/candidats_model.dart';
 import 'package:mediaapp/app/data/repository/candidats_repository.dart';
 
 class NationalApplicationsController extends GetxController {
-  CandidatsRepository _candidatsRepository = CandidatsRepository();
+  final CandidatsRepository _candidatsRepository = CandidatsRepository();
 
   final _candidatsModel = CandidatsModel().obs;
   get candidatsModel => _candidatsModel;
@@ -29,9 +29,9 @@ class NationalApplicationsController extends GetxController {
   }
 
   getAll() {
-    _candidatsRepository.getAll().then((CandidatsModel? data) {
-      candidatsModel = data;
-      _candidatsList.value = candidatsModel.data!;
+    _candidatsRepository.getAll().then((CandidatsModel data) {
+      _candidatsModel.value = data;
+      _candidatsList.value = _candidatsModel.value.data!;
     });
   }
 }
