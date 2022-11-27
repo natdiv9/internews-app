@@ -5,7 +5,7 @@ import 'package:mediaapp/app/data/models/news_model.dart';
 import 'package:meta/meta.dart';
 
 //nossa url base
-const baseUrl = 'https://infosnews.top-lum.com/api/news?';
+const baseUrl = 'https://infosnews.top-lum.com/api/news';
 
 //nossa classe responsável por encapsular os métodos http
 class NewsProvider {
@@ -29,6 +29,28 @@ class NewsProvider {
         // List<NewsModel> listMyModel = [];
 
         return newsModel;
+      } else {
+        print('erro');
+        return null;
+      }
+    } catch (_) {
+      print('ERREURE - NewsProvider');
+
+      print(_.toString());
+    }
+    return null;
+  }
+
+  Future<NewsData?> getByID({required String id}) async {
+    try {
+      var uri = Uri.parse('${baseUrl}/$id');
+      var response = await httpClient.get(uri);
+      if (response.statusCode == 200) {
+        Map<String, dynamic> jsonResponse =
+            Map<String, dynamic>.from(json.decode(response.body));
+        NewsData newsData = NewsData.fromJson(jsonResponse);
+
+        return newsData;
       } else {
         print('erro');
         return null;
