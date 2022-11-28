@@ -54,7 +54,7 @@ class CandidatsDetailsView extends StatelessWidget {
                             fontSize: 24,
                             fontWeight: FontWeight.bold)),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   Text(
@@ -65,37 +65,144 @@ class CandidatsDetailsView extends StatelessWidget {
                             fontSize: 18,
                             fontWeight: FontWeight.w500)),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 32,
                   ),
-                  Text(
-                    "À propos",
-                    style: GoogleFonts.roboto(
-                        textStyle: const TextStyle(
-                            color: AppColorTheme.textColor,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold)),
+                  _buildAproposWidget("À propos de moi"),
+                  const SizedBox(
+                    height: 32,
                   ),
-                  Divider(
-                    // height: 1,
-                    color: AppColorTheme.textColor.withOpacity(0.1),
+                  _buildAproposWidget("Quelle est ma vision?"),
+                  const SizedBox(
+                    height: 32,
                   ),
-                  SizedBox(
-                    height: 8,
+                  _buildAproposWidget("Quelle est ma mission?"),
+                  const SizedBox(
+                    height: 32,
                   ),
-                  Text(
-                    "Et qui debitis dolorum velit. Aut libero voluptatem neque ea voluptatum et. Consectetur tempore consequatur voluptas consequatur asperiores repudiandae. Culpa rerum error est assumenda. Sint eligendi architecto similique consequatur placeat natus quos. Assumenda nemo distinctio iusto dolor incidunt magni. Cum et tempore quis quos odio suscipit enim veritatis. Sit eius dolor veniam quisquam architecto sint. Blanditiis illo eveniet et est id provident. Laboriosam eos maiores illum facilis aut maiores expedita. Libero ut doloremque illum quod. Dolorem temporibus eius error. Dolorum rerum ut veniam ut culpa laboriosam. Voluptatibus esse est ut vero numquam facere. Rerum modi dignissimos non asperiores veritatis voluptatibus provident.",
-                    textAlign: TextAlign.justify,
-                    style: GoogleFonts.roboto(
-                        textStyle: TextStyle(
-                            color: AppColorTheme.textColor.withOpacity(0.6),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400)),
+                  _buildAproposWidget(
+                      "Mon projet électoral pour les 5 ans à veni"),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  _buildGalleryWidget(),
+                  const SizedBox(
+                    height: 32,
                   ),
                 ],
               )
             : NewsCardShimmerWidget();
       }),
+    );
+  }
+
+  Widget _buildAproposWidget(String sectionTitile) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          sectionTitile,
+          textAlign: TextAlign.justify,
+          style: GoogleFonts.roboto(
+              textStyle: const TextStyle(
+                  color: AppColorTheme.textColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold)),
+        ),
+        Divider(
+          // height: 1,
+          color: AppColorTheme.textColor.withOpacity(0.1),
+        ),
+        SizedBox(
+          height: 8,
+          width: double.infinity,
+        ),
+        Text(
+          "Et qui debitis dolorum velit. Aut libero voluptatem neque ea voluptatum et. Consectetur tempore consequatur voluptas consequatur asperiores repudiandae. Culpa rerum error est assumenda. Sint eligendi architecto similique consequatur placeat natus quos. Assumenda nemo distinctio iusto dolor incidunt magni. Cum et tempore quis quos odio suscipit enim veritatis. Sit eius dolor veniam quisquam architecto sint. Blanditiis illo eveniet et est id provident. Laboriosam eos maiores illum facilis aut maiores expedita. Libero ut doloremque illum quod. Dolorem temporibus eius error. Dolorum rerum ut veniam ut culpa laboriosam. Voluptatibus esse est ut vero numquam facere. Rerum modi dignissimos non asperiores veritatis voluptatibus provident.",
+          textAlign: TextAlign.justify,
+          style: GoogleFonts.roboto(
+              textStyle: TextStyle(
+                  color: AppColorTheme.textColor.withOpacity(0.6),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400)),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildGalleryWidget() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Gallerie',
+          textAlign: TextAlign.justify,
+          style: GoogleFonts.roboto(
+              textStyle: const TextStyle(
+                  color: AppColorTheme.textColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold)),
+        ),
+        Divider(
+          // height: 1,
+          color: AppColorTheme.textColor.withOpacity(0.1),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Container(
+          height: 220,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            // primary: false,
+            itemCount: 6,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.only(right: 12),
+                child: Container(
+                  width: 250,
+                  decoration: BoxDecoration(
+                    color: AppColorTheme.whiteColor,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 150,
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(8),
+                                topRight: Radius.circular(8)),
+                            image: DecorationImage(
+                                image:
+                                    AssetImage('assets/images/gallerie1.jpg'),
+                                fit: BoxFit.cover)),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Et qui debitis dolorum velit. Aut libero voluptatem neque ea voluptatum et.',
+                          textAlign: TextAlign.justify,
+                          style: GoogleFonts.roboto(
+                              textStyle: TextStyle(
+                                  color:
+                                      AppColorTheme.textColor.withOpacity(0.6),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400)),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        )
+      ],
     );
   }
 }
