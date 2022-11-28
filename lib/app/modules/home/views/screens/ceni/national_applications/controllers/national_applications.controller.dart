@@ -12,10 +12,14 @@ class NationalApplicationsController extends GetxController {
   final _candidatsList = <CandidatsData>[].obs;
   List<CandidatsData> get candidatsList => _candidatsList;
 
+  final _subpage = ''.obs;
+  String get subpage => _subpage.value;
+
   @override
   void onInit() {
     super.onInit();
     getAll();
+    _subpage.value = Get.parameters['subpage']!;
   }
 
   @override

@@ -25,6 +25,10 @@ class HomeController extends GetxController {
   String get currentDetailPageId => _currentDetailPageId.value;
   set currentDetailPageId(String value) => _currentDetailPageId.value = value;
 
+  // Current detail candidate page id
+  final _currentCandidatePageId = ''.obs;
+  String get currentCandidatePageId => _currentCandidatePageId.value;
+
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
   openDrawer() {
@@ -39,14 +43,23 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     currentPage = Get.parameters['page'] ?? 'welcome';
+    currentCeniPage = Get.parameters['subpage'] ?? 'presidential';
+
+    if (currentPage == 'ceni' &&
+        (currentCeniPage == 'national' ||
+            currentCeniPage == 'presidential' ||
+            currentCeniPage == 'provincial') &&
+        Get.parameters['id'] != null &&
+        Get.parameters['id'] != '') {
+      _currentCandidatePageId.value = Get.parameters['id']!;
+      isExpandedMenu = true;
+      return;
+    }
     if (Get.parameters['id'] != null && Get.parameters['id'] != '') {
       currentDetailPageId = Get.parameters['id']!;
       return;
-    } else {
-      // currentDetailPageId = '';
-    }
+    } else {}
     if (currentPage == 'ceni') {
-      currentCeniPage = Get.parameters['subpage'] ?? 'presidential';
       isExpandedMenu = true;
     }
   }

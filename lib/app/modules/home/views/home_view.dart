@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:mediaapp/app/modules/candidats_details/views/candidats_details_view.dart';
 import 'package:mediaapp/app/modules/home/views/screens/ceni/ceni.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/education/education.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/news/news.screen.dart';
@@ -64,6 +65,10 @@ class HomeView extends GetView<HomeController> {
       case 'education':
         return EducationScreen();
       case 'ceni':
+        if (controller.currentCandidatePageId != null &&
+            controller.currentCandidatePageId != '') {
+          return CandidatsDetailsView();
+        }
         return CeniScreen(subPage: controller.currentCeniPage);
       default:
         return WelcomeScreen();

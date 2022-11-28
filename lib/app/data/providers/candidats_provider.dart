@@ -34,4 +34,26 @@ class CandidatsProvider {
     }
     return Future.error('error');
   }
+
+  Future<CandidatsData?> getByID({required String id}) async {
+    try {
+      var uri = Uri.parse('${baseUrl}/$id');
+      var response = await httpClient.get(uri);
+      if (response.statusCode == 200) {
+        Map<String, dynamic> jsonResponse =
+            Map<String, dynamic>.from(json.decode(response.body));
+        CandidatsData candidatData = CandidatsData.fromJson(jsonResponse);
+
+        return candidatData;
+      } else {
+        print('erro');
+        return null;
+      }
+    } catch (_) {
+      print('ERREURE - CandidatsProvider');
+
+      print(_.toString());
+    }
+    return null;
+  }
 }

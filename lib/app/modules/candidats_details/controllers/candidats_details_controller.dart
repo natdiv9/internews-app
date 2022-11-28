@@ -1,12 +1,24 @@
 import 'package:get/get.dart';
+import 'package:mediaapp/app/data/models/candidats_model.dart';
+import 'package:mediaapp/app/data/repository/candidats_repository.dart';
 
 class CandidatsDetailsController extends GetxController {
-  //TODO: Implement CandidatsDetailsController
+  final CandidatsRepository _candidatsRepository = CandidatsRepository();
 
-  final count = 0.obs;
+  final _isLoading = true.obs;
+  get isLoading => _isLoading.value;
+
+  final _candidatData = CandidatsData().obs;
+  CandidatsData get candidatData => _candidatData.value;
+
   @override
   void onInit() {
     super.onInit();
+    if (Get.parameters['id'] != null && Get.parameters['id'] != '') {
+      getCandidat(Get.parameters['id']!);
+    } else {
+      _isLoading.value = true;
+    }
   }
 
   @override
@@ -19,5 +31,10 @@ class CandidatsDetailsController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  getCandidat(String id) {
+    _candidatsRepository.getByID(id: id).then((CandidatsData? data) {
+      _candidatData.value = data!;
+      _isLoading.value = false;
+    });
+  }
 }
