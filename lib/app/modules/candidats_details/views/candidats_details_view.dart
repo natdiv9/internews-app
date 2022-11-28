@@ -51,15 +51,18 @@ class CandidatsDetailsView extends StatelessWidget {
                     style: GoogleFonts.roboto(
                         textStyle: const TextStyle(
                             color: AppColorTheme.textColor,
-                            fontSize: 20,
+                            fontSize: 24,
                             fontWeight: FontWeight.bold)),
+                  ),
+                  SizedBox(
+                    height: 8,
                   ),
                   Text(
                     "Candidat No ${controller.candidatData.id}",
                     // "${controller.candidatData.user.firstName} ${controller.candidatData.user.lastName}",
                     style: GoogleFonts.roboto(
-                        textStyle: const TextStyle(
-                            color: AppColorTheme.textColor,
+                        textStyle: TextStyle(
+                            color: AppColorTheme.textColor.withOpacity(0.7),
                             fontSize: 18,
                             fontWeight: FontWeight.w500)),
                   ),
