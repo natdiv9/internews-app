@@ -53,7 +53,10 @@ class PresidentialApplicationsScreen extends StatelessWidget {
                             itemBuilder: (context, index) {
                               return Material(
                                 child: InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Get.offNamed(
+                                        '/ceni?subpage=${controller.subpage}&id=${controller.candidatsList[index].id}');
+                                  },
                                   child: Container(
                                     height: 462,
                                     decoration: BoxDecoration(
