@@ -155,7 +155,7 @@ class CandidatsDetailsView extends StatelessWidget {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             // primary: false,
-            itemCount: 6,
+            itemCount: 4,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.only(right: 12),
@@ -170,13 +170,13 @@ class CandidatsDetailsView extends StatelessWidget {
                     children: [
                       Container(
                         height: 150,
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
+                        decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(8),
                                 topRight: Radius.circular(8)),
                             image: DecorationImage(
-                                image:
-                                    AssetImage('assets/images/gallerie1.jpg'),
+                                image: AssetImage(
+                                    'assets/images/gallerie${index + 1}.jpg'),
                                 fit: BoxFit.cover)),
                       ),
                       const SizedBox(
