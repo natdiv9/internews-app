@@ -58,21 +58,38 @@ class CandidatsDetailsView extends StatelessWidget {
                     height: 8,
                   ),
                   Text(
-                    "Candidat No ${controller.candidatData.id}",
-                    // "${controller.candidatData.user.firstName} ${controller.candidatData.user.lastName}",
+                    "Candidat No ${controller.candidatData.id} - Parti LAMUKA",
                     style: GoogleFonts.roboto(
                         textStyle: TextStyle(
-                            color: AppColorTheme.textColor.withOpacity(0.7),
+                            color: AppColorTheme.textColor.withOpacity(0.8),
                             fontSize: 18,
                             fontWeight: FontWeight.w500)),
                   ),
+                  SizedBox(
+                    height: 32,
+                  ),
                   Text(
-                    "Parti LAMUKA",
-                    // "${controller.candidatData.user.firstName} ${controller.candidatData.user.lastName}",
+                    "À propos",
                     style: GoogleFonts.roboto(
                         textStyle: const TextStyle(
                             color: AppColorTheme.textColor,
                             fontSize: 18,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                  Divider(
+                    // height: 1,
+                    color: AppColorTheme.textColor.withOpacity(0.1),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    "Et qui debitis dolorum velit. Aut libero voluptatem neque ea voluptatum et. Consectetur tempore consequatur voluptas consequatur asperiores repudiandae. Culpa rerum error est assumenda. Sint eligendi architecto similique consequatur placeat natus quos. Assumenda nemo distinctio iusto dolor incidunt magni. Cum et tempore quis quos odio suscipit enim veritatis. Sit eius dolor veniam quisquam architecto sint. Blanditiis illo eveniet et est id provident. Laboriosam eos maiores illum facilis aut maiores expedita. Libero ut doloremque illum quod. Dolorem temporibus eius error. Dolorum rerum ut veniam ut culpa laboriosam. Voluptatibus esse est ut vero numquam facere. Rerum modi dignissimos non asperiores veritatis voluptatibus provident.",
+                    textAlign: TextAlign.justify,
+                    style: GoogleFonts.roboto(
+                        textStyle: TextStyle(
+                            color: AppColorTheme.textColor.withOpacity(0.6),
+                            fontSize: 14,
                             fontWeight: FontWeight.w400)),
                   ),
                 ],

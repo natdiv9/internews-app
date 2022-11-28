@@ -10,9 +10,10 @@ Vous pouvez tester notre prototype en développement en liquant sur ce lien
 
 ## Captures
 
-| Screen 1  |
+Home screen![This is an image](assets/screenshots/screen1.png)
 
-![This is an image](assets/screenshots/screen1.png)
-| Screen 2 |
-
+Calendar screen
 ![This is an image](assets/screenshots/screen2.png)
+
+Profil candidat screen
+![This is an image](assets/screenshots/screen3.png)
