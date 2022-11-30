@@ -11,8 +11,8 @@ import 'package:mediaapp/app/widgets/views/news_card_shimmer.dart';
 
 import 'controllers/welcome.controller.dart';
 
-class WelcomeScreen extends GetView<WelcomeController> {
-  WelcomeScreen({Key? key}) : super(key: key);
+class DesktopWelcomeScreen extends GetView<WelcomeController> {
+  DesktopWelcomeScreen({Key? key}) : super(key: key);
   final WelcomeController controller = Get.put(WelcomeController());
   @override
   Widget build(BuildContext context) {

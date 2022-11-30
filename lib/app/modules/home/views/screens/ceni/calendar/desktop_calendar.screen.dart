@@ -6,8 +6,8 @@ import 'package:mediaapp/app/core/themes/color_theme.dart';
 
 import 'controllers/calendar.controller.dart';
 
-class CalendarScreen extends GetView<CalendarController> {
-  const CalendarScreen({Key? key}) : super(key: key);
+class DesktopCalendarScreen extends GetView<CalendarController> {
+  const DesktopCalendarScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(

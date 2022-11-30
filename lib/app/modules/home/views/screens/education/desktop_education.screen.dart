@@ -4,12 +4,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/introduce_text_view.dart';
-import 'package:mediaapp/app/widgets/views/news_item_card_view.dart';
 
 import 'controllers/education.controller.dart';
 
-class EducationScreen extends GetView<EducationController> {
-  const EducationScreen({Key? key}) : super(key: key);
+class DesktopEducationScreen extends GetView<EducationController> {
+  const DesktopEducationScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(

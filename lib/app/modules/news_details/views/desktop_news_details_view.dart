@@ -7,8 +7,8 @@ import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/widgets/views/news_card_shimmer.dart';
 import '../controllers/news_details_controller.dart';
 
-class NewsDetailsView extends StatelessWidget {
-  NewsDetailsView({Key? key}) : super(key: key);
+class DesktopNewsDetailsView extends StatelessWidget {
+  DesktopNewsDetailsView({Key? key}) : super(key: key);
 
   final NewsDetailsController controller = Get.put(NewsDetailsController());
 

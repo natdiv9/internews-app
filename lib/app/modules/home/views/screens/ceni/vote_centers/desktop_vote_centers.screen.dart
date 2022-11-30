@@ -4,18 +4,14 @@ import 'package:get/get.dart';
 
 import 'controllers/vote_centers.controller.dart';
 
-class VoteCentersScreen extends GetView<LogisticsController> {
-  const VoteCentersScreen({Key? key}) : super(key: key);
+class DesktopVoteCentersScreen extends GetView<LogisticsController> {
+  const DesktopVoteCentersScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('LogisticsScreen'),
-        centerTitle: true,
-      ),
       body: Center(
         child: Text(
-          'Vote centers is working',
+          'DesktopVoteCentersScreen is working ',
           style: TextStyle(fontSize: 20),
         ),
       ),

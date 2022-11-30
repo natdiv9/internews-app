@@ -9,8 +9,8 @@ import 'package:mediaapp/app/widgets/views/news_item_card_view.dart';
 
 import 'controllers/news.controller.dart';
 
-class NewsScreen extends StatelessWidget {
-  NewsScreen({Key? key}) : super(key: key);
+class DesktopNewsScreen extends StatelessWidget {
+  DesktopNewsScreen({Key? key}) : super(key: key);
   final NewsController controller = Get.put(NewsController());
 
   @override

@@ -4,18 +4,19 @@ import 'package:get/get.dart';
 
 import 'controllers/enrollment_centers.controller.dart';
 
-class EnrollmentCentersScreen extends GetView<EnrollmentCentersController> {
-  const EnrollmentCentersScreen({Key? key}) : super(key: key);
+class DesktopEnrollmentCentersScreen
+    extends GetView<EnrollmentCentersController> {
+  const DesktopEnrollmentCentersScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('EnrollmentCentersScreen'),
+        title: const Text('DesktopEnrollmentCentersScreen'),
         centerTitle: true,
       ),
       body: Center(
         child: Text(
-          'EnrollmentCentersScreen is working',
+          'DesktopEnrollmentCentersScreen is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

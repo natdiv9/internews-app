@@ -5,13 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/widgets/views/news_card_shimmer.dart';
 
-import 'controllers/provincial_applications.controller.dart';
+import 'controllers/national_applications.controller.dart';
 
-class ProvincialApplicationsScreen extends StatelessWidget {
-  ProvincialApplicationsScreen({Key? key}) : super(key: key);
+class DesktopNationalApplicationsScreen extends StatelessWidget {
+  DesktopNationalApplicationsScreen({Key? key}) : super(key: key);
 
-  final ProvincialApplicationsController controller =
-      Get.put(ProvincialApplicationsController());
+  NationalApplicationsController controller =
+      Get.put(NationalApplicationsController());
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,7 +22,7 @@ class ProvincialApplicationsScreen extends StatelessWidget {
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Députation provinciale 2023",
+              "Députation nationale 2023",
               style: GoogleFonts.roboto(
                   textStyle: const TextStyle(
                       color: AppColorTheme.textColor,

@@ -7,8 +7,8 @@ import 'package:mediaapp/app/widgets/views/news_card_shimmer.dart';
 
 import '../controllers/candidats_details_controller.dart';
 
-class CandidatsDetailsView extends StatelessWidget {
-  CandidatsDetailsView({Key? key}) : super(key: key);
+class DesktopCandidatsDetailsView extends StatelessWidget {
+  DesktopCandidatsDetailsView({Key? key}) : super(key: key);
 
   CandidatsDetailsController controller = Get.put(CandidatsDetailsController());
 

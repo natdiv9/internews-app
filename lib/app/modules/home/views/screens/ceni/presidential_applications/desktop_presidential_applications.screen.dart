@@ -5,13 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/widgets/views/news_card_shimmer.dart';
 
-import 'controllers/national_applications.controller.dart';
+import 'controllers/presidential_applications.controller.dart';
 
-class NationalApplicationsScreen extends StatelessWidget {
-  NationalApplicationsScreen({Key? key}) : super(key: key);
+class DesktopPresidentialApplicationsScreen extends StatelessWidget {
+  DesktopPresidentialApplicationsScreen({Key? key}) : super(key: key);
 
-  NationalApplicationsController controller =
-      Get.put(NationalApplicationsController());
+  final PresidentialApplicationsController controller =
+      Get.put(PresidentialApplicationsController());
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class NationalApplicationsScreen extends StatelessWidget {
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Députation nationale 2023",
+              "Candidats à la presidence de 2023",
               style: GoogleFonts.roboto(
                   textStyle: const TextStyle(
                       color: AppColorTheme.textColor,
