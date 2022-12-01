@@ -7,15 +7,21 @@ import 'package:mediaapp/app/modules/home/views/screens/education/mobile_educati
 import 'package:mediaapp/app/modules/home/views/screens/news/mobile_news.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/welcome/mobile_welcome.screen.dart';
 import 'package:mediaapp/app/modules/news_details/views/mobile_news_details_view.dart';
+import 'package:mediaapp/app/widgets/drawers/desktop_drawer_view.dart';
+import 'package:mediaapp/app/widgets/drawers/mobile_drawer_view.dart';
 import 'package:mediaapp/app/widgets/headers/mobile_header.dart';
 
 class MobileView extends GetView<HomeController> {
-  const MobileView({super.key});
+  MobileView({super.key});
+
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MobileHeader(),
+      key: scaffoldKey,
+      appBar: MobileHeader(scaffoldKey),
+      drawer: MobileDrawerView(scaffoldKey: scaffoldKey),
       body: Obx(() => _buidBody()),
     );
   }

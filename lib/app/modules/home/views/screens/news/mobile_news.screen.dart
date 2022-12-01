@@ -4,8 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
+import 'package:mediaapp/app/widgets/news_card/mobile_news_item_card_view.dart';
 import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
-import 'package:mediaapp/app/widgets/news_item_card_view.dart';
+import 'package:mediaapp/app/widgets/news_card/desktop_news_item_card_view.dart';
 
 import 'controllers/news.controller.dart';
 
@@ -95,7 +96,7 @@ class MobileNewsScreen extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return Column(
                             children: [
-                              NewsItemCardView(
+                              MobileNewsItemCardView(
                                 newsData: controller.newsList[index],
                               ),
                               const SizedBox(

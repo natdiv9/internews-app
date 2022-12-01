@@ -7,7 +7,7 @@ import 'package:mediaapp/app/modules/home/views/screens/education/desktop_educat
 import 'package:mediaapp/app/modules/home/views/screens/news/desktop_news.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/welcome/desktop_welcome.screen.dart';
 import 'package:mediaapp/app/modules/news_details/views/desktop_news_details_view.dart';
-import 'package:mediaapp/app/widgets/drawer_view.dart';
+import 'package:mediaapp/app/widgets/drawers/desktop_drawer_view.dart';
 import 'package:mediaapp/app/widgets/headers/desktop_header.dart';
 import 'package:mediaapp/app/widgets/right_side_nav/right_side_nav_view.dart';
 
@@ -21,7 +21,7 @@ class DesktopView extends GetView<HomeController> {
       body: Obx(() => Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DrawerView(),
+              DesktopDrawerView(),
               Expanded(
                 flex: 2,
                 child: _buidBody(),

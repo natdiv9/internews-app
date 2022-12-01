@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
+import 'package:mediaapp/app/modules/home/home_widgets/views/desktop_recent_news_view.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/education_contents_view.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/key_words_view.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/main_banner_view.dart';
-import 'package:mediaapp/app/modules/home/home_widgets/views/recent_news_view.dart';
 import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 
 import 'controllers/welcome.controller.dart';
@@ -43,7 +43,7 @@ class DesktopWelcomeScreen extends GetView<WelcomeController> {
             ),
 
             Obx(() => controller.newsList.length > 0
-                ? RecentNewsView(
+                ? DesktopRecentNewsView(
                     newsList: controller.newsList.sublist(0, 4),
                   )
                 : NewsCardShimmerWidget()),
