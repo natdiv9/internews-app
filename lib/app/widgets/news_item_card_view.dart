@@ -38,7 +38,7 @@ class NewsItemCardView extends GetView {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          newsData?.titre ?? 'Lorem ipsum dolor sit amet,',
+                          newsData.titre!,
                           style: GoogleFonts.roboto(
                               textStyle: const TextStyle(
                                   color: AppColorTheme.textColor,
@@ -50,7 +50,7 @@ class NewsItemCardView extends GetView {
                         ),
                         Expanded(
                           child: Text(
-                            newsData?.contenu?.substring(0, 180) ?? '',
+                            newsData.contenu?.substring(0, 180) ?? '',
                             textAlign: TextAlign.start,
                             style: GoogleFonts.roboto(
                                 textStyle: TextStyle(

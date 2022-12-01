@@ -5,8 +5,8 @@ import 'package:mediaapp/app/modules/home/controllers/home_controller.dart';
 
 import '../../core/themes/color_theme.dart';
 
-AppBar DesktopHeader() {
-  // HomeController controller = Get.put(HomeController());
+AppBar MobileHeader() {
+  HomeController controller = Get.put(HomeController());
   return AppBar(
     elevation: 0,
     scrolledUnderElevation: 2,

@@ -7,7 +7,7 @@ import 'package:mediaapp/app/modules/home/home_widgets/views/education_contents_
 import 'package:mediaapp/app/modules/home/home_widgets/views/key_words_view.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/main_banner_view.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/recent_news_view.dart';
-import 'package:mediaapp/app/widgets/views/news_card_shimmer.dart';
+import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 
 import 'controllers/welcome.controller.dart';
 

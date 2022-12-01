@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../core/themes/color_theme.dart';
+import '../../core/themes/color_theme.dart';
 
 class RightPubWidget extends StatelessWidget {
   const RightPubWidget({super.key});

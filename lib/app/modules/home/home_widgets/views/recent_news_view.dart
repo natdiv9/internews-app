@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:mediaapp/app/data/models/news_model.dart';
-import 'package:mediaapp/app/widgets/views/news_item_card_view.dart';
+import 'package:mediaapp/app/widgets/news_item_card_view.dart';
 
 class RecentNewsView extends GetView {
   const RecentNewsView({

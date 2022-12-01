@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
 import 'package:mediaapp/app/modules/home/views/desktop_view.dart';
 import 'package:mediaapp/app/modules/home/views/mobile_view.dart';
 import 'package:mediaapp/app/modules/home/views/tablet_view.dart';

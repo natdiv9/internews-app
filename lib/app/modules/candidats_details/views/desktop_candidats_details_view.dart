@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
-import 'package:mediaapp/app/widgets/views/news_card_shimmer.dart';
+import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 
 import '../controllers/candidats_details_controller.dart';
 

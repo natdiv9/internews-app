@@ -7,8 +7,9 @@ import 'package:mediaapp/app/modules/home/views/screens/education/desktop_educat
 import 'package:mediaapp/app/modules/home/views/screens/news/desktop_news.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/welcome/desktop_welcome.screen.dart';
 import 'package:mediaapp/app/modules/news_details/views/desktop_news_details_view.dart';
-import 'package:mediaapp/app/widgets/views/drawer_view.dart';
-import 'package:mediaapp/app/widgets/views/right_side_nav/right_side_nav_view.dart';
+import 'package:mediaapp/app/widgets/drawer_view.dart';
+import 'package:mediaapp/app/widgets/headers/desktop_header.dart';
+import 'package:mediaapp/app/widgets/right_side_nav/right_side_nav_view.dart';
 
 class DesktopView extends GetView<HomeController> {
   const DesktopView({super.key});
@@ -16,6 +17,7 @@ class DesktopView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: DesktopAppBar(),
       body: Obx(() => Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
