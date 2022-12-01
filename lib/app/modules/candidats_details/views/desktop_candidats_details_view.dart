@@ -45,7 +45,7 @@ class DesktopCandidatsDetailsView extends StatelessWidget {
                   const SizedBox(
                     height: 106,
                   ),
-                  Text(
+                  SelectableText(
                     "Martin Fayulu",
                     // "${controller.candidatData.user.firstName} ${controller.candidatData.user.lastName}",
                     style: GoogleFonts.roboto(
@@ -57,7 +57,7 @@ class DesktopCandidatsDetailsView extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  Text(
+                  SelectableText(
                     "Candidat No ${controller.candidatData.id} - Parti LAMUKA",
                     style: GoogleFonts.roboto(
                         textStyle: TextStyle(
@@ -100,7 +100,7 @@ class DesktopCandidatsDetailsView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        SelectableText(
           sectionTitile,
           textAlign: TextAlign.justify,
           style: GoogleFonts.roboto(
@@ -117,7 +117,7 @@ class DesktopCandidatsDetailsView extends StatelessWidget {
           height: 8,
           width: double.infinity,
         ),
-        Text(
+        SelectableText(
           "Et qui debitis dolorum velit. Aut libero voluptatem neque ea voluptatum et. Consectetur tempore consequatur voluptas consequatur asperiores repudiandae. Culpa rerum error est assumenda. Sint eligendi architecto similique consequatur placeat natus quos. Assumenda nemo distinctio iusto dolor incidunt magni. Cum et tempore quis quos odio suscipit enim veritatis. Sit eius dolor veniam quisquam architecto sint. Blanditiis illo eveniet et est id provident. Laboriosam eos maiores illum facilis aut maiores expedita. Libero ut doloremque illum quod. Dolorem temporibus eius error. Dolorum rerum ut veniam ut culpa laboriosam. Voluptatibus esse est ut vero numquam facere. Rerum modi dignissimos non asperiores veritatis voluptatibus provident.",
           textAlign: TextAlign.justify,
           style: GoogleFonts.roboto(
@@ -134,7 +134,7 @@ class DesktopCandidatsDetailsView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        SelectableText(
           'Gallerie',
           textAlign: TextAlign.justify,
           style: GoogleFonts.roboto(
@@ -184,7 +184,7 @@ class DesktopCandidatsDetailsView extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text(
+                        child: SelectableText(
                           'Et qui debitis dolorum velit. Aut libero voluptatem neque ea voluptatum et.',
                           textAlign: TextAlign.justify,
                           style: GoogleFonts.roboto(

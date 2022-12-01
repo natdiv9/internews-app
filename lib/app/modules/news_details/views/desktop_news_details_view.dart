@@ -22,7 +22,7 @@ class DesktopNewsDetailsView extends StatelessWidget {
 
                 //crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                    Text(
+                    SelectableText(
                       controller.newsData.titre!,
                       style: GoogleFonts.roboto(
                           textStyle: const TextStyle(
@@ -36,7 +36,7 @@ class DesktopNewsDetailsView extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        SelectableText(
                           'Publié par internews, ${controller.newsData.createdAt}',
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
@@ -92,7 +92,7 @@ class DesktopNewsDetailsView extends StatelessWidget {
                     const SizedBox(
                       height: 32,
                     ),
-                    Text(
+                    SelectableText(
                       controller.newsData.contenu!,
                       textAlign: TextAlign.justify,
                       style: GoogleFonts.roboto(

@@ -22,7 +22,7 @@ class DesktopNewsScreen extends StatelessWidget {
 
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                SelectableText(
                   "Tous les informations publiées par internews sont disponibles sur cette plateforme",
                   style: GoogleFonts.roboto(
                       textStyle: const TextStyle(
@@ -49,7 +49,7 @@ class DesktopNewsScreen extends StatelessWidget {
                           const SizedBox(
                             height: 16,
                           ),
-                          Text(
+                          SelectableText(
                             controller.newsList[0].contenu!.substring(0, 300),
                             textAlign: TextAlign.justify,
                             style: GoogleFonts.roboto(
@@ -74,7 +74,7 @@ class DesktopNewsScreen extends StatelessWidget {
                 const SizedBox(
                   height: 32,
                 ),
-                Text(
+                SelectableText(
                   'Plus d\infos',
                   style: GoogleFonts.roboto(
                       textStyle: const TextStyle(
@@ -116,7 +116,7 @@ class DesktopNewsScreen extends StatelessWidget {
                               AppColorTheme.secondayColor.withOpacity(0.7)),
                           backgroundColor: MaterialStateProperty.all(
                               AppColorTheme.primaryColor)),
-                      child: Text(
+                      child: SelectableText(
                         'Voir plus',
                         style: GoogleFonts.roboto(
                             textStyle: const TextStyle(
@@ -142,7 +142,7 @@ class DesktopNewsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Expanded(
-              child: Text(
+              child: SelectableText(
                 'Lire la suite de cet article',
                 style: GoogleFonts.roboto(
                     textStyle: const TextStyle(

@@ -31,7 +31,7 @@ class DesktopEducationScreen extends GetView<EducationController> {
               ),
               Padding(
                 padding: const EdgeInsets.all(64),
-                child: Text(
+                child: SelectableText(
                   'Eduquez-vous sur le processus électoral en RDC',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.roboto(
@@ -85,7 +85,7 @@ class DesktopEducationScreen extends GetView<EducationController> {
                       AppColorTheme.secondayColor.withOpacity(0.7)),
                   backgroundColor:
                       MaterialStateProperty.all(AppColorTheme.primaryColor)),
-              child: Text(
+              child: SelectableText(
                 'Voir plus',
                 style: GoogleFonts.roboto(
                     textStyle: const TextStyle(
