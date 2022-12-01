@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/modules/home/controllers/home_controller.dart';
 
-class DrawerView extends GetView {
-  DrawerView({Key? key}) : super(key: key);
+class DesktopDrawerView extends GetView {
+  DesktopDrawerView({Key? key}) : super(key: key);
   final HomeController _homeController = Get.put(HomeController());
 
   @override
@@ -142,7 +142,6 @@ class DrawerView extends GetView {
           child: InkWell(
               onTap: () {
                 Get.offNamed("/ceni/?subpage=$ceniSubRoute");
-                _homeController.closeDrawer();
               },
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(0),
