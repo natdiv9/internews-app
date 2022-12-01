@@ -29,15 +29,15 @@ class HomeController extends GetxController {
   final _currentCandidatePageId = ''.obs;
   String get currentCandidatePageId => _currentCandidatePageId.value;
 
-  var scaffoldKey = GlobalKey<ScaffoldState>();
+  // var scaffoldKey = GlobalKey<ScaffoldState>();
 
-  openDrawer() {
-    scaffoldKey.currentState!.openDrawer();
-  }
+  // openDrawer() {
+  //   scaffoldKey.currentState!.openDrawer();
+  // }
 
-  closeDrawer() {
-    scaffoldKey.currentState!.closeDrawer();
-  }
+  // closeDrawer() {
+  //   scaffoldKey.currentState!.closeDrawer();
+  // }
 
   @override
   void onInit() {

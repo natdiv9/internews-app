@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:mediaapp/app/data/models/news_model.dart';
-import 'package:mediaapp/app/widgets/news_item_card_view.dart';
+import 'package:mediaapp/app/widgets/news_card/mobile_news_item_card_view.dart';
 
-class RecentNewsView extends GetView {
-  const RecentNewsView({
+class MobileRecentNewsView extends GetView {
+  const MobileRecentNewsView({
     Key? key,
     required this.newsList,
   }) : super(key: key);
@@ -19,7 +19,7 @@ class RecentNewsView extends GetView {
         itemBuilder: (context, index) {
           return Column(
             children: [
-              NewsItemCardView(
+              MobileNewsItemCardView(
                 newsData: newsList[index],
               ),
               const SizedBox(

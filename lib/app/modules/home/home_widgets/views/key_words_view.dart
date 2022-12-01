@@ -10,23 +10,20 @@ class KeyWordsView extends GetView {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-              color: AppColorTheme.primaryColor.withOpacity(0.2),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Text(
-                "Enrolement",
-                style: GoogleFonts.roboto(
-                    textStyle: const TextStyle(
-                        color: AppColorTheme.primaryColor,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400)),
-              ),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4),
+            color: AppColorTheme.primaryColor.withOpacity(0.2),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Text(
+              "Enrolement",
+              style: GoogleFonts.roboto(
+                  textStyle: const TextStyle(
+                      color: AppColorTheme.primaryColor,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400)),
             ),
           ),
         ),
