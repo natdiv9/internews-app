@@ -1,37 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:mediaapp/app/modules/candidats_details/views/desktop_candidats_details_view.dart';
+import 'package:mediaapp/app/modules/candidats_details/views/mobile_candidats_details_view.dart';
 import 'package:mediaapp/app/modules/home/controllers/home_controller.dart';
-import 'package:mediaapp/app/modules/home/views/screens/ceni/desktop_ceni.screen.dart';
-import 'package:mediaapp/app/modules/home/views/screens/education/desktop_education.screen.dart';
-import 'package:mediaapp/app/modules/home/views/screens/news/desktop_news.screen.dart';
-import 'package:mediaapp/app/modules/home/views/screens/welcome/desktop_welcome.screen.dart';
-import 'package:mediaapp/app/modules/news_details/views/desktop_news_details_view.dart';
+import 'package:mediaapp/app/modules/home/views/screens/ceni/mobile_ceni.screen.dart';
+import 'package:mediaapp/app/modules/home/views/screens/education/mobile_education.screen.dart';
+import 'package:mediaapp/app/modules/home/views/screens/news/mobile_news.screen.dart';
+import 'package:mediaapp/app/modules/home/views/screens/welcome/mobile_welcome.screen.dart';
+import 'package:mediaapp/app/modules/news_details/views/mobile_news_details_view.dart';
+import 'package:mediaapp/app/widgets/headers/mobile_header.dart';
 
 class MobileView extends GetView<HomeController> {
   const MobileView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: MobileHeader(),
+      body: Obx(() => _buidBody()),
+    );
+  }
+
+  Widget _buidBody() {
     switch (controller.currentPage) {
       case 'welcome':
-        return DesktopWelcomeScreen();
+        return MobileWelcomeScreen();
       case 'news':
         if (controller.currentDetailPageId != null &&
             controller.currentDetailPageId != '') {
-          return DesktopNewsDetailsView();
+          return MobileNewsDetailsView();
         }
-        return DesktopNewsScreen();
+        return MobileNewsScreen();
       case 'education':
-        return DesktopEducationScreen();
+        return MobileEducationScreen();
       case 'ceni':
         if (controller.currentCandidatePageId != null &&
             controller.currentCandidatePageId != '') {
-          return DesktopCandidatsDetailsView();
+          return MobileCandidatsDetailsView();
         }
-        return DesktopCeniScreen(subPage: controller.currentCeniPage);
+        return MobileCeniScreen(subPage: controller.currentCeniPage);
       default:
-        return DesktopWelcomeScreen();
+        return MobileWelcomeScreen();
     }
   }
 }
