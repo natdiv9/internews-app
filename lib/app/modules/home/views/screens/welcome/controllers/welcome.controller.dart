@@ -7,6 +7,7 @@ class WelcomeController extends GetxController {
 
   final _newsModel = NewsModel().obs;
   get newsModel => _newsModel.value;
+
   set newsModel(value) => _newsModel.value = value;
 
   final _newsList = <NewsData>[].obs;
@@ -40,15 +41,24 @@ class WelcomeController extends GetxController {
 
   getNews() {
     _newsRepository.getAll().then((NewsModel? data) {
-      newsModel = data;
-      _newsList.value = newsModel.data!;
+      if (data == null) {
+        print("GET NEWS $data");
+        return;
+      } else {
+        newsModel = data;
+        _newsList.value = newsModel.data!;
+      }
     });
   }
 
   getNewsEducation() {
     _newsRepository.getAll(type: 0).then((NewsModel? data) {
-      newsEducationModel = data;
-      _newsEducationList.value = newsEducationModel.data!;
+      if (data == null) {
+        return;
+      } else {
+        newsEducationModel = data;
+        _newsEducationList.value = newsEducationModel.data!;
+      }
     });
   }
 }

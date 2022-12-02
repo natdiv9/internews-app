@@ -58,7 +58,9 @@ class MobileNewsItemCardView extends GetView {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
-                newsData.contenu?.substring(0, 90) ?? '',
+                (newsData.contenu.length > 90)
+                    ? '${newsData.contenu.substring(0, 90)}...'
+                    : newsData.contenu,
                 textAlign: TextAlign.start,
                 style: GoogleFonts.roboto(
                     textStyle: TextStyle(

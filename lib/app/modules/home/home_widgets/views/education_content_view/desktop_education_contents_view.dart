@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/data/models/news_model.dart';
 
-class EducationContentsView extends GetView {
-  EducationContentsView({Key? key, required this.newsEducation})
+class DesktopEducationContentsView extends GetView {
+  DesktopEducationContentsView({Key? key, required this.newsEducation})
       : super(key: key);
   List<NewsData> newsEducation;
 
@@ -39,6 +39,7 @@ class EducationContentsView extends GetView {
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         height: 198,
@@ -53,13 +54,15 @@ class EducationContentsView extends GetView {
                       ),
                       Expanded(
                         child: Text(
-                          newsEducation[index].contenu!.substring(0, 150),
+                          (newsEducation[index].contenu.length > 120)
+                              ? '${newsEducation[index].contenu.substring(0, 120)}...'
+                              : newsEducation[index].contenu,
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                                   color:
                                       AppColorTheme.textColor.withOpacity(0.6),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500)),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400)),
                         ),
                       ),
                       Row(

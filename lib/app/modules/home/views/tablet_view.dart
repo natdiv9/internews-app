@@ -7,12 +7,38 @@ import 'package:mediaapp/app/modules/home/views/screens/education/desktop_educat
 import 'package:mediaapp/app/modules/home/views/screens/news/desktop_news.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/welcome/desktop_welcome.screen.dart';
 import 'package:mediaapp/app/modules/news_details/views/desktop_news_details_view.dart';
+import 'package:mediaapp/app/widgets/drawers/desktop_drawer_view.dart';
+import 'package:mediaapp/app/widgets/headers/desktop_header.dart';
+import 'package:mediaapp/app/widgets/headers/tablet_header.dart';
+import 'package:mediaapp/app/widgets/right_side_nav/right_side_nav_view.dart';
 
 class TabletView extends GetView<HomeController> {
-  const TabletView({super.key});
+  TabletView({super.key});
+
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: TabletAppBar(
+        scaffoldKey,
+      ),
+      body: Obx(() => Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // DesktopDrawerView(),
+              Expanded(
+                flex: 2,
+                child: _buidBody(),
+              ),
+              // RightSideNavView(),
+            ],
+          )),
+    );
+  }
+
+  Widget _buidBody() {
     switch (controller.currentPage) {
       case 'welcome':
         return DesktopWelcomeScreen();

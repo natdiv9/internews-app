@@ -80,10 +80,10 @@ class NewsModel {
 class NewsData {
   int? id;
   String? titre;
-  String? contenu;
+  late String contenu;
   String? lien;
   int? type;
-  int? categorie;
+  String? categorie;
   dynamic deletedAt;
   DateTime? createdAt;
   DateTime? updatedAt;
@@ -91,7 +91,7 @@ class NewsData {
   NewsData(
       {this.id,
       this.titre,
-      this.contenu,
+      this.contenu = "",
       this.lien,
       this.type,
       this.categorie,

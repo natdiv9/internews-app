@@ -51,7 +51,9 @@ class DesktopNewsItemCardView extends GetView {
                         ),
                         Expanded(
                           child: Text(
-                            newsData.contenu?.substring(0, 180) ?? '',
+                            (newsData.contenu.length > 180)
+                                ? '${newsData.contenu.substring(0, 180)}...'
+                                : newsData.contenu,
                             textAlign: TextAlign.start,
                             style: GoogleFonts.roboto(
                                 textStyle: TextStyle(

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:mediaapp/app/data/models/news_model.dart';
 import 'package:meta/meta.dart';
@@ -30,15 +29,17 @@ class NewsProvider {
 
         return newsModel;
       } else {
-        print('erro');
+        print('STATUS ERROR');
         return null;
       }
     } catch (_) {
       print('ERREURE - NewsProvider');
 
-      print(_.toString());
+      // print(_ClientSocketException.toString());
+      print(_);
+      return null;
     }
-    return null;
+    // return null;
   }
 
   Future<NewsData?> getByID({required String id}) async {
