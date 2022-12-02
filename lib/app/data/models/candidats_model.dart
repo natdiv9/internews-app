@@ -79,7 +79,7 @@ class CandidatsModel {
 
 class CandidatsData {
   int? id;
-  int? candidature;
+  String? candidature;
   String? province;
   String? partiPolitique;
   String? description;
@@ -88,6 +88,8 @@ class CandidatsData {
   String? createdAt;
   String? updatedAt;
   User? user;
+  dynamic ville;
+  Detail? detail;
 
   CandidatsData(
       {this.id,
@@ -99,7 +101,9 @@ class CandidatsData {
       this.deletedAt,
       this.createdAt,
       this.updatedAt,
-      this.user});
+      this.user,
+      this.ville,
+      this.detail});
 
   CandidatsData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -112,6 +116,8 @@ class CandidatsData {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     user = json['user'] != null ? User?.fromJson(json['user']) : null;
+    ville = json['ville'];
+    detail = json['detail'] != null ? Detail?.fromJson(json['detail']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -128,6 +134,10 @@ class CandidatsData {
     if (user != null) {
       data['user'] = user?.toJson();
     }
+    data['ville'] = ville;
+    if (detail != null) {
+      data['detail'] = detail?.toJson();
+    }
     return data;
   }
 }
@@ -142,8 +152,8 @@ class User {
   String? phoneNumber;
   int? roles;
   dynamic deletedAt;
-  dynamic createdAt;
-  dynamic updatedAt;
+  String? createdAt;
+  String? updatedAt;
 
   User(
       {this.id,
@@ -182,6 +192,51 @@ class User {
     data['last_name'] = lastName;
     data['phone_number'] = phoneNumber;
     data['roles'] = roles;
+    data['deleted_at'] = deletedAt;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    return data;
+  }
+}
+
+class Detail {
+  int? id;
+  String? bio;
+  String? mission;
+  String? projet;
+  int? candidatId;
+  dynamic deletedAt;
+  String? createdAt;
+  String? updatedAt;
+
+  Detail(
+      {this.id,
+      this.bio,
+      this.mission,
+      this.projet,
+      this.candidatId,
+      this.deletedAt,
+      this.createdAt,
+      this.updatedAt});
+
+  Detail.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    bio = json['bio'];
+    mission = json['mission'];
+    projet = json['projet'];
+    candidatId = json['candidat_id'];
+    deletedAt = json['deleted_at'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['bio'] = bio;
+    data['mission'] = mission;
+    data['projet'] = projet;
+    data['candidat_id'] = candidatId;
     data['deleted_at'] = deletedAt;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
