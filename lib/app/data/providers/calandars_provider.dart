@@ -6,10 +6,10 @@ import 'package:mediaapp/app/data/models/calandars_model.dart';
 const baseUrl = 'https://infosnews.top-lum.com/api/calandars';
 
 //nossa classe responsável por encapsular os métodos http
-class CandidatsProvider {
+class CalandarsProvider {
 //seu client http, pode ser http, http.Client, dio, apenas traga seus métodos para cá e funcionarão normalmente :D
   final http.Client httpClient = http.Client();
-  CandidatsProvider();
+  CalandarsProvider();
 
   //um exemplo rápido, aqui estamos recuperando todos os posts disponibilizados pela api(100)
   Future<CalandarsModel> getAll() async {

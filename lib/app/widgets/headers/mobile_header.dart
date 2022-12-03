@@ -8,7 +8,7 @@ AppBar MobileHeader(GlobalKey<ScaffoldState> scaffoldKey) {
   HomeController controller = Get.put(HomeController());
   return AppBar(
     elevation: 0,
-    scrolledUnderElevation: 2,
+    scrolledUnderElevation: 5,
     centerTitle: false,
     toolbarHeight: 80,
     title: Image.asset(

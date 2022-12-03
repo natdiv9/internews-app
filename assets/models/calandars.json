@@ -1,0 +1,197 @@
+{
+    "current_page": 1,
+    "data": [
+      {
+        "id": 15,
+        "title": "Optio placeat delectus alias.",
+        "content": "Quasi nobis reprehenderit reprehenderit itaque.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:18.000000Z",
+        "updated_at": "2022-12-01T09:10:18.000000Z"
+      },
+      {
+        "id": 13,
+        "title": "Facilis eos dolores autem cupiditate non accusamus.",
+        "content": "Facere eveniet cum mollitia aliquid similique aut. Ratione quisquam quae alias quasi nobis.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:17.000000Z",
+        "updated_at": "2022-12-01T09:10:17.000000Z"
+      },
+      {
+        "id": 14,
+        "title": "Molestiae suscipit omnis ipsam.",
+        "content": "Eius ea deleniti dolorem quis quas ipsa est corrupti.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:17.000000Z",
+        "updated_at": "2022-12-01T09:10:17.000000Z"
+      },
+      {
+        "id": 11,
+        "title": "Consequuntur nihil in voluptatibus.",
+        "content": "Autem nisi voluptatum adipisci doloribus voluptas eum.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:16.000000Z",
+        "updated_at": "2022-12-01T09:10:16.000000Z"
+      },
+      {
+        "id": 12,
+        "title": "Quia quisquam ea veritatis eligendi voluptatibus.",
+        "content": "Quam fugit voluptas iste et aut omnis totam. Impedit aliquam nihil quasi soluta.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:16.000000Z",
+        "updated_at": "2022-12-01T09:10:16.000000Z"
+      },
+      {
+        "id": 10,
+        "title": "Reprehenderit quis a eveniet ullam cum occaecati.",
+        "content": "Dignissimos sint debitis qui et sit voluptas.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:15.000000Z",
+        "updated_at": "2022-12-01T09:10:15.000000Z"
+      },
+      {
+        "id": 8,
+        "title": "Animi totam maxime molestiae est.",
+        "content": "Aut maiores nobis quaerat aut.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:14.000000Z",
+        "updated_at": "2022-12-01T09:10:14.000000Z"
+      },
+      {
+        "id": 9,
+        "title": "Incidunt neque et laboriosam ut in ea.",
+        "content": "Eos aliquid molestias occaecati quis delectus autem. Laborum hic est labore odit perferendis ipsum dicta ut.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:14.000000Z",
+        "updated_at": "2022-12-01T09:10:14.000000Z"
+      },
+      {
+        "id": 7,
+        "title": "Sed recusandae sed ad cumque odit itaque.",
+        "content": "Error autem et accusantium quia omnis. Et nisi eos id aut illum explicabo.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:13.000000Z",
+        "updated_at": "2022-12-01T09:10:13.000000Z"
+      },
+      {
+        "id": 5,
+        "title": "Maxime et explicabo voluptates.",
+        "content": "Veniam aperiam eum ut velit odit.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:12.000000Z",
+        "updated_at": "2022-12-01T09:10:12.000000Z"
+      },
+      {
+        "id": 6,
+        "title": "Temporibus occaecati tempora magni sed.",
+        "content": "Aut vero velit earum eos provident ab illo. Sint delectus sit ea ratione.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:12.000000Z",
+        "updated_at": "2022-12-01T09:10:12.000000Z"
+      },
+      {
+        "id": 4,
+        "title": "Ut atque nostrum ut et.",
+        "content": "Facere molestias necessitatibus quia blanditiis dignissimos.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:11.000000Z",
+        "updated_at": "2022-12-01T09:10:11.000000Z"
+      },
+      {
+        "id": 2,
+        "title": "Eveniet labore occaecati dicta dolores fuga pariatur.",
+        "content": "Non officiis culpa et fugit saepe tempore nihil.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:10.000000Z",
+        "updated_at": "2022-12-01T09:10:10.000000Z"
+      },
+      {
+        "id": 3,
+        "title": "Provident quisquam eum voluptatibus quasi.",
+        "content": "Reiciendis enim vero molestiae sunt aut dolor. Dignissimos consequatur voluptas et ea assumenda totam vel.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:10.000000Z",
+        "updated_at": "2022-12-01T09:10:10.000000Z"
+      },
+      {
+        "id": 1,
+        "title": "Non similique omnis sunt voluptatem.",
+        "content": "Et eius vitae nihil ad at quia id.",
+        "date_start": "2022-12-01",
+        "date_end": "2022-12-01",
+        "status": 1,
+        "deleted_at": null,
+        "created_at": "2022-12-01T09:10:07.000000Z",
+        "updated_at": "2022-12-01T09:10:07.000000Z"
+      }
+    ],
+    "first_page_url": "https://infosnews.top-lum.com/api/calandars?=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "https://infosnews.top-lum.com/api/calandars?=1",
+    "links": [
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "active": false
+      },
+      {
+        "url": "https://infosnews.top-lum.com/api/calandars?=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": null,
+        "label": "Next &raquo;",
+        "active": false
+      }
+    ],
+    "next_page_url": null,
+    "path": "https://infosnews.top-lum.com/api/calandars",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 15,
+    "total": 15
+  }
