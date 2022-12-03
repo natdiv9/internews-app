@@ -29,15 +29,8 @@ class HomeController extends GetxController {
   final _currentCandidatePageId = ''.obs;
   String get currentCandidatePageId => _currentCandidatePageId.value;
 
-  // var scaffoldKey = GlobalKey<ScaffoldState>();
-
-  // openDrawer() {
-  //   scaffoldKey.currentState!.openDrawer();
-  // }
-
-  // closeDrawer() {
-  //   scaffoldKey.currentState!.closeDrawer();
-  // }
+  final _currentCalendarPageId = ''.obs;
+  String get currentCalendarPageId => _currentCalendarPageId.value;
 
   @override
   void onInit() {
@@ -52,6 +45,13 @@ class HomeController extends GetxController {
         Get.parameters['id'] != null &&
         Get.parameters['id'] != '') {
       _currentCandidatePageId.value = Get.parameters['id']!;
+      isExpandedMenu = true;
+      return;
+    } else if (currentPage == 'ceni' &&
+        currentCeniPage == 'calendar' &&
+        Get.parameters['id'] != null &&
+        Get.parameters['id'] != '') {
+      _currentCalendarPageId.value = Get.parameters['id']!;
       isExpandedMenu = true;
       return;
     }

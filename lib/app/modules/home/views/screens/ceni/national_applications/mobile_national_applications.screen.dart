@@ -27,7 +27,7 @@ class MobileNationalApplicationsScreen extends StatelessWidget {
               style: GoogleFonts.roboto(
                   textStyle: const TextStyle(
                       color: AppColorTheme.textColor,
-                      fontSize: 26,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold)),
             ),
             const SizedBox(

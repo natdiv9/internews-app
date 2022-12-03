@@ -1,9 +1,9 @@
-import 'package:mediaapp/app/data/providers/candidats_provider.dart';
+import 'package:mediaapp/app/data/providers/calandars_provider.dart';
 
-class CandidatsRepository {
-  final CandidatsProvider _api = CandidatsProvider();
+class CalandarsRepository {
+  final CalandarsProvider _api = CalandarsProvider();
 
-  CandidatsRepository();
+  CalandarsRepository();
 
   getAll() {
     return _api.getAll();
