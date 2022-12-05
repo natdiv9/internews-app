@@ -11,7 +11,7 @@ class NewsCardShimmerWidget extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 164,
+            height: 250,
             child: Shimmer.fromColors(
               baseColor: Colors.grey[300]!,
               highlightColor: Colors.white,
@@ -29,7 +29,25 @@ class NewsCardShimmerWidget extends StatelessWidget {
             height: 16,
           ),
           SizedBox(
-            height: 164,
+            height: 110,
+            child: Shimmer.fromColors(
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.white,
+              direction: ShimmerDirection.ltr,
+              period: const Duration(milliseconds: 3000),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: AppColorTheme.whiteColor,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 16,
+          ),
+          SizedBox(
+            height: 80,
             child: Shimmer.fromColors(
               baseColor: Colors.grey[300]!,
               highlightColor: Colors.white,
