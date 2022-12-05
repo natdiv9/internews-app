@@ -51,7 +51,9 @@ class MobileNewsScreen extends StatelessWidget {
                             height: 16,
                           ),
                           SelectableText(
-                            controller.newsList[0].contenu!.substring(0, 300),
+                            (controller.newsList[0].contenu.length > 180)
+                                ? '${controller.newsList[0].contenu.substring(0, 180)}...'
+                                : controller.newsList[0].contenu,
                             textAlign: TextAlign.justify,
                             style: GoogleFonts.roboto(
                                 textStyle: TextStyle(
