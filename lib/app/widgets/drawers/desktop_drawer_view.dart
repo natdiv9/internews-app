@@ -62,7 +62,7 @@ class DesktopDrawerView extends GetView {
                                       _buildCeniSubNavBarMenu(
                                           'Calendrier electoral', 'calendar'),
                                       _buildCeniSubNavBarMenu(
-                                          'Centres D’enrolement',
+                                          'Centres d’enrolement',
                                           'enrollment_centers'),
                                       _buildCeniSubNavBarMenu(
                                           'Centre de vote', 'vote_centers'),
