@@ -17,17 +17,17 @@ class RightSideNavView extends GetView {
       child: Padding(
         padding: const EdgeInsets.only(right: 16.0),
         child: ListView(
-          children: [
+          children: const [
+            RightPubWidget(),
+            SizedBox(
+              height: 16,
+            ),
             MeteoWidget(),
-            const SizedBox(
+            SizedBox(
               height: 16,
             ),
             BecomeWriterWidget(),
-            const SizedBox(
-              height: 16,
-            ),
-            RightPubWidget(),
-            const SizedBox(
+            SizedBox(
               height: 16,
             ),
             SubscribeNewsletterWidget()
