@@ -14,7 +14,7 @@ AppBar MobileHeader(GlobalKey<ScaffoldState> scaffoldKey) {
     title: Image.asset(
       'assets/images/logo.png',
       scale: 5,
-      fit: BoxFit.cover,
+      fit: BoxFit.fitHeight,
     ),
     automaticallyImplyLeading: false,
     actions: [

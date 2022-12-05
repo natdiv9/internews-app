@@ -16,11 +16,11 @@ AppBar DesktopAppBar() {
       children: [
         Container(
           height: 70,
-          width: 210,
+          width: 190,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/logo.png'),
-              fit: BoxFit.cover,
+              fit: BoxFit.fitWidth,
             ),
           ),
         ),
