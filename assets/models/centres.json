@@ -1,0 +1,44 @@
+{
+    "current_page": 1,
+    "data": [
+      {
+        "id": 1,
+        "designation": "Kamina",
+        "province": "Haut-katanga",
+        "commune": "Lubumbashi",
+        "it": "1",
+        "ig": "dsskk",
+        "ville_id": 1,
+        "deleted_at": null,
+        "created_at": "2022-11-16T09:48:24.000000Z",
+        "updated_at": "2022-11-16T09:50:47.000000Z"
+      }
+    ],
+    "first_page_url": "https://infosnews.top-lum.com/api/centres?=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "https://infosnews.top-lum.com/api/centres?=1",
+    "links": [
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "active": false
+      },
+      {
+        "url": "https://infosnews.top-lum.com/api/centres?=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": null,
+        "label": "Next &raquo;",
+        "active": false
+      }
+    ],
+    "next_page_url": null,
+    "path": "https://infosnews.top-lum.com/api/centres",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 1,
+    "total": 1
+  }
