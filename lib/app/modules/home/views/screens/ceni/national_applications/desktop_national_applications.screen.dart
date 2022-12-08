@@ -74,6 +74,8 @@ class DesktopNationalApplicationsScreen extends StatelessWidget {
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Expanded(
                                           child: Container(
@@ -100,7 +102,7 @@ class DesktopNationalApplicationsScreen extends StatelessWidget {
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.w400)),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 8,
                                         ),
                                         Text(
@@ -109,7 +111,7 @@ class DesktopNationalApplicationsScreen extends StatelessWidget {
                                               textStyle: const TextStyle(
                                                   color:
                                                       AppColorTheme.textColor,
-                                                  fontSize: 20,
+                                                  fontSize: 16,
                                                   fontWeight: FontWeight.bold)),
                                         ),
                                         SizedBox(

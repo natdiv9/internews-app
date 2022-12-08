@@ -29,7 +29,7 @@ class TabletView extends GetView<HomeController> {
             children: [
               // DesktopDrawerView(),
               Expanded(
-                flex: 2,
+                flex: 3,
                 child: _buidBody(),
               ),
               // RightSideNavView(),

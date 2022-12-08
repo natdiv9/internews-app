@@ -18,7 +18,7 @@ class MobileCandidatCardView extends GetView {
         child: InkWell(
           onTap: () {
             Get.offNamed(
-                '/ceni?subpage=${subpage}&id=${controller.candidatData.id}');
+                '/ceni?subpage=$subpage&id=${controller.candidatData.id}');
           },
           child: Container(
             // height: 362,

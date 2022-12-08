@@ -23,14 +23,6 @@ class MobileNewsScreen extends StatelessWidget {
 
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SelectableText(
-                  "Tous les informations publiées par internews sont disponibles sur cette plateforme",
-                  style: GoogleFonts.roboto(
-                      textStyle: const TextStyle(
-                          color: AppColorTheme.textColor,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold)),
-                ),
                 const SizedBox(
                   height: 24,
                 ),
@@ -51,23 +43,31 @@ class MobileNewsScreen extends StatelessWidget {
                             height: 16,
                           ),
                           SelectableText(
-                            (controller.newsList[0].contenu.length > 180)
-                                ? '${controller.newsList[0].contenu.substring(0, 180)}...'
-                                : controller.newsList[0].contenu,
-                            textAlign: TextAlign.justify,
+                            "L’élection présidentielle est fixée au 20 décembre 2023, selon le calendrier dévoilé officiellement ce samedi 26 novembre par Denis Kadima, président de la Commission électorale nationale indépendante ...",
                             style: GoogleFonts.roboto(
-                                textStyle: TextStyle(
-                                    color: AppColorTheme.textColor
-                                        .withOpacity(0.6),
+                                textStyle: const TextStyle(
+                                    color: AppColorTheme.textColor,
                                     fontSize: 16,
-                                    fontWeight: FontWeight.w400)),
+                                    fontWeight: FontWeight.bold)),
                           ),
+                          // SelectableText(
+                          //   (controller.newsList[0].contenu.length > 180)
+                          //       ? '${controller.newsList[0].contenu.substring(0, 180)}...'
+                          //       : controller.newsList[0].contenu,
+                          //   textAlign: TextAlign.justify,
+                          //   style: GoogleFonts.roboto(
+                          //       textStyle: TextStyle(
+                          //           color: AppColorTheme.textColor
+                          //               .withOpacity(0.6),
+                          //           fontSize: 16,
+                          //           fontWeight: FontWeight.w400)),
+                          // ),
                         ],
                       )
                     : NewsCardShimmerWidget(),
 
                 const SizedBox(
-                  height: 24,
+                  height: 12,
                 ),
                 Row(
                   children: [
@@ -145,7 +145,7 @@ class MobileNewsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Expanded(
-              child: SelectableText(
+              child: Text(
                 'Lire la suite de cet article',
                 style: GoogleFonts.roboto(
                     textStyle: const TextStyle(

@@ -10,26 +10,32 @@ class KeyWordsView extends GetView {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            color: AppColorTheme.primaryColor.withOpacity(0.2),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              "Enrolement",
-              style: GoogleFonts.roboto(
-                  textStyle: const TextStyle(
-                      color: AppColorTheme.primaryColor,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400)),
+        Material(
+          child: InkWell(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: Color.fromARGB(255, 248, 87, 47).withOpacity(0.2),
+              ),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Text(
+                  "Fake news",
+                  style: GoogleFonts.roboto(
+                      textStyle: const TextStyle(
+                          color: Color.fromARGB(255, 248, 87, 47),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400)),
+                ),
+              ),
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        InkWell(
           child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 8.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
               color: AppColorTheme.primaryColor.withOpacity(0.2),
@@ -37,7 +43,7 @@ class KeyWordsView extends GetView {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
-                "Canditaures",
+                "Enrolement",
                 style: GoogleFonts.roboto(
                     textStyle: const TextStyle(
                         color: AppColorTheme.primaryColor,
@@ -47,9 +53,9 @@ class KeyWordsView extends GetView {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        InkWell(
           child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 8.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
               color: AppColorTheme.primaryColor.withOpacity(0.2),
@@ -57,7 +63,27 @@ class KeyWordsView extends GetView {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
-                "Election",
+                "Enrolement",
+                style: GoogleFonts.roboto(
+                    textStyle: const TextStyle(
+                        color: AppColorTheme.primaryColor,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400)),
+              ),
+            ),
+          ),
+        ),
+        InkWell(
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 8.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4),
+              color: AppColorTheme.primaryColor.withOpacity(0.2),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Text(
+                "Enrolement",
                 style: GoogleFonts.roboto(
                     textStyle: const TextStyle(
                         color: AppColorTheme.primaryColor,

@@ -80,7 +80,11 @@ class DesktopDrawerView extends GetView {
   Widget _buildNavBarMenu(String title, IconData icon, String route) {
     return TextButton(
         onPressed: () {
-          Get.offNamed("/$route");
+          if (route == 'ceni') {
+            Get.offNamed("/ceni/?subpage=presidential");
+          } else {
+            Get.offNamed("/$route");
+          }
         },
         style: TextButton.styleFrom(
           padding: const EdgeInsets.all(0),
