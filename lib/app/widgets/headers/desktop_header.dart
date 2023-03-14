@@ -70,27 +70,27 @@ AppBar DesktopAppBar() {
       ],
     ),
     automaticallyImplyLeading: false,
-    actions: [
-      SizedBox(
-        height: 40,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: TextButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-              // backgroundColor: Colors.
-              foregroundColor: AppColorTheme.textColor,
-            ),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: const [
-                  Icon(Icons.person_outline),
-                  Text('Connexion'),
-                  Icon(Icons.keyboard_arrow_down)
-                ]),
-          ),
-        ),
-      )
+    actions: const [
+      // SizedBox(
+      //   height: 40,
+      //   child: Padding(
+      //     padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      //     child: TextButton(
+      //       onPressed: () {},
+      //       style: TextButton.styleFrom(
+      //         // backgroundColor: Colors.
+      //         foregroundColor: AppColorTheme.textColor,
+      //       ),
+      //       child: Row(
+      //           mainAxisAlignment: MainAxisAlignment.end,
+      //           children: const [
+      //             Icon(Icons.person_outline),
+      //             Text('Connexion'),
+      //             Icon(Icons.keyboard_arrow_down)
+      //           ]),
+      //     ),
+      //   ),
+      // )
     ],
   );
 }

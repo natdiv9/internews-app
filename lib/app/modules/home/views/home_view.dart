@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
       } else if (constraints.maxWidth < 1100) {
         return TabletView();
       }
-      return DesktopView();
+      return const DesktopView();
     });
   }
 }

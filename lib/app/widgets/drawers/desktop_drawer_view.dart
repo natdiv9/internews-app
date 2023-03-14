@@ -22,9 +22,10 @@ class DesktopDrawerView extends GetView {
               const SizedBox(
                 height: 12,
               ),
-              _buildNavBarMenu('Accueil', Icons.home, 'welcome'),
+              _buildNavBarMenu('Accueil', Icons.home_outlined, 'welcome'),
               _buildNavBarMenu('Actualités', Icons.newspaper, 'news'),
-              _buildNavBarMenu('Education', Icons.school, 'education'),
+              _buildNavBarMenu(
+                  'Loi électorale', Icons.gavel_outlined, 'education'),
               SingleChildScrollView(
                 child: Obx(() => ExpansionPanelList(
                       elevation: 0,
@@ -72,6 +73,7 @@ class DesktopDrawerView extends GetView {
                       ],
                     )),
               ),
+              _buildNavBarMenu('FAQ', Icons.quiz_outlined, 'faq'),
             ],
           ),
         ));

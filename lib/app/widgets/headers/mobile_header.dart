@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:mediaapp/app/modules/home/controllers/home_controller.dart';
-
 import '../../core/themes/color_theme.dart';
 
 AppBar MobileHeader(GlobalKey<ScaffoldState> scaffoldKey) {
-  HomeController controller = Get.put(HomeController());
+  // HomeController controller = Get.put(HomeController());
   return AppBar(
     elevation: 0,
     scrolledUnderElevation: 5,

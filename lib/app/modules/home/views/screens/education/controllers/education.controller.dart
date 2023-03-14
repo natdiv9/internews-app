@@ -3,7 +3,7 @@ import 'package:mediaapp/app/data/models/news_model.dart';
 import 'package:mediaapp/app/data/repository/news_repository.dart';
 
 class EducationController extends GetxController {
-  final NewsRepository _newsRepository = new NewsRepository();
+  final NewsRepository _newsRepository = NewsRepository();
 
   final _newsModel = NewsModel().obs;
   get newsModel => _newsModel.value;

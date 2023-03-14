@@ -11,57 +11,37 @@ class NewsCardShimmerWidget extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 250,
-            child: Shimmer.fromColors(
-              baseColor: Colors.grey[300]!,
-              highlightColor: Colors.white,
-              direction: ShimmerDirection.ltr,
-              period: const Duration(milliseconds: 3000),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: AppColorTheme.whiteColor,
-                ),
-              ),
-            ),
+            height: 200,
+            child: _buildShimmer(),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           SizedBox(
-            height: 110,
-            child: Shimmer.fromColors(
-              baseColor: Colors.grey[300]!,
-              highlightColor: Colors.white,
-              direction: ShimmerDirection.ltr,
-              period: const Duration(milliseconds: 3000),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: AppColorTheme.whiteColor,
-                ),
-              ),
-            ),
+            height: 200,
+            child: _buildShimmer(),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           SizedBox(
-            height: 80,
-            child: Shimmer.fromColors(
-              baseColor: Colors.grey[300]!,
-              highlightColor: Colors.white,
-              direction: ShimmerDirection.ltr,
-              period: const Duration(milliseconds: 3000),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: AppColorTheme.whiteColor,
-                ),
-              ),
-            ),
+            height: 200,
+            child: _buildShimmer(),
           ),
         ],
+      ),
+    );
+  }
+
+  Shimmer _buildShimmer() {
+    return Shimmer.fromColors(
+      baseColor: AppColorTheme.primaryColor.withOpacity(0.05),
+      highlightColor: AppColorTheme.backgroundColor,
+      direction: ShimmerDirection.ltr,
+      period: const Duration(milliseconds: 5000),
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8), color: Colors.white54),
       ),
     );
   }

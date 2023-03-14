@@ -25,7 +25,7 @@ class CalandarsProvider {
         return calandarsModel;
       } else {
         print('erro');
-        return Future.error('erro');
+        return Future.error(response.statusCode);
       }
     } catch (_) {
       print('ERREURE - calandarsProvider');

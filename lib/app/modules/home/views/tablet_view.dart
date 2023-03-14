@@ -12,6 +12,8 @@ import 'package:mediaapp/app/widgets/headers/desktop_header.dart';
 import 'package:mediaapp/app/widgets/headers/tablet_header.dart';
 import 'package:mediaapp/app/widgets/right_side_nav/right_side_nav_view.dart';
 
+import '../../../widgets/drawers/mobile_drawer_view.dart';
+
 class TabletView extends GetView<HomeController> {
   TabletView({super.key});
 
@@ -24,6 +26,7 @@ class TabletView extends GetView<HomeController> {
       appBar: TabletAppBar(
         scaffoldKey,
       ),
+      drawer: MobileDrawerView(scaffoldKey: scaffoldKey),
       body: Obx(() => Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/themes/color_theme.dart';
@@ -29,7 +28,7 @@ AppBar TabletAppBar(GlobalKey<ScaffoldState> scaffoldKey) {
         ),
         SizedBox(
           height: 46,
-          width: 260,
+          width: 300,
           child: TextField(
             decoration: InputDecoration(
               hintText: 'Rechercher une information',

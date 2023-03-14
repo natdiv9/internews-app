@@ -9,10 +9,11 @@ import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 
 import 'controllers/education.controller.dart';
 
-class DesktopEducationScreen extends GetView<EducationController> {
+class DesktopEducationScreen extends StatelessWidget {
+  EducationController controller = Get.put(EducationController());
   DesktopEducationScreen({Key? key}) : super(key: key);
 
-  final EducationController controller = Get.put(EducationController());
+  // final EducationController controller = Get.put(EducationController());
 
   @override
   Widget build(BuildContext context) {

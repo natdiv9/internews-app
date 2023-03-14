@@ -11,6 +11,8 @@ import 'package:mediaapp/app/widgets/drawers/desktop_drawer_view.dart';
 import 'package:mediaapp/app/widgets/headers/desktop_header.dart';
 import 'package:mediaapp/app/widgets/right_side_nav/right_side_nav_view.dart';
 
+import 'screens/faq/desktop_faq.screen.dart';
+
 class DesktopView extends GetView<HomeController> {
   const DesktopView({super.key});
 
@@ -26,7 +28,7 @@ class DesktopView extends GetView<HomeController> {
                 flex: 2,
                 child: _buidBody(),
               ),
-              RightSideNavView(),
+              const RightSideNavView(),
             ],
           )),
     );
@@ -44,6 +46,8 @@ class DesktopView extends GetView<HomeController> {
         return DesktopNewsScreen();
       case 'education':
         return DesktopEducationScreen();
+      case 'faq':
+        return DesktopFAQScreen();
       case 'ceni':
         if (controller.currentCandidatePageId != null &&
             controller.currentCandidatePageId != '') {

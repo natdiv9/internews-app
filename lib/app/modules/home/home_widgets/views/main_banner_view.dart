@@ -23,9 +23,9 @@ class MainBannerView extends GetView {
             color: Colors.black.withOpacity(0.6),
           ),
           Padding(
-            padding: const EdgeInsets.all(64),
+            padding: const EdgeInsets.all(42),
             child: Text(
-              'Bienvenu sur le site officiel d\'internews qui vous tient informé sur toute l’actualité du processus électorale en RDC',
+              'Nous vous tenons informé sur toute l’actualité sur le processus électorale en RDC',
               textAlign: TextAlign.center,
               style: GoogleFonts.roboto(
                   textStyle: const TextStyle(

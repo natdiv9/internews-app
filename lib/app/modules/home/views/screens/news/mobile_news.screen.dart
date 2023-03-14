@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/widgets/news_card/mobile_news_item_card_view.dart';
 import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
-import 'package:mediaapp/app/widgets/news_card/desktop_news_item_card_view.dart';
 
 import 'controllers/news.controller.dart';
 
