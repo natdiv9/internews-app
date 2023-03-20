@@ -20,40 +20,73 @@ class DesktopElectoralScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 32),
         child: Obx(
           () => ListView(children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.40,
-              width: double.infinity,
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  image: const DecorationImage(
-                      image: AssetImage('assets/images/vote.jpg'),
-                      fit: BoxFit.cover)),
-              child: Stack(
-                alignment: AlignmentDirectional.center,
-                children: [
-                  Container(
-                    color: Colors.black.withOpacity(0.6),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(64),
-                    child: SelectableText(
-                      'La loi électorale en RDC',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.roboto(
-                          textStyle: const TextStyle(
-                              color: AppColorTheme.whiteColor,
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600)),
-                    ),
-                  )
-                ],
+            Align(
+              alignment: Alignment.centerLeft,
+              child: SelectableText(
+                'La loi électorale en RDC',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.roboto(
+                    textStyle: const TextStyle(
+                        color: AppColorTheme.textColor,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600)),
               ),
             ),
             const SizedBox(
               height: 16,
             ),
-            (controller.electoralData.isNotEmpty)
+            Row(
+              children: [
+                Flexible(
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: AppColorTheme.primaryColor),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton(
+                          iconSize: 36,
+                          elevation: 1,
+                          focusColor: Colors.transparent,
+                          icon: const Icon(Icons.arrow_drop_down),
+                          hint: const Text('Cas d\'éligibilités',
+                              style: TextStyle(
+                                  color: AppColorTheme.textColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500)),
+                          items: const [
+                            DropdownMenuItem<String>(
+                                value: '1',
+                                child: Text('Conditions pour être candidat',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500))),
+                            DropdownMenuItem<String>(
+                                value: '2',
+                                child: Text('Conditions pour voter',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500))),
+                            DropdownMenuItem<String>(
+                                value: '3',
+                                child: Text('Cas d’inéligibilités',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500)))
+                          ],
+                          onChanged: (value) => {},
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            (!controller.isBusy)
                 ? ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
