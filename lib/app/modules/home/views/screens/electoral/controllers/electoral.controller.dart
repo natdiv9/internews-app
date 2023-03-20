@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../../../../../data/models/electoral_category_model.dart';
 import '../../../../../../data/models/electoral_model.dart';
 import '../../../../../../data/repository/electoral_repository.dart';
 
@@ -17,8 +18,8 @@ class ElectoralController extends GetxController {
   set electoralModel(value) => _electoralModel.value = value;
 
   /// Get and Set for electoral category
-  final _electoralCategory = <ElectoralCategory>[].obs;
-  List<ElectoralCategory> get electoralCategory => _electoralCategory;
+  final _electoralCategory = <ElectoralCategorylModel>[].obs;
+  List<ElectoralCategorylModel> get electoralCategory => _electoralCategory;
   set electoralCategory(value) => _electoralCategory.value = value;
 
   /// Get and Set for the electoral data

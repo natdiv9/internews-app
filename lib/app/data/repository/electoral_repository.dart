@@ -1,5 +1,3 @@
-import 'package:mediaapp/app/data/providers/news_provider.dart';
-
 import '../providers/electoral_provider.dart';
 
 class ElectoralRepository {
@@ -7,8 +5,8 @@ class ElectoralRepository {
 
   ElectoralRepository();
 
-  getAll({int type = 1}) {
-    return _api.getAll(type: type);
+  getAll({int categorylaw = 1}) {
+    return _api.getAll(categorylaw: categorylaw);
   }
 
   getCategory() {
