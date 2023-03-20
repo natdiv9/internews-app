@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
-import 'package:mediaapp/app/modules/home/home_widgets/views/introduce_text_view.dart';
-import 'package:mediaapp/app/widgets/news_card/desktop_news_item_card_view.dart';
 import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 
-import 'controllers/education.controller.dart';
+import '../../../../../widgets/electoral_card/electoral_item_card_view.dart';
+import 'controllers/electoral.controller.dart';
 
-class DesktopEducationScreen extends StatelessWidget {
-  EducationController controller = Get.put(EducationController());
-  DesktopEducationScreen({Key? key}) : super(key: key);
+class DesktopElectoralScreen extends StatelessWidget {
+  ElectoralController controller = Get.put(ElectoralController());
+  DesktopElectoralScreen({Key? key}) : super(key: key);
 
   // final EducationController controller = Get.put(EducationController());
 
@@ -39,7 +38,7 @@ class DesktopEducationScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(64),
                     child: SelectableText(
-                      'Eduquez-vous sur le processus électoral en RDC',
+                      'La loi électorale en RDC',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.roboto(
                           textStyle: const TextStyle(
@@ -54,23 +53,16 @@ class DesktopEducationScreen extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            IntroduceTextView(),
-            const SizedBox(
-              height: 24,
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            (controller.newsList.length > 0)
+            (controller.electoralData.isNotEmpty)
                 ? ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: controller.newsList.length,
+                    itemCount: controller.electoralData.length,
                     itemBuilder: (context, index) {
                       return Column(
                         children: [
-                          DesktopNewsItemCardView(
-                            newsData: controller.newsList[index],
+                          ElectoralItemCardView(
+                            electoralData: controller.electoralData[index],
                           ),
                           const SizedBox(
                             height: 16,
@@ -78,29 +70,7 @@ class DesktopEducationScreen extends StatelessWidget {
                         ],
                       );
                     })
-                : NewsCardShimmerWidget(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all(Size(150, 38)),
-                      overlayColor: MaterialStateProperty.all(
-                          AppColorTheme.secondayColor.withOpacity(0.7)),
-                      backgroundColor: MaterialStateProperty.all(
-                          AppColorTheme.primaryColor)),
-                  child: SelectableText(
-                    'Voir plus',
-                    style: GoogleFonts.roboto(
-                        textStyle: const TextStyle(
-                            color: AppColorTheme.whiteColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400)),
-                  ),
-                ),
-              ],
-            ),
+                : const NewsCardShimmerWidget(),
             const SizedBox(
               height: 24,
             ),

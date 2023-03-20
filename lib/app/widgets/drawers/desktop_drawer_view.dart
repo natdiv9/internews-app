@@ -12,11 +12,12 @@ class DesktopDrawerView extends GetView {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        width: 300,
+        // width: 300,
         elevation: 0,
         child: SizedBox(
           height: double.infinity,
-          width: 300,
+
+          // width: 300,
           child: Column(
             children: [
               const SizedBox(
@@ -25,7 +26,7 @@ class DesktopDrawerView extends GetView {
               _buildNavBarMenu('Accueil', Icons.home_outlined, 'welcome'),
               _buildNavBarMenu('Actualités', Icons.newspaper, 'news'),
               _buildNavBarMenu(
-                  'Loi électorale', Icons.gavel_outlined, 'education'),
+                  'Loi électorale', Icons.gavel_outlined, 'electoral'),
               SingleChildScrollView(
                 child: Obx(() => ExpansionPanelList(
                       elevation: 0,

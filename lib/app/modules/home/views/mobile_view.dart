@@ -3,13 +3,16 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:mediaapp/app/modules/candidats_details/views/mobile_candidats_details_view.dart';
 import 'package:mediaapp/app/modules/home/controllers/home_controller.dart';
 import 'package:mediaapp/app/modules/home/views/screens/ceni/mobile_ceni.screen.dart';
-import 'package:mediaapp/app/modules/home/views/screens/education/mobile_education.screen.dart';
+
+import 'package:mediaapp/app/modules/home/views/screens/electoral/mobile_electoral.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/faq/mobile_faq.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/news/mobile_news.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/welcome/mobile_welcome.screen.dart';
 import 'package:mediaapp/app/modules/news_details/views/mobile_news_details_view.dart';
 import 'package:mediaapp/app/widgets/drawers/mobile_drawer_view.dart';
 import 'package:mediaapp/app/widgets/headers/mobile_header.dart';
+
+import '../../../widgets/drawers/desktop_drawer_view.dart';
 
 class MobileView extends GetView<HomeController> {
   MobileView({super.key});
@@ -21,7 +24,7 @@ class MobileView extends GetView<HomeController> {
     return Scaffold(
       key: scaffoldKey,
       appBar: MobileHeader(scaffoldKey),
-      drawer: MobileDrawerView(scaffoldKey: scaffoldKey),
+      drawer: DesktopDrawerView(),
       body: Obx(() => _buidBody()),
     );
   }
@@ -36,8 +39,8 @@ class MobileView extends GetView<HomeController> {
           return MobileNewsDetailsView();
         }
         return MobileNewsScreen();
-      case 'education':
-        return MobileEducationScreen();
+      case 'electoral':
+        return MobileElectoralScreen();
       case 'faq':
         return MobileFAQScreen();
       case 'ceni':

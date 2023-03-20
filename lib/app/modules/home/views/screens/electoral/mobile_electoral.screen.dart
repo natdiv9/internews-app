@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
-import 'package:mediaapp/app/modules/home/home_widgets/views/introduce_text_view.dart';
-import 'package:mediaapp/app/modules/home/views/screens/education/controllers/education.controller.dart';
+import 'package:mediaapp/app/modules/home/views/screens/electoral/controllers/electoral.controller.dart';
 
-import 'package:mediaapp/app/widgets/news_card/mobile_news_item_card_view.dart';
 import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 
-class MobileEducationScreen extends StatelessWidget {
-  MobileEducationScreen({Key? key}) : super(key: key);
+import '../../../../../widgets/electoral_card/electoral_item_card_view.dart';
 
-  final EducationController controller = Get.put(EducationController());
+class MobileElectoralScreen extends StatelessWidget {
+  MobileElectoralScreen({Key? key}) : super(key: key);
+
+  final ElectoralController controller = Get.put(ElectoralController());
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class MobileEducationScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(64),
                     child: SelectableText(
-                      'Eduquez-vous sur le processus électoral en RDC',
+                      'La loi électorale en RDC',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.roboto(
                           textStyle: const TextStyle(
@@ -53,20 +53,16 @@ class MobileEducationScreen extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            IntroduceTextView(),
-            const SizedBox(
-              height: 24,
-            ),
-            (controller.newsList.length > 0)
+            (controller.electoralData.isNotEmpty)
                 ? ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: controller.newsList.length,
+                    itemCount: controller.electoralData.length,
                     itemBuilder: (context, index) {
                       return Column(
                         children: [
-                          MobileNewsItemCardView(
-                            newsData: controller.newsList[index],
+                          ElectoralItemCardView(
+                            electoralData: controller.electoralData[index],
                           ),
                           const SizedBox(
                             height: 16,
@@ -74,32 +70,7 @@ class MobileEducationScreen extends StatelessWidget {
                         ],
                       );
                     })
-                : NewsCardShimmerWidget(),
-            const SizedBox(
-              height: 24,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all(Size(150, 38)),
-                      overlayColor: MaterialStateProperty.all(
-                          AppColorTheme.secondayColor.withOpacity(0.7)),
-                      backgroundColor: MaterialStateProperty.all(
-                          AppColorTheme.primaryColor)),
-                  child: SelectableText(
-                    'Voir plus',
-                    style: GoogleFonts.roboto(
-                        textStyle: const TextStyle(
-                            color: AppColorTheme.whiteColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400)),
-                  ),
-                ),
-              ],
-            ),
+                : const NewsCardShimmerWidget(),
             const SizedBox(
               height: 24,
             ),

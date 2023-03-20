@@ -3,7 +3,8 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:mediaapp/app/modules/candidats_details/views/desktop_candidats_details_view.dart';
 import 'package:mediaapp/app/modules/home/controllers/home_controller.dart';
 import 'package:mediaapp/app/modules/home/views/screens/ceni/desktop_ceni.screen.dart';
-import 'package:mediaapp/app/modules/home/views/screens/education/desktop_education.screen.dart';
+
+import 'package:mediaapp/app/modules/home/views/screens/electoral/desktop_electoral.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/news/desktop_news.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/welcome/desktop_welcome.screen.dart';
 import 'package:mediaapp/app/modules/news_details/views/desktop_news_details_view.dart';
@@ -44,8 +45,8 @@ class DesktopView extends GetView<HomeController> {
           return DesktopNewsDetailsView();
         }
         return DesktopNewsScreen();
-      case 'education':
-        return DesktopEducationScreen();
+      case 'electoral':
+        return DesktopElectoralScreen();
       case 'faq':
         return DesktopFAQScreen();
       case 'ceni':

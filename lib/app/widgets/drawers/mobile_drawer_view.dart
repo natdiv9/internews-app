@@ -40,7 +40,7 @@ class MobileDrawerView extends GetView {
             ),
             _buildNavBarMenu('Accueil', Icons.home, 'welcome'),
             _buildNavBarMenu('Actualités', Icons.newspaper, 'news'),
-            _buildNavBarMenu('Education', Icons.school, 'education'),
+            _buildNavBarMenu('Education', Icons.school, 'electoral'),
             SingleChildScrollView(
               child: Obx(() => ExpansionPanelList(
                     elevation: 0,
