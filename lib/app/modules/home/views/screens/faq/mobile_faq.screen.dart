@@ -19,13 +19,6 @@ class MobileFAQScreen extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            const IntroduceTextView(),
-            const SizedBox(
-              height: 24,
-            ),
-            const SizedBox(
-              height: 24,
-            ),
             (controller.faqList.isNotEmpty)
                 ? ListView.builder(
                     shrinkWrap: true,
@@ -56,7 +49,7 @@ class MobileFAQScreen extends StatelessWidget {
                         ],
                       );
                     })
-                : NewsCardShimmerWidget(),
+                : const NewsCardShimmerWidget(),
             const SizedBox(
               height: 24,
             ),

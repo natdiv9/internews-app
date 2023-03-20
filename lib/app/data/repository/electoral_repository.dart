@@ -10,4 +10,8 @@ class ElectoralRepository {
   getAll({int type = 1}) {
     return _api.getAll(type: type);
   }
+
+  getCategory() {
+    return _api.getCategory();
+  }
 }
