@@ -1,23 +1,23 @@
 class FaqData {
   final int id;
-  final String question;
-  final String answer;
+  final String titre;
+  final String contenu;
 
-  FaqData({required this.question, required this.answer, required this.id});
+  FaqData({required this.titre, required this.contenu, required this.id});
 
   factory FaqData.fromJson(Map<String, dynamic> json) {
     return FaqData(
       id: json['id'],
-      question: json['question'],
-      answer: json['answer'],
+      titre: json['titre'],
+      contenu: json['contenu'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'question': question,
-      'answer': answer,
+      'titre': titre,
+      'contenu': contenu,
     };
   }
 }

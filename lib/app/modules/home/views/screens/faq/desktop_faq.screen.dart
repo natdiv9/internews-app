@@ -53,28 +53,28 @@ class DesktopFAQScreen extends StatelessWidget {
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: controller.faqList.length,
                         itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              Card(
-                                child: Column(children: [
-                                  Text(controller.faqList[index].question,
-                                      style: GoogleFonts.roboto(
-                                          textStyle: const TextStyle(
-                                              // color: AppColorTheme.whiteColor,
-                                              fontSize: 24,
-                                              fontWeight: FontWeight.bold))),
-                                  Text(controller.faqList[index].answer,
-                                      style: GoogleFonts.roboto(
-                                          textStyle: const TextStyle(
-                                              // color: AppColorTheme.whiteColor,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w500))),
-                                ]),
-                              ),
-                              const SizedBox(
-                                height: 16,
-                              ),
-                            ],
+                          return Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(controller.faqList[index].titre,
+                                        style: GoogleFonts.roboto(
+                                            textStyle: const TextStyle(
+                                                color: AppColorTheme.textColor,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w500))),
+                                    const SizedBox(height: 18),
+                                    Text(controller.faqList[index].contenu,
+                                        style: GoogleFonts.roboto(
+                                            textStyle: TextStyle(
+                                                color: AppColorTheme.textColor
+                                                    .withOpacity(0.6),
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w400))),
+                                  ]),
+                            ),
                           );
                         })
                 : const NewsCardShimmerWidget(),
