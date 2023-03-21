@@ -18,8 +18,8 @@ class ElectoralController extends GetxController {
   set electoralModel(value) => _electoralModel.value = value;
 
   /// Get and Set for electoral category
-  final _electoralCategory = <ElectoralCategorylModel>[].obs;
-  List<ElectoralCategorylModel> get electoralCategory => _electoralCategory;
+  final _electoralCategory = ElectoralCategorylModel().obs;
+  ElectoralCategorylModel get electoralCategory => _electoralCategory.value;
   set electoralCategory(value) => _electoralCategory.value = value;
 
   /// Get and Set for the electoral data
@@ -29,8 +29,7 @@ class ElectoralController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    isBusy = true;
-    // print('IS BUSY: $isBusy');
+    getCategory();
     getAll();
   }
 
@@ -46,6 +45,7 @@ class ElectoralController extends GetxController {
 
   /// Gett all electoral data
   getAll() {
+    isBusy = true;
     _newsRepository.getAll().then((ElectoralModel? data) {
       electoralModel = data;
       _electoralData.value = electoralModel.data!;
@@ -54,11 +54,21 @@ class ElectoralController extends GetxController {
     });
   }
 
-  getCategory(String id) {
-    _newsRepository.getCategory().then((ElectoralModel? data) {
-      electoralCategory = data;
+  /// Get electoral law by category
+  getByCategory(String categorylaw) {
+    isBusy = true;
+    _newsRepository
+        .getAll(categorylaw: categorylaw)
+        .then((ElectoralModel? data) {
+      electoralModel = data;
+      _electoralData.value = electoralModel.data!;
       isBusy = false;
-      // print('IS BUSY: $isBusy');
+    });
+  }
+
+  getCategory() {
+    _newsRepository.getCategory().then((ElectoralCategorylModel? data) {
+      electoralCategory = data;
     });
   }
 }

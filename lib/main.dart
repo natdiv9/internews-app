@@ -11,7 +11,7 @@ void main() {
   runApp(
     GetMaterialApp(
       title: "MediaApp",
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: fal,
       theme: appThemeData,
       initialRoute: '/welcome',
       getPages: AppPages.routes,

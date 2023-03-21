@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -55,27 +56,20 @@ class DesktopElectoralScreen extends StatelessWidget {
                                   color: AppColorTheme.textColor,
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500)),
-                          items: const [
-                            DropdownMenuItem<String>(
-                                value: '1',
-                                child: Text('Conditions pour être candidat',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500))),
-                            DropdownMenuItem<String>(
-                                value: '2',
-                                child: Text('Conditions pour voter',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500))),
-                            DropdownMenuItem<String>(
-                                value: '3',
-                                child: Text('Cas d’inéligibilités',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500)))
+                          items: [
+                            if (controller.electoralCategory.data != null)
+                              for (var cat
+                                  in controller.electoralCategory.data!)
+                                DropdownMenuItem<String>(
+                                    value: cat.id.toString(),
+                                    child: Text(cat.designation,
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500)))
                           ],
-                          onChanged: (value) => {},
+                          onChanged: (value) => {
+                            controller.getByCategory(value.toString()),
+                          },
                         ),
                       ),
                     ),
@@ -87,22 +81,46 @@ class DesktopElectoralScreen extends StatelessWidget {
               height: 16,
             ),
             (!controller.isBusy)
-                ? ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: controller.electoralData.length,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          ElectoralItemCardView(
-                            electoralData: controller.electoralData[index],
-                          ),
-                          const SizedBox(
-                            height: 16,
-                          ),
-                        ],
-                      );
-                    })
+                ? controller.electoralData.isEmpty
+                    ? Center(
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 32,
+                            ),
+                            SvgPicture.asset(
+                              'assets/images/no_data.svg',
+                              width: 200,
+                              height: 200,
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            Text('Aucune donnée disponible',
+                                style: TextStyle(
+                                    color: AppColorTheme.textColor
+                                        .withOpacity(0.60),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500))
+                          ],
+                        ),
+                      )
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: controller.electoralData.length,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              ElectoralItemCardView(
+                                electoralData: controller.electoralData[index],
+                              ),
+                              const SizedBox(
+                                height: 16,
+                              ),
+                            ],
+                          );
+                        })
                 : const NewsCardShimmerWidget(),
             const SizedBox(
               height: 24,

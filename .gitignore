@@ -46,3 +46,4 @@ app.*.map.json
 # Keys and secret
 
 /lib/firebase_options.dart
+lib/main.local.dart

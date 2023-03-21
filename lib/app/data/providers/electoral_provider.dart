@@ -9,19 +9,16 @@ class ElectoralProvider {
   final http.Client httpClient = http.Client();
   ElectoralProvider();
 
-  Future<ElectoralModel?> getAll({int categorylaw = 1}) async {
+  Future<ElectoralModel?> getAll({String categorylaw = ''}) async {
     try {
-      var uri = Uri.parse('$baseUrl/electoral?categorylaw=$categorylaw');
+      var arg = categorylaw == '' ? '' : '?categoryLaw=$categorylaw';
+      var uri = Uri.parse('$baseUrl/electoral$arg');
+      print('URI: $uri');
       var response = await httpClient.get(uri);
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse =
             Map<String, dynamic>.from(json.decode(response.body));
         ElectoralModel electoralModel = ElectoralModel.fromJson(jsonResponse);
-        // if (kDebugMode) {
-        //   return jsonResponse.toString();
-        // }
-        // print('Le type de variable : ' + jsonResponse.runtimeType.toString());
-        // List<NewsModel> listMyModel = [];
 
         return electoralModel;
       } else {
@@ -29,7 +26,7 @@ class ElectoralProvider {
         return null;
       }
     } catch (_) {
-      print('ERREURE - FaqProvider');
+      print('ERREURE - ElectoralProvider');
 
       // print(_ClientSocketException.toString());
       print(_);
@@ -40,24 +37,24 @@ class ElectoralProvider {
 
   Future<ElectoralCategorylModel?> getCategory() async {
     try {
-      var uri = Uri.parse('$baseUrl/categories/law');
+      var uri = Uri.parse('$baseUrl/category_electoral');
       var response = await httpClient.get(uri);
+
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse =
             Map<String, dynamic>.from(json.decode(response.body));
-        ElectoralCategorylModel electoralModel =
+        ElectoralCategorylModel electoralCategorylModel =
             ElectoralCategorylModel.fromJson(jsonResponse);
 
-        return electoralModel;
+        return electoralCategorylModel;
       } else {
         print('STATUS ERROR');
         return null;
       }
-    } catch (_) {
-      print('ERREURE - FaqProvider');
-
+    } catch (error) {
+      print('ERREURE - ElectoralProvider - getCategory');
       // print(_ClientSocketException.toString());
-      print(_);
+      print(error.toString());
       return null;
     }
     // return null;

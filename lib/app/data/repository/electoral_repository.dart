@@ -5,7 +5,7 @@ class ElectoralRepository {
 
   ElectoralRepository();
 
-  getAll({int categorylaw = 1}) {
+  getAll({String categorylaw = ''}) {
     return _api.getAll(categorylaw: categorylaw);
   }
 

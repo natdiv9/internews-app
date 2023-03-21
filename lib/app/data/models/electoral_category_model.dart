@@ -1,8 +1,8 @@
 class ElectoralCategorylData {
   final int id;
   final String designation;
-  final String created_at;
-  final String updated_at;
+  final String? created_at;
+  final String? updated_at;
 
   ElectoralCategorylData({
     required this.id,
