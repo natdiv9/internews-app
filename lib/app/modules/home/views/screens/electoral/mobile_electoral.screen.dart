@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,59 +18,109 @@ class MobileElectoralScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+        padding: const EdgeInsets.all(16),
         child: Obx(
           () => ListView(children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.40,
-              width: double.infinity,
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  image: const DecorationImage(
-                      image: AssetImage('assets/images/vote.jpg'),
-                      fit: BoxFit.cover)),
-              child: Stack(
-                alignment: AlignmentDirectional.center,
-                children: [
-                  Container(
-                    color: Colors.black.withOpacity(0.6),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(64),
-                    child: SelectableText(
-                      'La loi électorale en RDC',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.roboto(
-                          textStyle: const TextStyle(
-                              color: AppColorTheme.whiteColor,
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600)),
-                    ),
-                  )
-                ],
+            Align(
+              alignment: Alignment.centerLeft,
+              child: SelectableText(
+                'La loi électorale en RDC',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.roboto(
+                    textStyle: const TextStyle(
+                        color: AppColorTheme.textColor,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600)),
               ),
             ),
             const SizedBox(
               height: 16,
             ),
-            (controller.electoralData.isNotEmpty)
-                ? ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: controller.electoralData.length,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          ElectoralItemCardView(
-                            electoralData: controller.electoralData[index],
-                          ),
-                          const SizedBox(
-                            height: 16,
-                          ),
-                        ],
-                      );
-                    })
+            Row(
+              children: [
+                Flexible(
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: AppColorTheme.primaryColor),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton(
+                          iconSize: 36,
+                          elevation: 1,
+                          focusColor: Colors.transparent,
+                          icon: const Icon(Icons.arrow_drop_down),
+                          hint: const Text('Cas d\'éligibilités',
+                              style: TextStyle(
+                                  color: AppColorTheme.textColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500)),
+                          items: [
+                            if (controller.electoralCategory.data != null)
+                              for (var cat
+                                  in controller.electoralCategory.data!)
+                                DropdownMenuItem<String>(
+                                    value: cat.id.toString(),
+                                    child: Text(cat.designation,
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500)))
+                          ],
+                          onChanged: (value) => {
+                            controller.getByCategory(value.toString()),
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            (!controller.isBusy)
+                ? controller.electoralData.isEmpty
+                    ? Center(
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 32,
+                            ),
+                            SvgPicture.asset(
+                              'assets/images/no_data.svg',
+                              width: 200,
+                              height: 200,
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            Text('Aucune donnée disponible',
+                                style: TextStyle(
+                                    color: AppColorTheme.textColor
+                                        .withOpacity(0.60),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500))
+                          ],
+                        ),
+                      )
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: controller.electoralData.length,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              ElectoralItemCardView(
+                                electoralData: controller.electoralData[index],
+                              ),
+                              const SizedBox(
+                                height: 16,
+                              ),
+                            ],
+                          );
+                        })
                 : const NewsCardShimmerWidget(),
             const SizedBox(
               height: 24,

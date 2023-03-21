@@ -12,8 +12,24 @@ class FAQController extends GetxController {
   final _faqList = <FaqData>[].obs;
   List<FaqData> get faqList => _faqList;
 
+  /// Get and Set for the isBusy state
+  final _isBusy = true.obs;
+  bool get isBusy => _isBusy.value;
+  set isBusy(value) => _isBusy.value = value;
+
   @override
   void onInit() {
     super.onInit();
+  }
+
+  /// Gett all faq data
+  getAll() {
+    isBusy = true;
+    _faqRepository.getAll().then((FaqModel? data) {
+      faqModel = data;
+      _faqModel.value = faqModel.data!;
+      isBusy = false;
+      // print('IS BUSY: $isBusy');
+    });
   }
 }
