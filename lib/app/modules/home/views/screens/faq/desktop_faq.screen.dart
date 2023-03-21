@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mediaapp/app/core/themes/color_theme.dart';
-import 'package:mediaapp/app/modules/home/home_widgets/views/introduce_text_view.dart';
 
 import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 
+import '../../../../../core/themes/color_theme.dart';
 import 'controllers/faq.controller.dart';
 
 class DesktopFAQScreen extends StatelessWidget {
@@ -23,42 +23,60 @@ class DesktopFAQScreen extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            const SizedBox(
-              height: 24,
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            (controller.faqList.isNotEmpty)
-                ? ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: controller.faqList.length,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          Card(
-                            child: Column(children: [
-                              Text(controller.faqList[index].question,
-                                  style: GoogleFonts.roboto(
-                                      textStyle: const TextStyle(
-                                          // color: AppColorTheme.whiteColor,
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold))),
-                              Text(controller.faqList[index].answer,
-                                  style: GoogleFonts.roboto(
-                                      textStyle: const TextStyle(
-                                          // color: AppColorTheme.whiteColor,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500))),
-                            ]),
-                          ),
-                          const SizedBox(
-                            height: 16,
-                          ),
-                        ],
-                      );
-                    })
+            (!controller.isBusy)
+                ? (controller.faqList.isEmpty)
+                    ? Center(
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 32,
+                            ),
+                            SvgPicture.asset(
+                              'assets/images/no_data.svg',
+                              width: 200,
+                              height: 200,
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            Text('Aucune donnée disponible',
+                                style: TextStyle(
+                                    color: AppColorTheme.textColor
+                                        .withOpacity(0.60),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500))
+                          ],
+                        ),
+                      )
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: controller.faqList.length,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              Card(
+                                child: Column(children: [
+                                  Text(controller.faqList[index].question,
+                                      style: GoogleFonts.roboto(
+                                          textStyle: const TextStyle(
+                                              // color: AppColorTheme.whiteColor,
+                                              fontSize: 24,
+                                              fontWeight: FontWeight.bold))),
+                                  Text(controller.faqList[index].answer,
+                                      style: GoogleFonts.roboto(
+                                          textStyle: const TextStyle(
+                                              // color: AppColorTheme.whiteColor,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w500))),
+                                ]),
+                              ),
+                              const SizedBox(
+                                height: 16,
+                              ),
+                            ],
+                          );
+                        })
                 : const NewsCardShimmerWidget(),
             const SizedBox(
               height: 24,

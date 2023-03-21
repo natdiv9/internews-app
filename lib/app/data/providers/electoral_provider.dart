@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../../core/helpers/const.dart';
 import '../models/electoral_category_model.dart';
 import '../models/electoral_model.dart';
 
 class ElectoralProvider {
-  final baseUrl = 'http://192.168.88.65:8000/api';
+  final baseUrl = BASE_URL;
   final http.Client httpClient = http.Client();
   ElectoralProvider();
 

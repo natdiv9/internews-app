@@ -20,6 +20,7 @@ class FAQController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    getAll();
   }
 
   /// Gett all faq data
@@ -27,9 +28,12 @@ class FAQController extends GetxController {
     isBusy = true;
     _faqRepository.getAll().then((FaqModel? data) {
       faqModel = data;
-      _faqModel.value = faqModel.data!;
+      _faqList.value = faqModel.data!;
       isBusy = false;
       // print('IS BUSY: $isBusy');
+    }).catchError((e) {
+      isBusy = false;
+      print(e);
     });
   }
 }
