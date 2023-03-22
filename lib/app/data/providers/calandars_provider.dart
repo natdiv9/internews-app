@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:mediaapp/app/data/models/calandars_model.dart';
 
+import '../../core/helpers/const.dart';
+
 //nossa url base
-const baseUrl = 'https://infosnews.top-lum.com/api/calandars';
+const baseUrl = '$BASE_URL/calandars';
 
 //nossa classe responsável por encapsular os métodos http
 class CalandarsProvider {
@@ -14,6 +16,7 @@ class CalandarsProvider {
   //um exemplo rápido, aqui estamos recuperando todos os posts disponibilizados pela api(100)
   Future<CalandarsModel> getAll() async {
     try {
+      print(baseUrl);
       var response = await httpClient.get(Uri.parse(baseUrl));
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse =
@@ -37,7 +40,7 @@ class CalandarsProvider {
 
   Future<CalandarsData?> getByID({required String id}) async {
     try {
-      var uri = Uri.parse('${baseUrl}/$id');
+      var uri = Uri.parse('$baseUrl/$id');
       var response = await httpClient.get(uri);
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse =

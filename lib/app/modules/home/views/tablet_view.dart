@@ -12,7 +12,6 @@ import 'package:mediaapp/app/modules/news_details/views/desktop_news_details_vie
 import 'package:mediaapp/app/widgets/headers/tablet_header.dart';
 
 import '../../../widgets/drawers/desktop_drawer_view.dart';
-import '../../../widgets/drawers/mobile_drawer_view.dart';
 
 class TabletView extends GetView<HomeController> {
   TabletView({super.key});

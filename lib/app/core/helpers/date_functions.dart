@@ -31,3 +31,10 @@ String getNameOfMonth(DateTime date) {
       return '';
   }
 }
+
+String formatedDate(String date) {
+  var namedMonth = getNameOfMonth(DateTime.parse(date));
+  var day = date.split('-')[2];
+  var year = date.split('-')[0];
+  return '$day $namedMonth $year';
+}

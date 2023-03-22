@@ -9,7 +9,6 @@ import 'package:mediaapp/app/modules/home/views/screens/faq/mobile_faq.screen.da
 import 'package:mediaapp/app/modules/home/views/screens/news/mobile_news.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/welcome/mobile_welcome.screen.dart';
 import 'package:mediaapp/app/modules/news_details/views/mobile_news_details_view.dart';
-import 'package:mediaapp/app/widgets/drawers/mobile_drawer_view.dart';
 import 'package:mediaapp/app/widgets/headers/mobile_header.dart';
 
 import '../../../widgets/drawers/desktop_drawer_view.dart';

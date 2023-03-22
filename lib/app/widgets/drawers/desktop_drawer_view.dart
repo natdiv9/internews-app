@@ -18,64 +18,70 @@ class DesktopDrawerView extends GetView {
           height: double.infinity,
 
           // width: 300,
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 12,
-              ),
-              _buildNavBarMenu('Accueil', Icons.home_outlined, 'welcome'),
-              _buildNavBarMenu('Actualités', Icons.newspaper, 'news'),
-              _buildNavBarMenu(
-                  'Loi électorale', Icons.gavel_outlined, 'electoral'),
-              SingleChildScrollView(
-                child: Obx(() => ExpansionPanelList(
-                      elevation: 0,
-                      expansionCallback: (int index, bool isExpanded) {
-                        _homeController.isExpandedMenu = !isExpanded;
-                      },
-                      expandedHeaderPadding: EdgeInsets.zero,
-                      children: [
-                        ExpansionPanel(
-                            backgroundColor: Colors.transparent,
-                            canTapOnHeader: true,
-                            isExpanded: _homeController.isExpandedMenu,
-                            headerBuilder: (context, isExpanded) {
-                              return _buildNavBarMenu(
-                                  'Ceni', Icons.how_to_vote, 'ceni');
-                            },
-                            body: SizedBox(
-                              width: 300,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 32),
-                                child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      const SizedBox(
-                                        height: 16,
-                                      ),
-                                      _buildCeniSubNavBarMenu(
-                                          'Canditature Presidentielle',
-                                          'presidential'),
-                                      _buildCeniSubNavBarMenu(
-                                          'Canditature Nationale', 'national'),
-                                      _buildCeniSubNavBarMenu(
-                                          'Canditature Provinciale',
-                                          'provincial'),
-                                      _buildCeniSubNavBarMenu(
-                                          'Calendrier electoral', 'calendar'),
-                                      _buildCeniSubNavBarMenu(
-                                          'Centres d’enrolement',
-                                          'enrollment_centers'),
-                                      _buildCeniSubNavBarMenu(
-                                          'Centre de vote', 'vote_centers'),
-                                    ]),
-                              ),
-                            ))
-                      ],
-                    )),
-              ),
-              _buildNavBarMenu('FAQ', Icons.quiz_outlined, 'faq'),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 12,
+                ),
+                _buildNavBarMenu('Accueil', Icons.home_outlined, 'welcome'),
+                _buildNavBarMenu('Actualités', Icons.newspaper, 'news'),
+                _buildNavBarMenu(
+                    'Loi électorale', Icons.gavel_outlined, 'electoral'),
+                _buildNavBarMenu(
+                    'Mode de scrutin', Icons.how_to_vote_outlined, 'scrutin'),
+                SingleChildScrollView(
+                  child: Obx(() => ExpansionPanelList(
+                        elevation: 0,
+                        expansionCallback: (int index, bool isExpanded) {
+                          _homeController.isExpandedMenu = !isExpanded;
+                        },
+                        expandedHeaderPadding: EdgeInsets.zero,
+                        children: [
+                          ExpansionPanel(
+                              backgroundColor: Colors.transparent,
+                              canTapOnHeader: true,
+                              isExpanded: _homeController.isExpandedMenu,
+                              headerBuilder: (context, isExpanded) {
+                                return _buildNavBarMenu(
+                                    'Ceni', Icons.more_vert, 'ceni');
+                              },
+                              body: SizedBox(
+                                width: 300,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 32),
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        const SizedBox(
+                                          height: 16,
+                                        ),
+                                        _buildCeniSubNavBarMenu(
+                                            'Canditature Presidentielle',
+                                            'presidential'),
+                                        _buildCeniSubNavBarMenu(
+                                            'Canditature Nationale',
+                                            'national'),
+                                        _buildCeniSubNavBarMenu(
+                                            'Canditature Provinciale',
+                                            'provincial'),
+                                        _buildCeniSubNavBarMenu(
+                                            'Calendrier electoral', 'calendar'),
+                                        _buildCeniSubNavBarMenu(
+                                            'Centres d’enrolement',
+                                            'enrollment_centers'),
+                                        _buildCeniSubNavBarMenu(
+                                            'Centre de vote', 'vote_centers'),
+                                      ]),
+                                ),
+                              ))
+                        ],
+                      )),
+                ),
+                _buildNavBarMenu('FAQ', Icons.quiz_outlined, 'faq'),
+              ],
+            ),
           ),
         ));
   }
