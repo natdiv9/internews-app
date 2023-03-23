@@ -27,7 +27,7 @@ class CentresProvider {
       if (circonscription.isNotEmpty) {
         url += '&circonscription=$circonscription';
       }
-      print('URL: $url');
+      // print('URL: $url');
       var response = await httpClient.get(Uri.parse(url));
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse =

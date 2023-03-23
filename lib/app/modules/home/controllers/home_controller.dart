@@ -15,7 +15,7 @@ class HomeController extends GetxController {
   set currentPage(String value) => _currentPage.value = value;
 
   // Current ceni subpage
-  final _currentCeniPage = 'presidential'.obs;
+  final _currentCeniPage = 'legislative'.obs;
   String get currentCeniPage => _currentCeniPage.value;
   set currentCeniPage(String value) => _currentCeniPage.value = value;
 
@@ -35,12 +35,10 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     currentPage = Get.parameters['page'] ?? 'welcome';
-    currentCeniPage = Get.parameters['subpage'] ?? 'presidential';
+    currentCeniPage = Get.parameters['subpage'] ?? 'legislative';
 
     if (currentPage == 'ceni' &&
-        (currentCeniPage == 'national' ||
-            currentCeniPage == 'presidential' ||
-            currentCeniPage == 'provincial') &&
+        (currentCeniPage == 'legislative') &&
         Get.parameters['id'] != null &&
         Get.parameters['id'] != '') {
       _currentCandidatePageId.value = Get.parameters['id']!;

@@ -58,21 +58,14 @@ class DesktopDrawerView extends GetView {
                                           height: 16,
                                         ),
                                         _buildCeniSubNavBarMenu(
-                                            'Canditature Presidentielle',
-                                            'presidential'),
+                                            'Législatives', 'legislative'),
                                         _buildCeniSubNavBarMenu(
-                                            'Canditature Nationale',
-                                            'national'),
+                                            'Calendrier', 'calendar'),
                                         _buildCeniSubNavBarMenu(
-                                            'Canditature Provinciale',
-                                            'provincial'),
+                                            'Circonscriptions',
+                                            'circonscriptions'),
                                         _buildCeniSubNavBarMenu(
-                                            'Calendrier electoral', 'calendar'),
-                                        _buildCeniSubNavBarMenu(
-                                            'Centres d’enrolement',
-                                            'enrollment_centers'),
-                                        _buildCeniSubNavBarMenu(
-                                            'Centre de vote', 'vote_centers'),
+                                            'Centres de vote', 'vote_centers'),
                                       ]),
                                 ),
                               ))
@@ -90,7 +83,7 @@ class DesktopDrawerView extends GetView {
     return TextButton(
         onPressed: () {
           if (route == 'ceni') {
-            Get.offNamed("/ceni/?subpage=presidential");
+            Get.offNamed("/ceni/?subpage=legislative");
           } else {
             Get.offNamed("/$route");
           }

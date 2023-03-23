@@ -126,7 +126,6 @@ class VoteCentersController extends GetxController {
         villes.data = data;
         await getAll(province: provName!);
         isProvinceSelected = true;
-
         // print(villes.data);
       }
     });
@@ -171,7 +170,7 @@ class VoteCentersController extends GetxController {
     var provName = provinces.data!
         .firstWhere((element) => element.id == provId)
         .designation;
-    print('$provName/$villeName/$circName');
+    // print('$provName/$villeName/$circName');
     getAll(province: provName!, ville: villeName!, circonscription: circName!);
   }
 }

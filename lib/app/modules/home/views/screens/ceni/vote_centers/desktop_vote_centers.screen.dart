@@ -159,7 +159,8 @@ class _DesktopVoteCentersScreenState extends State<DesktopVoteCentersScreen> {
                 ],
                 onChanged: (value) {
                   // controller.getByCategory(value.toString()),
-                  print('selected ville $value');
+                  // print('selected ville $value');
+
                   setState(() {
                     selectedVille = value;
                     controller.getCirconscriptions(value!);
