@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:mediaapp/app/data/models/news_model.dart';
 import 'package:mediaapp/app/widgets/news_card/desktop_news_item_card_view.dart';
 
+import '../../../../../widgets/news_card/news_card.dart';
+
 class DesktopRecentNewsView extends GetView {
   const DesktopRecentNewsView({
     Key? key,
@@ -19,11 +21,11 @@ class DesktopRecentNewsView extends GetView {
         itemBuilder: (context, index) {
           return Column(
             children: [
-              DesktopNewsItemCardView(
-                newsData: newsList[index],
+              NewsCardWidget(
+                index: index,
               ),
               const SizedBox(
-                height: 16,
+                height: 32,
               ),
             ],
           );

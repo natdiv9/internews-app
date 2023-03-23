@@ -50,9 +50,9 @@ class MobileEducationContentsView extends GetView {
                     ),
                     Expanded(
                       child: Text(
-                        (newsEducation[index].contenu.length > 120)
-                            ? '${newsEducation[index].contenu.substring(0, 120)}...'
-                            : newsEducation[index].contenu,
+                        (newsEducation[index].contenu!.length > 120)
+                            ? '${newsEducation[index].contenu!.substring(0, 120)}...'
+                            : newsEducation[index].contenu!,
                         style: GoogleFonts.roboto(
                             textStyle: TextStyle(
                                 color: AppColorTheme.textColor.withOpacity(0.6),

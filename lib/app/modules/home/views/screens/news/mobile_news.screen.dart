@@ -7,6 +7,7 @@ import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/widgets/news_card/mobile_news_item_card_view.dart';
 import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 
+import '../../../../../widgets/news_card/news_card.dart';
 import 'controllers/news.controller.dart';
 
 class MobileNewsScreen extends StatelessWidget {
@@ -49,18 +50,6 @@ class MobileNewsScreen extends StatelessWidget {
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold)),
                           ),
-                          // SelectableText(
-                          //   (controller.newsList[0].contenu.length > 180)
-                          //       ? '${controller.newsList[0].contenu.substring(0, 180)}...'
-                          //       : controller.newsList[0].contenu,
-                          //   textAlign: TextAlign.justify,
-                          //   style: GoogleFonts.roboto(
-                          //       textStyle: TextStyle(
-                          //           color: AppColorTheme.textColor
-                          //               .withOpacity(0.6),
-                          //           fontSize: 16,
-                          //           fontWeight: FontWeight.w400)),
-                          // ),
                         ],
                       )
                     : NewsCardShimmerWidget(),
@@ -95,18 +84,12 @@ class MobileNewsScreen extends StatelessWidget {
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: controller.newsList.length,
                         itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              MobileNewsItemCardView(
-                                newsData: controller.newsList[index],
-                              ),
-                              const SizedBox(
-                                height: 16,
-                              ),
-                            ],
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 36),
+                            child: NewsCardWidget(index: index),
                           );
                         })
-                    : NewsCardShimmerWidget(),
+                    : const NewsCardShimmerWidget(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

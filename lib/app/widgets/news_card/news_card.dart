@@ -8,13 +8,30 @@ class NewsCardWidget extends StatelessWidget {
   final int index;
   var titleStyle = GoogleFonts.publicSans(
       textStyle: TextStyle(
-          color: AppColorTheme.textColor.withOpacity(0.8),
+          color: AppColorTheme.textColor.withOpacity(0.6),
           fontSize: 20,
           fontWeight: FontWeight.w500));
 
   @override
   Widget build(BuildContext context) {
-    return index.isOdd ? oddCard() : evenCard();
+    return Column(
+      children: [
+        InkWell(
+          focusColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          onTap: () {},
+          child: index.isOdd ? oddCard() : evenCard(),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Divider(
+          thickness: 0.5,
+          color: AppColorTheme.textColor.withOpacity(0.10),
+        )
+      ],
+    );
   }
 
   oddCard() {
@@ -36,11 +53,10 @@ class NewsCardWidget extends StatelessWidget {
                         10,
                     textAlign: TextAlign.start,
                     maxLines: 3,
-                    overflow: TextOverflow.fade,
+                    overflow: TextOverflow.ellipsis,
                     style: titleStyle),
               ),
               Text('13 Novembre 2023, 14h30',
-                  textAlign: TextAlign.start,
                   style: GoogleFonts.poppins(
                       textStyle: TextStyle(
                           color: AppColorTheme.textColor.withOpacity(0.6),
@@ -94,11 +110,10 @@ class NewsCardWidget extends StatelessWidget {
                         10,
                     textAlign: TextAlign.end,
                     maxLines: 3,
-                    overflow: TextOverflow.fade,
+                    overflow: TextOverflow.ellipsis,
                     style: titleStyle),
               ),
               Text('13 Novembre 2023, 14h30',
-                  textAlign: TextAlign.start,
                   style: GoogleFonts.poppins(
                       textStyle: TextStyle(
                           color: AppColorTheme.textColor.withOpacity(0.6),

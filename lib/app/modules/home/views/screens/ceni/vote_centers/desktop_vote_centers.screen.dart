@@ -1,201 +1,271 @@
+import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 
+import '../../../../../../data/models/centres_model.dart';
+import '../../../../../../widgets/no_data_widget.dart';
 import 'controllers/vote_centers.controller.dart';
 
-class DesktopVoteCentersScreen extends GetView<VoteCentersController> {
+class DesktopVoteCentersScreen extends StatefulWidget {
   DesktopVoteCentersScreen({Key? key}) : super(key: key);
 
+  @override
+  State<DesktopVoteCentersScreen> createState() =>
+      _DesktopVoteCentersScreenState();
+}
+
+class _DesktopVoteCentersScreenState extends State<DesktopVoteCentersScreen> {
   VoteCentersController controller = Get.put(VoteCentersController());
+
+  TextStyle titleStyle = GoogleFonts.poppins(
+      textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold));
+
+  TextStyle contentStyle = GoogleFonts.poppins(
+      textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500));
+
+  String? selectedProvince;
+
+  String? selectedVille;
+
+  String? selectedCirconscription;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: Obx(() {
-        return (controller.centresData.length > 0)
-            ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(
-                  "Centre d\'enrollement",
-                  style: GoogleFonts.roboto(
-                      textStyle: const TextStyle(
-                          color: AppColorTheme.textColor,
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold)),
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                Container(
-                  height: 300,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColorTheme.darkColor.withOpacity(0.04),
-                        blurRadius: 20,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: FlutterMap(
-                    options: MapOptions(
-                      center: LatLng(-11.663054, 27.483564),
-                      zoom: 11.2,
-                      keepAlive: true,
-                    ),
-                    nonRotatedChildren: [
-                      // AttributionWidget.defaultWidget(
-                      //   source: 'OpenStreetMap contributors',
-                      //   onSourceTapped: null,
-                      // ),
-                    ],
+        return (!controller.isBusy)
+            ? controller.centresData.isEmpty &&
+                    controller.provinces.data == null
+                ? const NoDataWidget()
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TileLayer(
-                        urlTemplate:
-                            'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                        userAgentPackageName: 'com.example.app',
-                        errorImage: const NetworkImage(
-                            'https://tile.openstreetmap.org/18/0/0.png'),
-                      ),
-                      MarkerLayer(
-                        markers: [
-                          Marker(
-                            point:
-                                LatLng(-11.641847812085455, 27.406655102042084),
-                            width: 80,
-                            height: 80,
-                            builder: (context) => Icon(
-                              Icons.location_pin,
-                              color: Colors.red,
-                            ),
-                          ),
-                          Marker(
-                            point:
-                                LatLng(-11.657267236998631, 27.486194449867426),
-                            width: 80,
-                            height: 80,
-                            builder: (context) => Icon(
-                              Icons.location_pin,
-                              color: Colors.red,
-                            ),
-                          ),
-                          Marker(
-                            point:
-                                LatLng(-11.65486099972942, 27.50198729637693),
-                            width: 80,
-                            height: 80,
-                            builder: (context) => Icon(
-                              Icons.location_pin,
-                              color: Colors.red,
-                            ),
-                          ),
-                          Marker(
-                            point:
-                                LatLng(-11.638046291686848, 27.439968645987435),
-                            width: 80,
-                            height: 80,
-                            builder: (context) => Icon(
-                              Icons.location_pin,
-                              color: Colors.red,
-                            ),
-                          ),
-                          Marker(
-                            point:
-                                LatLng(-11.612489012304724, 27.39765411678915),
-                            width: 80,
-                            height: 80,
-                            builder: (context) => Icon(
-                              Icons.location_pin,
-                              color: Colors.red,
-                            ),
-                          ),
-                          Marker(
-                            point:
-                                LatLng(-11.650782020388183, 27.36619717039618),
-                            width: 80,
-                            height: 80,
-                            builder: (context) => Icon(
-                              Icons.location_pin,
-                              color: Colors.red,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 32,
-                ),
-                ListView.builder(
-                    itemCount: controller.centresData.length,
-                    // scrollDirection: Axis.vertical,
-                    primary: false,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: AppColorTheme.whiteColor,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: AppColorTheme.darkColor.withOpacity(0.04),
-                              blurRadius: 20,
-                              offset: const Offset(0, 2),
-                            ),
+                        Text(
+                          "Centres de vote",
+                          style: GoogleFonts.roboto(
+                              textStyle: const TextStyle(
+                                  color: AppColorTheme.textColor,
+                                  fontSize: 26,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        Row(
+                          children: [
+                            _provincesDropDown(),
+                            const SizedBox(width: 8),
+                            if (controller.isProvinceSelected)
+                              _villesDropDown(),
+                            const SizedBox(width: 8),
+                            if (controller.isVilleSelected)
+                              _circonscriptionsDropDown()
                           ],
                         ),
-                        child: Padding(
-                          padding: EdgeInsets.all(16),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                controller.centresData[index].designation!,
-                                style: GoogleFonts.roboto(
-                                    textStyle: const TextStyle(
-                                        color: AppColorTheme.textColor,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Text(
-                                controller.centresData[index].province!,
-                                style: GoogleFonts.roboto(
-                                    textStyle: const TextStyle(
-                                        color: AppColorTheme.textColor,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.normal)),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Text(
-                                controller.centresData[index].commune!,
-                                style: GoogleFonts.roboto(
-                                    textStyle: const TextStyle(
-                                        color: AppColorTheme.textColor,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.normal)),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    })
-              ])
-            : NewsCardShimmerWidget();
+                        controller.isLoading
+                            ? const Padding(
+                                padding: EdgeInsets.all(32.0),
+                                child:
+                                    Center(child: CircularProgressIndicator()),
+                              )
+                            : Expanded(
+                                child:
+                                    buildCenterTable(controller.centresData)),
+                      ])
+            : const NewsCardShimmerWidget();
       }),
+    );
+  }
+
+  Flexible _provincesDropDown() {
+    return Flexible(
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+            border: Border.all(color: AppColorTheme.primaryColor),
+            borderRadius: BorderRadius.circular(10)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton(
+              value: selectedProvince,
+              iconSize: 36,
+              elevation: 1,
+              focusColor: Colors.transparent,
+              icon: const Icon(Icons.arrow_drop_down),
+              hint: const Text('Provinces',
+                  style: TextStyle(
+                      color: AppColorTheme.textColor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500)),
+              items: [
+                if (controller.provinces.data != null)
+                  for (var prov in controller.provinces.data!)
+                    DropdownMenuItem<String>(
+                        value: prov.id.toString(),
+                        child: Text(prov.designation!,
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w500)))
+              ],
+              onChanged: (value) {
+                // controller.getByCategory(value.toString()),
+                setState(() {
+                  selectedProvince = value;
+                  controller.getVilles(value!);
+                });
+
+                // print('VILLES: ${controller.villes.data}');
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _villesDropDown() {
+    return Obx(() {
+      return Flexible(
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+              border: Border.all(color: AppColorTheme.primaryColor),
+              borderRadius: BorderRadius.circular(10)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: DropdownButtonHideUnderline(
+              child: DropdownButton(
+                value: selectedVille,
+                iconSize: 36,
+                elevation: 1,
+                focusColor: Colors.transparent,
+                icon: const Icon(Icons.arrow_drop_down),
+                hint: const Text('Villes',
+                    style: TextStyle(
+                        color: AppColorTheme.textColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500)),
+                items: [
+                  if (controller.villes.data != null)
+                    for (var vil in controller.villes.data!)
+                      DropdownMenuItem<String>(
+                          value: vil.id.toString(),
+                          child: Text(vil.designation!,
+                              style: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500)))
+                ],
+                onChanged: (value) {
+                  // controller.getByCategory(value.toString()),
+                  print('selected ville $value');
+                  setState(() {
+                    selectedVille = value;
+                    controller.getCirconscriptions(value!);
+                  });
+                },
+              ),
+            ),
+          ),
+        ),
+      );
+    });
+  }
+
+  Flexible _circonscriptionsDropDown() {
+    return Flexible(
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+            border: Border.all(color: AppColorTheme.primaryColor),
+            borderRadius: BorderRadius.circular(10)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton(
+              value: selectedCirconscription,
+              iconSize: 36,
+              elevation: 1,
+              focusColor: Colors.transparent,
+              icon: const Icon(Icons.arrow_drop_down),
+              hint: const Text('Circonscriptions',
+                  style: TextStyle(
+                      color: AppColorTheme.textColor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500)),
+              items: [
+                if (controller.villes.data != null)
+                  for (var cir in controller.circonscriptions)
+                    DropdownMenuItem<String>(
+                        value: cir.id.toString(),
+                        child: Text(cir.designation!,
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w500)))
+              ],
+              onChanged: (value) {
+                // controller.getByCategory(value.toString()),
+                setState(() {
+                  selectedCirconscription = value;
+                  controller.getByCirconscription(value!);
+                });
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildCenterTable(List<CentresData> data) {
+    return DataTable2(
+      // columnSpacing: defaultPadding,
+      // minWidth: 600,
+      smRatio: 0.5,
+      lmRatio: 2,
+      columnSpacing: 0,
+      horizontalMargin: 0,
+      columns: [
+        DataColumn2(
+          label: Text("No", style: titleStyle),
+          size: ColumnSize.S,
+        ),
+        DataColumn2(
+          label: Text("Désignation", style: titleStyle),
+        ),
+        DataColumn2(
+            label: Center(child: Text("Ville", style: titleStyle)),
+            numeric: true),
+        DataColumn2(
+            label: Center(child: Text("Circonscription", style: titleStyle)),
+            numeric: true),
+        DataColumn2(
+            label: Center(child: Text("Province", style: titleStyle)),
+            numeric: true),
+      ],
+      rows: List.generate(
+        data.length,
+        (index) {
+          return dataRow(data[index], index + 1);
+        },
+      ),
+    );
+  }
+
+  DataRow2 dataRow(CentresData data, int index) {
+    return DataRow2(
+      cells: [
+        DataCell(Text(index.toString(),
+            style: contentStyle.copyWith(fontWeight: FontWeight.bold))),
+        DataCell(Text(data.designation!, style: contentStyle)),
+        DataCell(
+            Center(child: Text(data.ville!.designation!, style: contentStyle))),
+        DataCell(Center(
+            child:
+                Text(data.circonscription!.designation!, style: contentStyle))),
+        DataCell(Center(
+            child:
+                Text(data.ville!.province!.designation!, style: contentStyle))),
+      ],
     );
   }
 }

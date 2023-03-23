@@ -17,7 +17,7 @@ class EnrollmentCentersController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getAll();
+    // getAll();
     _subpage.value = Get.parameters['subpage']!;
   }
 
@@ -32,11 +32,11 @@ class EnrollmentCentersController extends GetxController {
   }
 
   getAll() {
-    _andidatsRepository.getAll().then((CentresModel? data) {
-      if (data != null) {
-        _centresModel.value = data;
-        _centresData.value = data.data!;
-      }
-    });
+    // _andidatsRepository.getAll().then((CentresModel? data) {
+    //   if (data != null) {
+    //     _centresModel.value = data;
+    //     _centresData.value = data.data!;
+    //   }
+    // });
   }
 }

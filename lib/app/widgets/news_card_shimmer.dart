@@ -7,28 +7,30 @@ class NewsCardShimmerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 200,
-            child: _buildShimmer(),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          SizedBox(
-            height: 200,
-            child: _buildShimmer(),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          SizedBox(
-            height: 200,
-            child: _buildShimmer(),
-          ),
-        ],
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 200,
+              child: _buildShimmer(),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            SizedBox(
+              height: 200,
+              child: _buildShimmer(),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            SizedBox(
+              height: 200,
+              child: _buildShimmer(),
+            ),
+          ],
+        ),
       ),
     );
   }

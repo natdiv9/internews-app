@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 
 import '../../../../../core/themes/color_theme.dart';
+import '../../../../../widgets/no_data_widget.dart';
 import 'controllers/faq.controller.dart';
 
 class DesktopFAQScreen extends StatelessWidget {
@@ -25,29 +26,7 @@ class DesktopFAQScreen extends StatelessWidget {
             ),
             (!controller.isBusy)
                 ? (controller.faqList.isEmpty)
-                    ? Center(
-                        child: Column(
-                          children: [
-                            const SizedBox(
-                              height: 32,
-                            ),
-                            SvgPicture.asset(
-                              'assets/images/no_data.svg',
-                              width: 200,
-                              height: 200,
-                            ),
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            Text('Aucune donnée disponible',
-                                style: TextStyle(
-                                    color: AppColorTheme.textColor
-                                        .withOpacity(0.60),
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500))
-                          ],
-                        ),
-                      )
+                    ? const NoDataWidget()
                     : ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),

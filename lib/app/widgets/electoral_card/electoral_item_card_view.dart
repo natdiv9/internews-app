@@ -61,7 +61,7 @@ class _ElectoralItemCardViewState extends State<ElectoralItemCardView> {
                 body: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    widget.electoralData.contenu * 30,
+                    widget.electoralData.contenu,
                     textAlign: TextAlign.start,
                     style: GoogleFonts.roboto(
                         textStyle: TextStyle(

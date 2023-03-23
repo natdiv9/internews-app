@@ -9,6 +9,7 @@ import 'package:mediaapp/app/modules/home/views/screens/electoral/controllers/el
 import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 
 import '../../../../../widgets/electoral_card/electoral_item_card_view.dart';
+import '../../../../../widgets/no_data_widget.dart';
 
 class MobileElectoralScreen extends StatelessWidget {
   MobileElectoralScreen({Key? key}) : super(key: key);
@@ -82,29 +83,7 @@ class MobileElectoralScreen extends StatelessWidget {
             ),
             (!controller.isBusy)
                 ? controller.electoralData.isEmpty
-                    ? Center(
-                        child: Column(
-                          children: [
-                            const SizedBox(
-                              height: 32,
-                            ),
-                            SvgPicture.asset(
-                              'assets/images/no_data.svg',
-                              width: 200,
-                              height: 200,
-                            ),
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            Text('Aucune donnée disponible',
-                                style: TextStyle(
-                                    color: AppColorTheme.textColor
-                                        .withOpacity(0.60),
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500))
-                          ],
-                        ),
-                      )
+                    ? const NoDataWidget()
                     : ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),

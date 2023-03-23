@@ -28,7 +28,7 @@ class CandidatsProvider {
         return Future.error('erro');
       }
     } catch (_) {
-      print('ERREURE - CandidatsProvider');
+      print('ERREUR - CandidatsProvider');
 
       print(_.toString());
     }

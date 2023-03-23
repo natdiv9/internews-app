@@ -9,4 +9,8 @@ class AppColorTheme {
 
   static const Color whiteColor = Color(0XFFFFFFFF);
   static const Color darkColor = Color(0XFF000000);
+
+  static const Color bleu = Color(0XFF007FFF);
+  static const Color rouge = Color(0XFFCE1021);
+  static const Color jaune = Color(0XFFF7D618);
 }

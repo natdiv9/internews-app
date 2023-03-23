@@ -1,209 +1,104 @@
+import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 
+import '../../../../../../data/models/centres_model.dart';
+import '../../../../../../widgets/no_data_widget.dart';
 import 'controllers/vote_centers.controller.dart';
 
-class MobileVoteCentersScreen extends GetView<VoteCentersController> {
+class MobileVoteCentersScreen extends StatelessWidget {
   MobileVoteCentersScreen({Key? key}) : super(key: key);
   VoteCentersController controller = Get.put(VoteCentersController());
+  TextStyle titleStyle = GoogleFonts.poppins(
+      textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold));
+  TextStyle contentStyle = GoogleFonts.poppins(
+      textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500));
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0),
-      child: Obx(() {
-        return (controller.centresData.length > 0)
-            ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Container(
-                  height: 300,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColorTheme.darkColor.withOpacity(0.04),
-                        blurRadius: 20,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: FlutterMap(
-                    options: MapOptions(
-                      center: LatLng(-11.663054, 27.483564),
-                      zoom: 11.2,
-                      keepAlive: true,
+    return Obx(() {
+      return (!controller.isBusy)
+          ? controller.centresData.isEmpty
+              ? const NoDataWidget()
+              : Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Centres de vote",
+                      style: GoogleFonts.roboto(
+                          textStyle: const TextStyle(
+                              color: AppColorTheme.textColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold)),
                     ),
-                    nonRotatedChildren: [
-                      // AttributionWidget.defaultWidget(
-                      //   source: 'OpenStreetMap contributors',
-                      //   onSourceTapped: null,
-                      // ),
-                    ],
-                    children: [
-                      TileLayer(
-                        urlTemplate:
-                            'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                        userAgentPackageName: 'com.example.app',
-                        errorImage: const NetworkImage(
-                            'https://tile.openstreetmap.org/18/0/0.png'),
-                      ),
-                      MarkerLayer(
-                        markers: [
-                          Marker(
-                            point:
-                                LatLng(-11.641847812085455, 27.406655102042084),
-                            width: 80,
-                            height: 80,
-                            builder: (context) => Icon(
-                              Icons.location_pin,
-                              color: Colors.red,
-                            ),
-                          ),
-                          Marker(
-                            point:
-                                LatLng(-11.657267236998631, 27.486194449867426),
-                            width: 80,
-                            height: 80,
-                            builder: (context) => Icon(
-                              Icons.location_pin,
-                              color: Colors.red,
-                            ),
-                          ),
-                          Marker(
-                            point:
-                                LatLng(-11.65486099972942, 27.50198729637693),
-                            width: 80,
-                            height: 80,
-                            builder: (context) => Icon(
-                              Icons.location_pin,
-                              color: Colors.red,
-                            ),
-                          ),
-                          Marker(
-                            point:
-                                LatLng(-11.638046291686848, 27.439968645987435),
-                            width: 80,
-                            height: 80,
-                            builder: (context) => Icon(
-                              Icons.location_pin,
-                              color: Colors.red,
-                            ),
-                          ),
-                          Marker(
-                            point:
-                                LatLng(-11.612489012304724, 27.39765411678915),
-                            width: 80,
-                            height: 80,
-                            builder: (context) => Icon(
-                              Icons.location_pin,
-                              color: Colors.red,
-                            ),
-                          ),
-                          Marker(
-                            point:
-                                LatLng(-11.650782020388183, 27.36619717039618),
-                            width: 80,
-                            height: 80,
-                            builder: (context) => Icon(
-                              Icons.location_pin,
-                              color: Colors.red,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
                   ),
-                ),
-                SizedBox(
-                  height: 32,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    "Centre d\'enrollement",
-                    style: GoogleFonts.roboto(
-                        textStyle: const TextStyle(
-                            color: AppColorTheme.textColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold)),
+                  const SizedBox(
+                    height: 24,
                   ),
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: ListView.builder(
-                      itemCount: controller.centresData.length,
-                      // scrollDirection: Axis.vertical,
-                      primary: false,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            color: AppColorTheme.whiteColor,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color:
-                                    AppColorTheme.darkColor.withOpacity(0.04),
-                                blurRadius: 20,
-                                offset: const Offset(0, 2),
-                              ),
-                            ],
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(16),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  controller.centresData[index].designation!,
-                                  style: GoogleFonts.roboto(
-                                      textStyle: const TextStyle(
-                                          color: AppColorTheme.textColor,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                Text(
-                                  controller.centresData[index].province!,
-                                  style: GoogleFonts.roboto(
-                                      textStyle: const TextStyle(
-                                          color: AppColorTheme.textColor,
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.normal)),
-                                ),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                Text(
-                                  controller.centresData[index].commune!,
-                                  style: GoogleFonts.roboto(
-                                      textStyle: const TextStyle(
-                                          color: AppColorTheme.textColor,
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.normal)),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      }),
-                )
-              ])
-            : Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: NewsCardShimmerWidget(),
-              );
-      }),
+                  Expanded(
+                      child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: buildCenterTable(controller.centresData),
+                  )),
+                ])
+          : const NewsCardShimmerWidget();
+    });
+  }
+
+  Widget buildCenterTable(List<CentresData> data) {
+    return DataTable2(
+      // columnSpacing: defaultPadding,
+      // minWidth: 600,
+      smRatio: 0.5,
+      lmRatio: 2,
+      columnSpacing: 0,
+      horizontalMargin: 0,
+      columns: [
+        DataColumn2(
+          label: Text("No", style: titleStyle),
+          size: ColumnSize.S,
+        ),
+        DataColumn2(
+          label: Text("Désignation", style: titleStyle),
+        ),
+        DataColumn2(
+            label: Center(child: Text("Ville", style: titleStyle)),
+            numeric: true),
+        DataColumn2(
+            label: Center(child: Text("Circonscription", style: titleStyle)),
+            numeric: true),
+        DataColumn2(
+            label: Center(child: Text("Province", style: titleStyle)),
+            numeric: true),
+      ],
+      rows: List.generate(
+        data.length,
+        (index) {
+          return dataRow(data[index], index + 1);
+        },
+      ),
+    );
+  }
+
+  DataRow2 dataRow(CentresData data, int index) {
+    return DataRow2(
+      cells: [
+        DataCell(Text(index.toString(),
+            style: contentStyle.copyWith(fontWeight: FontWeight.bold))),
+        DataCell(Text(data.designation!, style: contentStyle)),
+        DataCell(
+            Center(child: Text(data.ville!.designation!, style: contentStyle))),
+        DataCell(Center(
+            child:
+                Text(data.circonscription!.designation!, style: contentStyle))),
+        DataCell(Center(
+            child:
+                Text(data.ville!.province!.designation!, style: contentStyle))),
+      ],
     );
   }
 }

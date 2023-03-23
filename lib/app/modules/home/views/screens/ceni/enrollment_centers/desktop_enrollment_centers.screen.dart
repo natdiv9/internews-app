@@ -173,25 +173,11 @@ class DesktopEnrollmentCentersScreen
                               SizedBox(
                                 height: 8,
                               ),
-                              Text(
-                                controller.centresData[index].province!,
-                                style: GoogleFonts.roboto(
-                                    textStyle: const TextStyle(
-                                        color: AppColorTheme.textColor,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.normal)),
-                              ),
+                              
                               SizedBox(
                                 height: 8,
                               ),
-                              Text(
-                                controller.centresData[index].commune!,
-                                style: GoogleFonts.roboto(
-                                    textStyle: const TextStyle(
-                                        color: AppColorTheme.textColor,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.normal)),
-                              ),
+                              
                             ],
                           ),
                         ),

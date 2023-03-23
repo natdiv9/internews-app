@@ -7,6 +7,7 @@ import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 
 import '../../../../../../widgets/calandars/calandar_card.dart';
+import '../../../../../../widgets/no_data_widget.dart';
 import 'controllers/calendar.controller.dart';
 
 class DesktopCalendarScreen extends StatelessWidget {
@@ -22,30 +23,8 @@ class DesktopCalendarScreen extends StatelessWidget {
           () => (!controller.isBusy)
               ? controller.calandarsList.isEmpty
                   ? ListView(
-                      children: [
-                        Center(
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 24,
-                              ),
-                              SvgPicture.asset(
-                                'assets/images/no_data.svg',
-                                width: 200,
-                                height: 200,
-                              ),
-                              const SizedBox(
-                                height: 16,
-                              ),
-                              Text('Aucune donnée disponible',
-                                  style: TextStyle(
-                                      color: AppColorTheme.textColor
-                                          .withOpacity(0.60),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500))
-                            ],
-                          ),
-                        ),
+                      children: const [
+                        NoDataWidget(),
                       ],
                     )
                   : ListView(children: [
@@ -91,11 +70,7 @@ class DesktopCalendarScreen extends StatelessWidget {
                                 calandarsData: controller.calandarsList[index]);
                           })
                     ])
-              : ListView(
-                  children: const [
-                    NewsCardShimmerWidget(),
-                  ],
-                ),
+              : const NewsCardShimmerWidget(),
         ));
   }
 }
