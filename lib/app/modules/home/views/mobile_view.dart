@@ -12,6 +12,7 @@ import 'package:mediaapp/app/modules/news_details/views/mobile_news_details_view
 import 'package:mediaapp/app/widgets/headers/mobile_header.dart';
 
 import '../../../widgets/drawers/desktop_drawer_view.dart';
+import 'screens/mode_scrutin/mobile_mode_scrutin.screen.dart';
 
 class MobileView extends GetView<HomeController> {
   MobileView({super.key});
@@ -40,6 +41,8 @@ class MobileView extends GetView<HomeController> {
         return MobileNewsScreen();
       case 'electoral':
         return MobileElectoralScreen();
+      case 'scrutin':
+        return MobileModeScrutinScreen();
       case 'faq':
         return MobileFAQScreen();
       case 'ceni':

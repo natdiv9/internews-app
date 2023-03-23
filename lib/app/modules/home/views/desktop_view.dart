@@ -13,6 +13,7 @@ import 'package:mediaapp/app/widgets/headers/desktop_header.dart';
 import 'package:mediaapp/app/widgets/right_side_nav/right_side_nav_view.dart';
 
 import 'screens/faq/desktop_faq.screen.dart';
+import 'screens/mode_scrutin/desktop_mode_scrutin.screen.dart';
 
 class DesktopView extends GetView<HomeController> {
   const DesktopView({super.key});
@@ -47,6 +48,8 @@ class DesktopView extends GetView<HomeController> {
         return DesktopNewsScreen();
       case 'electoral':
         return DesktopElectoralScreen();
+      case 'scrutin':
+        return DesktopModeScrutinScreen();
       case 'faq':
         return DesktopFAQScreen();
       case 'ceni':

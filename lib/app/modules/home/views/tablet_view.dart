@@ -12,6 +12,7 @@ import 'package:mediaapp/app/modules/news_details/views/desktop_news_details_vie
 import 'package:mediaapp/app/widgets/headers/tablet_header.dart';
 
 import '../../../widgets/drawers/desktop_drawer_view.dart';
+import 'screens/mode_scrutin/desktop_mode_scrutin.screen.dart';
 
 class TabletView extends GetView<HomeController> {
   TabletView({super.key});
@@ -45,16 +46,16 @@ class TabletView extends GetView<HomeController> {
       case 'welcome':
         return DesktopWelcomeScreen();
       case 'news':
-        if (controller.currentDetailPageId != null &&
-            controller.currentDetailPageId != '') {
+        if (controller.currentDetailPageId != '') {
           return DesktopNewsDetailsView();
         }
         return DesktopNewsScreen();
       case 'electoral':
         return DesktopElectoralScreen();
+      case 'scrutin':
+        return DesktopModeScrutinScreen();
       case 'ceni':
-        if (controller.currentCandidatePageId != null &&
-            controller.currentCandidatePageId != '') {
+        if (controller.currentCandidatePageId != '') {
           return DesktopCandidatsDetailsView();
         }
         return DesktopCeniScreen(subPage: controller.currentCeniPage);
