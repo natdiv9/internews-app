@@ -23,6 +23,7 @@ class DesktopRecentNewsView extends GetView {
             children: [
               NewsCardWidget(
                 index: index,
+                news: newsList[index],
               ),
               const SizedBox(
                 height: 32,

@@ -4,6 +4,9 @@ import 'package:get/get.dart';
 import 'package:mediaapp/app/modules/home/views/screens/ceni/calendar/desktop_calendar.screen.dart';
 import 'package:mediaapp/app/modules/home/views/screens/ceni/vote_centers/desktop_vote_centers.screen.dart';
 
+import 'circonscription/desktop_circonscription.screen.dart';
+import 'legislatives/legislatives.desktop.dart';
+
 class DesktopCeniScreen extends GetView {
   String subPage;
 
@@ -14,15 +17,15 @@ class DesktopCeniScreen extends GetView {
       body: LayoutBuilder(builder: (context, constraints) {
         switch (subPage) {
           case 'legislative':
-            return Placeholder();
+            return LegislativeDesktopScreen();
           case 'circonscription':
-            return Placeholder();
+            return DesktopCirconscriptionScreen();
           case 'calendar':
             return DesktopCalendarScreen();
           case 'vote_centers':
             return DesktopVoteCentersScreen();
           default:
-            return Placeholder();
+            return LegislativeDesktopScreen();
         }
       }),
     );

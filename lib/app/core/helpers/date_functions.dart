@@ -38,3 +38,12 @@ String formatedDate(String date) {
   var year = date.split('-')[0];
   return '$day $namedMonth $year';
 }
+
+String formatedDateWithTime(String date) {
+  var namedMonth = getNameOfMonth(DateTime.parse(date));
+  var day = date.split('T')[0].split('-')[2];
+  var year = date.split('T')[0].split('-')[0];
+  var hour = date.split('T')[1].split(':')[0];
+  var min = date.split('T')[1].split(':')[1];
+  return '$day $namedMonth $year à $hour:$min';
+}

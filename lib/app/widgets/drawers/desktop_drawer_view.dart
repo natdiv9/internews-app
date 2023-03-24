@@ -63,7 +63,7 @@ class DesktopDrawerView extends GetView {
                                             'Calendrier', 'calendar'),
                                         _buildCeniSubNavBarMenu(
                                             'Circonscriptions',
-                                            'circonscriptions'),
+                                            'circonscription'),
                                         _buildCeniSubNavBarMenu(
                                             'Centres de vote', 'vote_centers'),
                                       ]),

@@ -14,9 +14,22 @@ class MobileModeScrutinScreen extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 32),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Obx(
           () => ListView(children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: SelectableText(
+                'Scrutin',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.roboto(
+                    textStyle: const TextStyle(
+                        color: AppColorTheme.textColor,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600)),
+              ),
+            ),
+
             const SizedBox(
               height: 16,
             ),

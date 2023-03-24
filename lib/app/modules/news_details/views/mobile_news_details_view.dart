@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
+import '../../../core/helpers/date_functions.dart';
 import '../controllers/news_details_controller.dart';
 
 class MobileNewsDetailsView extends StatelessWidget {
@@ -37,7 +38,7 @@ class MobileNewsDetailsView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SelectableText(
-                          'Publié par internews, ${controller.newsData.createdAt}',
+                          'Publié le ${formatedDateWithTime(controller.newsData.createdAt!)}',
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                                   color:

@@ -23,21 +23,22 @@ class DesktopWelcomeScreen extends GetView<WelcomeController> {
               children: [
                 MainBannerView(),
                 const SizedBox(
-                  height: 24,
+                  height: 32,
                 ),
-                KeyWordsView(),
-                const SizedBox(
-                  height: 24,
-                ),
+                // KeyWordsView(),
+                // const SizedBox(
+                //   height: 24,
+                // ),
                 // IntroduceTextView(),
                 Text(
-                  'Informations recentes',
+                  "Les dernières nouvelles",
                   style: GoogleFonts.roboto(
                       textStyle: const TextStyle(
                           color: AppColorTheme.textColor,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700)),
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold)),
                 ),
+
                 const SizedBox(
                   height: 24,
                 ),

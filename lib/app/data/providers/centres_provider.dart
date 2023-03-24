@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+
 import '../../core/helpers/const.dart';
 import '../models/centres_model.dart';
+import '../models/circonscription_model.dart';
 import '../models/province_model.dart';
 import '../models/ville_model.dart';
 
@@ -116,6 +118,42 @@ class CentresProvider {
       }
     } catch (_) {
       print('ERREUR - CirconscriptionModel');
+
+      print(_.toString());
+    }
+    return Future.error('error');
+  }
+
+  Future<CirconscriptionModel> getAllCirconscription(
+      {required String province,
+      required String ville,
+      required String legislative}) async {
+    try {
+      var url = '$baseUrl/communes';
+      if (province.isNotEmpty) {
+        url += '?province=$province';
+      }
+      if (ville.isNotEmpty) {
+        url += '&ville=$ville';
+      }
+      if (legislative.isNotEmpty) {
+        url += '&legislative=$legislative';
+      }
+      print('URL: $url');
+      var response = await httpClient.get(Uri.parse(url));
+      if (response.statusCode == 200) {
+        Map<String, dynamic> jsonResponse =
+            Map<String, dynamic>.from(json.decode(response.body));
+        CirconscriptionModel circonLegislativeModel =
+            CirconscriptionModel.fromJson(jsonResponse);
+
+        return circonLegislativeModel;
+      } else {
+        print('erro');
+        return Future.error('erro');
+      }
+    } catch (_) {
+      print('ERREURE - CirconscriptionModel');
 
       print(_.toString());
     }

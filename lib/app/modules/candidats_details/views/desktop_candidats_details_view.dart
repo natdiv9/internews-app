@@ -17,7 +17,7 @@ class DesktopCandidatsDetailsView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Obx(() {
-        return (!controller.isLoading)
+        return (!controller.isBusy)
             ? ListView(
                 children: [
                   Container(
@@ -46,7 +46,7 @@ class DesktopCandidatsDetailsView extends StatelessWidget {
                     height: 106,
                   ),
                   SelectableText(
-                    "Martin Fayulu",
+                    controller.candidatData.nom!,
                     // "${controller.candidatData.user.firstName} ${controller.candidatData.user.lastName}",
                     style: GoogleFonts.roboto(
                         textStyle: const TextStyle(
@@ -58,7 +58,7 @@ class DesktopCandidatsDetailsView extends StatelessWidget {
                     height: 8,
                   ),
                   SelectableText(
-                    "Candidat No ${controller.candidatData.id} - Parti LAMUKA",
+                    "Parti ${controller.candidatData.partiPolitique}",
                     style: GoogleFonts.roboto(
                         textStyle: TextStyle(
                             color: AppColorTheme.textColor.withOpacity(0.8),
@@ -81,7 +81,7 @@ class DesktopCandidatsDetailsView extends StatelessWidget {
                     height: 32,
                   ),
                   _buildAproposWidget(
-                      "Mon projet électoral pour les 5 ans à veni"),
+                      "Mon projet électoral pour les 5 ans à venir"),
                   const SizedBox(
                     height: 32,
                   ),
@@ -91,7 +91,7 @@ class DesktopCandidatsDetailsView extends StatelessWidget {
                   ),
                 ],
               )
-            : NewsCardShimmerWidget();
+            : const NewsCardShimmerWidget();
       }),
     );
   }

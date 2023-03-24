@@ -5,6 +5,8 @@ import 'package:mediaapp/app/modules/home/views/screens/ceni/calendar/mobile_cal
 
 import 'package:mediaapp/app/modules/home/views/screens/ceni/vote_centers/mobile_vote_centers.screen.dart';
 
+import 'circonscription/mobile_circonscription.screen.dart';
+
 class MobileCeniScreen extends GetView {
   String subPage;
 
@@ -17,7 +19,7 @@ class MobileCeniScreen extends GetView {
           case 'legislative':
             return Placeholder();
           case 'circonscription':
-            return Placeholder();
+            return MobileCirconscriptionScreen();
           case 'calendar':
             return MobileCalendarScreen();
           case 'vote_centers':

@@ -25,7 +25,7 @@ class MainBannerView extends GetView {
           Padding(
             padding: const EdgeInsets.all(42),
             child: Text(
-              'Nous vous tenons informé sur toute l’actualité sur le processus électorale en RDC',
+              'Nous vous tenons informés sur toute l’actualité sur le processus électorale en RDC',
               textAlign: TextAlign.center,
               style: GoogleFonts.roboto(
                   textStyle: const TextStyle(

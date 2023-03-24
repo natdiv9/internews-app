@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -8,6 +9,7 @@ import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 import 'package:mediaapp/app/widgets/news_card/desktop_news_item_card_view.dart';
 
 import '../../../../../widgets/news_card/news_card.dart';
+import '../../../../../widgets/no_data_widget.dart';
 import 'controllers/news.controller.dart';
 
 class DesktopNewsScreen extends StatelessWidget {
@@ -19,130 +21,92 @@ class DesktopNewsScreen extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
         child: Obx(
-          () => ListView(
-
-              //crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 24,
-                ),
-                (controller.newsList.length > 0)
-                    ? Column(
-                        children: [
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.40,
-                            width: double.infinity,
-                            clipBehavior: Clip.hardEdge,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4),
-                                image: const DecorationImage(
-                                    image: AssetImage('assets/images/vote.jpg'),
-                                    fit: BoxFit.cover)),
-                          ),
-                          const SizedBox(
-                            height: 16,
-                          ),
-                          SelectableText(
-                            "L’élection présidentielle est fixée au 20 décembre 2023, selon le calendrier dévoilé officiellement ce samedi 26 novembre par Denis Kadima, président de la Commission électorale nationale indépendante...",
-                            style: GoogleFonts.roboto(
-                                textStyle: TextStyle(
-                                    color: AppColorTheme.textColor,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                        ],
-                      )
-                    : const NewsCardShimmerWidget(),
-
-                const SizedBox(
-                  height: 12,
-                ),
-                Row(
-                  children: [
-                    _lireLaSuiteButton(),
-                  ],
-                ),
-                const SizedBox(
-                  height: 32,
-                ),
-                SelectableText(
-                  'Plus d\infos',
-                  style: GoogleFonts.roboto(
-                      textStyle: const TextStyle(
-                          color: AppColorTheme.textColor,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700)),
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                // _buildRecentNewsWidget(),
-
-                (controller.newsList.length > 0)
-                    ? ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: controller.newsList.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 36),
-                            child: NewsCardWidget(index: index),
-                          );
-                        })
-                    : const NewsCardShimmerWidget(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                          minimumSize: MaterialStateProperty.all(Size(150, 38)),
-                          overlayColor: MaterialStateProperty.all(
-                              AppColorTheme.secondayColor.withOpacity(0.7)),
-                          backgroundColor: MaterialStateProperty.all(
-                              AppColorTheme.primaryColor)),
-                      child: SelectableText(
-                        'Voir plus',
+          () => (!controller.isBusy)
+              ? controller.newsList.isEmpty
+                  ? const NoDataWidget()
+                  : ListView(children: [
+                      buildCarousel(context),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      Text(
+                        "Les dernières nouvelles",
                         style: GoogleFonts.roboto(
                             textStyle: const TextStyle(
-                                color: AppColorTheme.whiteColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400)),
+                                color: AppColorTheme.textColor,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold)),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-              ]),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: controller.newsList.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 36),
+                              child: NewsCardWidget(
+                                  index: index,
+                                  news: controller.newsList[index]),
+                            );
+                          }),
+                    ])
+              : const NewsCardShimmerWidget(),
         ));
   }
 
-  OutlinedButton _lireLaSuiteButton() {
-    return OutlinedButton(
-        onPressed: () {},
-        style: OutlinedButton.styleFrom(fixedSize: Size(300, 38)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Expanded(
-              child: SelectableText(
-                'Lire la suite de cet article',
-                style: GoogleFonts.roboto(
-                    textStyle: const TextStyle(
-                        color: AppColorTheme.textColor,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400)),
-              ),
-            ),
-            SvgPicture.asset(
-              'assets/icons/arrow-right.svg',
-              width: 18,
-              height: 18,
-              fit: BoxFit.contain,
-            )
-          ],
-        ));
+  CarouselSlider buildCarousel(BuildContext context) {
+    return CarouselSlider.builder(
+      itemCount: controller.getFiveNews().length,
+      options: CarouselOptions(
+          height: MediaQuery.of(context).size.height * 0.40,
+          aspectRatio: 1,
+          viewportFraction: 1,
+          autoPlay: true,
+          autoPlayCurve: Curves.easeInOutExpo,
+          enlargeCenterPage: true),
+      itemBuilder: (context, index, realIndex) {
+        return Container(
+            clipBehavior: Clip.hardEdge,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+            child: Stack(
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  child: Image.asset(
+                    'assets/images/ceni.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  left: 0,
+                  child: Container(
+                    decoration:
+                        BoxDecoration(color: Colors.black.withOpacity(0.8)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        //"L’élection présidentielle est fixée au 20 décembre 2023, selon le calendrier dévoilé officiellement ce samedi 26 novembre par Denis Kadima, président de la Commission électorale nationale indépendante...",
+                        controller.getFiveNews()[index].titre!,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.publicSans(
+                            textStyle: const TextStyle(
+                                color: AppColorTheme.whiteColor,
+                                fontSize: 24,
+                                fontWeight: FontWeight.w500)),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ));
+      },
+    );
   }
 }

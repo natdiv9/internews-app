@@ -1,4 +1,5 @@
 import 'dart:core';
+import 'dart:math';
 
 import 'package:get/get.dart';
 import 'package:mediaapp/app/data/models/news_model.dart';
@@ -15,6 +16,11 @@ class NewsController extends GetxController {
 
   final _newsList = <NewsData>[].obs;
   List<NewsData> get newsList => _newsList;
+
+  /// Get and Set for the isBusy state
+  final _isBusy = true.obs;
+  bool get isBusy => _isBusy.value;
+  set isBusy(value) => _isBusy.value = value;
 
   @override
   void onInit() {
@@ -33,9 +39,34 @@ class NewsController extends GetxController {
   }
 
   getAll() {
+    isBusy = true;
     _newsRepository.getAll().then((NewsModel? data) {
       newsModel = data;
       _newsList.value = newsModel.data!;
+      isBusy = false;
     });
+  }
+
+  List<NewsData> getFiveNews() {
+    if (_newsList.length <= 5) {
+      return _newsList.sublist(0, 5);
+    }
+    var five = <NewsData>[];
+    var randomIndex = <int>[];
+    var length = _newsList.length;
+    while (true) {
+      var r = Random().nextInt(length);
+      if (!randomIndex.contains(r)) {
+        randomIndex.add(r);
+      }
+      if (randomIndex.length == 5) {
+        break;
+      }
+    }
+
+    for (var i in randomIndex) {
+      five.add(_newsList[i]);
+    }
+    return five;
   }
 }

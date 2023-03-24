@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
-import 'package:mediaapp/app/data/models/candidats_model.dart';
+
+import '../../data/models/candidat_model.dart';
 
 class MobileCandidatCardView extends GetView {
   const MobileCandidatCardView(this.candidatData, this.subpage, {Key? key})
       : super(key: key);
-  final CandidatsData candidatData;
+  final CandidatData candidatData;
   final String subpage;
   @override
   Widget build(BuildContext context) {
@@ -58,25 +59,25 @@ class MobileCandidatCardView extends GetView {
                 SizedBox(
                   height: 8,
                 ),
-                Text(
-                  "${candidatData.user!.firstName} ${candidatData.user!.lastName}",
-                  style: GoogleFonts.roboto(
-                      textStyle: const TextStyle(
-                          color: AppColorTheme.textColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold)),
-                ),
+                // Text(
+                //   "${candidatData.user!.firstName} ${candidatData.user!.lastName}",
+                //   style: GoogleFonts.roboto(
+                //       textStyle: const TextStyle(
+                //           color: AppColorTheme.textColor,
+                //           fontSize: 16,
+                //           fontWeight: FontWeight.bold)),
+                // ),
                 SizedBox(
                   height: 8,
                 ),
-                Text(
-                  "${candidatData.province}",
-                  style: GoogleFonts.roboto(
-                      textStyle: const TextStyle(
-                          color: AppColorTheme.textColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500)),
-                ),
+                // Text(
+                //   "${candidatData.province}",
+                //   style: GoogleFonts.roboto(
+                //       textStyle: const TextStyle(
+                //           color: AppColorTheme.textColor,
+                //           fontSize: 14,
+                //           fontWeight: FontWeight.w500)),
+                // ),
                 SizedBox(
                   height: 16,
                 ),

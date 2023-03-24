@@ -1,6 +1,6 @@
-class CandidatsModel {
+class CandidatModel {
   int? currentPage;
-  List<CandidatsData>? data;
+  List<CandidatData>? data;
   String? firstPageUrl;
   int? from;
   int? lastPage;
@@ -13,7 +13,7 @@ class CandidatsModel {
   int? to;
   int? total;
 
-  CandidatsModel(
+  CandidatModel(
       {this.currentPage,
       this.data,
       this.firstPageUrl,
@@ -28,12 +28,12 @@ class CandidatsModel {
       this.to,
       this.total});
 
-  CandidatsModel.fromJson(Map<String, dynamic> json) {
+  CandidatModel.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
     if (json['data'] != null) {
-      data = <CandidatsData>[];
+      data = <CandidatData>[];
       json['data'].forEach((v) {
-        data?.add(CandidatsData.fromJson(v));
+        data?.add(CandidatData.fromJson(v));
       });
     }
     firstPageUrl = json['first_page_url'];
@@ -77,106 +77,138 @@ class CandidatsModel {
   }
 }
 
-class CandidatsData {
+class CandidatData {
   int? id;
-  String? candidature;
-  String? province;
-  String? partiPolitique;
-  String? description;
-  int? userId;
+  String? nom;
+  String? sexe;
+  int? circonscriptionId;
+  dynamic partiPolitique;
+  dynamic description;
   dynamic deletedAt;
   String? createdAt;
   String? updatedAt;
-  User? user;
-  dynamic ville;
-  Detail? detail;
+  Circonscription? circonscription;
+  List<CandidatLegislative>? candidatLegislative;
 
-  CandidatsData(
+  CandidatData(
       {this.id,
-      this.candidature,
-      this.province,
+      this.nom,
+      this.sexe,
+      this.circonscriptionId,
       this.partiPolitique,
       this.description,
-      this.userId,
       this.deletedAt,
       this.createdAt,
       this.updatedAt,
-      this.user,
-      this.ville,
-      this.detail});
+      this.circonscription,
+      this.candidatLegislative});
 
-  CandidatsData.fromJson(Map<String, dynamic> json) {
+  CandidatData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    candidature = json['candidature'];
-    province = json['province'];
+    nom = json['nom'];
+    sexe = json['sexe'];
+    circonscriptionId = json['circonscription_id'];
     partiPolitique = json['parti_politique'];
     description = json['description'];
-    userId = json['user_id'];
     deletedAt = json['deleted_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    user = json['user'] != null ? User?.fromJson(json['user']) : null;
-    ville = json['ville'];
-    detail = json['detail'] != null ? Detail?.fromJson(json['detail']) : null;
+    circonscription = json['circonscription'] != null
+        ? Circonscription?.fromJson(json['circonscription'])
+        : null;
+    if (json['candidat_legislative'] != null) {
+      candidatLegislative = <CandidatLegislative>[];
+      json['candidat_legislative'].forEach((v) {
+        candidatLegislative?.add(CandidatLegislative.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
-    data['candidature'] = candidature;
-    data['province'] = province;
+    data['nom'] = nom;
+    data['sexe'] = sexe;
+    data['circonscription_id'] = circonscriptionId;
     data['parti_politique'] = partiPolitique;
     data['description'] = description;
-    data['user_id'] = userId;
     data['deleted_at'] = deletedAt;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
-    if (user != null) {
-      data['user'] = user?.toJson();
+    if (circonscription != null) {
+      data['circonscription'] = circonscription?.toJson();
     }
-    data['ville'] = ville;
-    if (detail != null) {
-      data['detail'] = detail?.toJson();
+    if (candidatLegislative != null) {
+      data['candidat_legislative'] =
+          candidatLegislative?.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class User {
+class Circonscription {
   int? id;
-  String? name;
-  String? email;
-  dynamic emailVerifiedAt;
-  String? firstName;
-  String? lastName;
-  String? phoneNumber;
-  int? roles;
+  String? designation;
+  int? villeId;
+  dynamic deletedAt;
+  String? createdAt;
+  String? updatedAt;
+  Ville? ville;
+
+  Circonscription(
+      {this.id,
+      this.designation,
+      this.villeId,
+      this.deletedAt,
+      this.createdAt,
+      this.updatedAt,
+      this.ville});
+
+  Circonscription.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    designation = json['designation'];
+    villeId = json['ville_id'];
+    deletedAt = json['deleted_at'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    ville = json['ville'] != null ? Ville?.fromJson(json['ville']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['designation'] = designation;
+    data['ville_id'] = villeId;
+    data['deleted_at'] = deletedAt;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (ville != null) {
+      data['ville'] = ville?.toJson();
+    }
+    return data;
+  }
+}
+
+class Ville {
+  int? id;
+  String? designation;
+  int? provinceId;
   dynamic deletedAt;
   String? createdAt;
   String? updatedAt;
 
-  User(
+  Ville(
       {this.id,
-      this.name,
-      this.email,
-      this.emailVerifiedAt,
-      this.firstName,
-      this.lastName,
-      this.phoneNumber,
-      this.roles,
+      this.designation,
+      this.provinceId,
       this.deletedAt,
       this.createdAt,
       this.updatedAt});
 
-  User.fromJson(Map<String, dynamic> json) {
+  Ville.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    name = json['name'];
-    email = json['email'];
-    emailVerifiedAt = json['email_verified_at'];
-    firstName = json['first_name'];
-    lastName = json['last_name'];
-    phoneNumber = json['phone_number'];
-    roles = json['roles'];
+    designation = json['designation'];
+    provinceId = json['province_id'];
     deletedAt = json['deleted_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
@@ -185,13 +217,8 @@ class User {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
-    data['name'] = name;
-    data['email'] = email;
-    data['email_verified_at'] = emailVerifiedAt;
-    data['first_name'] = firstName;
-    data['last_name'] = lastName;
-    data['phone_number'] = phoneNumber;
-    data['roles'] = roles;
+    data['designation'] = designation;
+    data['province_id'] = provinceId;
     data['deleted_at'] = deletedAt;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
@@ -199,33 +226,58 @@ class User {
   }
 }
 
-class Detail {
+class CandidatLegislative {
   int? id;
-  String? bio;
-  String? mission;
-  String? projet;
   int? candidatId;
-  dynamic deletedAt;
+  int? legislativeId;
   String? createdAt;
   String? updatedAt;
+  Legislative? legislative;
 
-  Detail(
+  CandidatLegislative(
       {this.id,
-      this.bio,
-      this.mission,
-      this.projet,
       this.candidatId,
-      this.deletedAt,
+      this.legislativeId,
       this.createdAt,
-      this.updatedAt});
+      this.updatedAt,
+      this.legislative});
 
-  Detail.fromJson(Map<String, dynamic> json) {
+  CandidatLegislative.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    bio = json['bio'];
-    mission = json['mission'];
-    projet = json['projet'];
     candidatId = json['candidat_id'];
-    deletedAt = json['deleted_at'];
+    legislativeId = json['legislative_id'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    legislative = json['legislative'] != null
+        ? Legislative?.fromJson(json['legislative'])
+        : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['candidat_id'] = candidatId;
+    data['legislative_id'] = legislativeId;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (legislative != null) {
+      data['legislative'] = legislative?.toJson();
+    }
+    return data;
+  }
+}
+
+class Legislative {
+  int? id;
+  String? designation;
+  dynamic createdAt;
+  dynamic updatedAt;
+
+  Legislative({this.id, this.designation, this.createdAt, this.updatedAt});
+
+  Legislative.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    designation = json['designation'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
@@ -233,11 +285,7 @@ class Detail {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
-    data['bio'] = bio;
-    data['mission'] = mission;
-    data['projet'] = projet;
-    data['candidat_id'] = candidatId;
-    data['deleted_at'] = deletedAt;
+    data['designation'] = designation;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     return data;

@@ -86,7 +86,8 @@ class MobileNewsScreen extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 36),
-                            child: NewsCardWidget(index: index),
+                            child: NewsCardWidget(
+                                index: index, news: controller.newsList[index]),
                           );
                         })
                     : const NewsCardShimmerWidget(),

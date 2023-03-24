@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:mediaapp/app/widgets/news_card_shimmer.dart';
 
+import '../../../../../core/themes/color_theme.dart';
 import '../../../../../widgets/no_data_widget.dart';
 import '../../../../../widgets/scrutin_mode_card/scrutin_mode_card_view.dart';
 import 'controllers/mode_scrutin.controller.dart';
@@ -19,6 +21,19 @@ class DesktopModeScrutinScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 32),
         child: Obx(
           () => ListView(children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: SelectableText(
+                'Scrutin',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.roboto(
+                    textStyle: const TextStyle(
+                        color: AppColorTheme.textColor,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600)),
+              ),
+            ),
+
             const SizedBox(
               height: 16,
             ),

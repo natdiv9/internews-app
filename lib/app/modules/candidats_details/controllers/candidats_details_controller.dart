@@ -1,15 +1,23 @@
 import 'package:get/get.dart';
-import 'package:mediaapp/app/data/models/candidats_model.dart';
 import 'package:mediaapp/app/data/repository/candidats_repository.dart';
+
+import '../../../data/models/candidat_model.dart';
 
 class CandidatsDetailsController extends GetxController {
   final CandidatsRepository _candidatsRepository = CandidatsRepository();
 
-  final _isLoading = true.obs;
-  get isLoading => _isLoading.value;
+  /// Get and Set for the isBusy state
+  final _isBusy = true.obs;
+  bool get isBusy => _isBusy.value;
+  set isBusy(value) => _isBusy.value = value;
 
-  final _candidatData = CandidatsData().obs;
-  CandidatsData get candidatData => _candidatData.value;
+  /// Get and Set for the is Loading state
+  final _isLoading = false.obs;
+  bool get isLoading => _isLoading.value;
+  set isLoading(value) => _isLoading.value = value;
+
+  final _candidatData = CandidatData().obs;
+  CandidatData get candidatData => _candidatData.value;
 
   @override
   void onInit() {
@@ -32,9 +40,10 @@ class CandidatsDetailsController extends GetxController {
   }
 
   getCandidat(String id) {
-    _candidatsRepository.getByID(id: id).then((CandidatsData? data) {
+    isBusy = true;
+    _candidatsRepository.getByID(id: id).then((CandidatData? data) {
       _candidatData.value = data!;
-      _isLoading.value = false;
+      isBusy = false;
     });
   }
 }

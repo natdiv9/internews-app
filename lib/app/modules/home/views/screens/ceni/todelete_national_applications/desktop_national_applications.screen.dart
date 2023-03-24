@@ -105,15 +105,15 @@ class DesktopNationalApplicationsScreen extends StatelessWidget {
                                         const SizedBox(
                                           height: 8,
                                         ),
-                                        Text(
-                                          "${controller.candidatsList[index].user!.firstName} ${controller.candidatsList[index].user!.lastName}",
-                                          style: GoogleFonts.roboto(
-                                              textStyle: const TextStyle(
-                                                  color:
-                                                      AppColorTheme.textColor,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold)),
-                                        ),
+                                        // Text(
+                                        //   "${controller.candidatsList[index].user!.firstName} ${controller.candidatsList[index].user!.lastName}",
+                                        //   style: GoogleFonts.roboto(
+                                        //       textStyle: const TextStyle(
+                                        //           color:
+                                        //               AppColorTheme.textColor,
+                                        //           fontSize: 16,
+                                        //           fontWeight: FontWeight.bold)),
+                                        // ),
                                         SizedBox(
                                           height: 8,
                                         ),

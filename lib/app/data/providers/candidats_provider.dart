@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:mediaapp/app/data/models/candidats_model.dart';
+
+import '../../core/helpers/const.dart';
+import '../models/candidat_model.dart';
 
 //nossa url base
-const baseUrl = 'https://infosnews.top-lum.com/api/candidats';
+const baseUrl = BASE_URL;
 
 //nossa classe responsável por encapsular os métodos http
 class CandidatsProvider {
@@ -12,17 +14,19 @@ class CandidatsProvider {
   CandidatsProvider();
 
   //um exemplo rápido, aqui estamos recuperando todos os posts disponibilizados pela api(100)
-  Future<CandidatsModel> getAll() async {
+  Future<CandidatModel> getAll() async {
     try {
-      var response = await httpClient.get(Uri.parse(baseUrl));
+      var url = '$baseUrl/candidats';
+      var response = await httpClient.get(Uri.parse(url));
+      print(url);
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse =
             Map<String, dynamic>.from(json.decode(response.body));
-        CandidatsModel candidatsModel = CandidatsModel.fromJson(jsonResponse);
+        CandidatModel candidatModel = CandidatModel.fromJson(jsonResponse);
 
         // print('DATA FETCH CandidatsProvider');
         // print(candidatsModel);
-        return candidatsModel;
+        return candidatModel;
       } else {
         print('erro');
         return Future.error('erro');
@@ -35,14 +39,14 @@ class CandidatsProvider {
     return Future.error('error');
   }
 
-  Future<CandidatsData?> getByID({required String id}) async {
+  Future<CandidatData?> getByID({required String id}) async {
     try {
-      var uri = Uri.parse('${baseUrl}/$id');
+      var uri = Uri.parse('$baseUrl/candidats/$id');
       var response = await httpClient.get(uri);
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse =
             Map<String, dynamic>.from(json.decode(response.body));
-        CandidatsData candidatData = CandidatsData.fromJson(jsonResponse);
+        CandidatData candidatData = CandidatData.fromJson(jsonResponse);
 
         return candidatData;
       } else {
