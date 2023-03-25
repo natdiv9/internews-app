@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
-import 'package:mediaapp/app/modules/home/home_widgets/views/education_content_view/desktop_education_contents_view.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/education_content_view/mobile_education_contents_view.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/key_words_view.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/main_banner_view.dart';
@@ -58,18 +57,6 @@ class MobileWelcomeScreen extends GetView<WelcomeController> {
                       color: AppColorTheme.textColor,
                       fontSize: 20,
                       fontWeight: FontWeight.w700)),
-            ),
-            const SizedBox(
-              height: 32,
-            ),
-            Obx(() => controller.newsEducationList.length > 0
-                ? MobileEducationContentsView(
-                    newsEducation: controller.newsEducationList.sublist(0, 4),
-                  )
-                : NewsCardShimmerWidget()),
-
-            const SizedBox(
-              height: 24,
             ),
           ]),
     );

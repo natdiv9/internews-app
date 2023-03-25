@@ -55,7 +55,7 @@ class NewsCardWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Flexible(
-                child: Text(news.titre! * 20,
+                child: Text(news.titre!,
                     textAlign: TextAlign.start,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
@@ -119,7 +119,7 @@ class NewsCardWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Flexible(
-                child: Text(news.titre! * 20,
+                child: Text(news.titre!,
                     textAlign: TextAlign.end,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,

@@ -18,60 +18,49 @@ class DesktopWelcomeScreen extends GetView<WelcomeController> {
   Widget build(BuildContext context) {
     return Obx(() => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
-          child: ListView(
-              //crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                MainBannerView(),
-                const SizedBox(
-                  height: 32,
-                ),
-                // KeyWordsView(),
-                // const SizedBox(
-                //   height: 24,
-                // ),
-                // IntroduceTextView(),
-                Text(
-                  "Les dernières nouvelles",
-                  style: GoogleFonts.roboto(
-                      textStyle: const TextStyle(
-                          color: AppColorTheme.textColor,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold)),
-                ),
+          child: ListView(children: [
+            MainBannerView(),
+            const SizedBox(
+              height: 32,
+            ),
+            // KeyWordsView(),
+            // const SizedBox(
+            //   height: 24,
+            // ),
+            // IntroduceTextView(),
+            Text(
+              "Les dernières nouvelles",
+              style: GoogleFonts.roboto(
+                  textStyle: const TextStyle(
+                      color: AppColorTheme.textColor,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold)),
+            ),
 
-                const SizedBox(
-                  height: 24,
-                ),
+            const SizedBox(
+              height: 24,
+            ),
 
-                controller.newsList.length > 0
-                    ? DesktopRecentNewsView(
-                        newsList: controller.newsList.sublist(0, 4),
-                      )
-                    : NewsCardShimmerWidget(),
-                const SizedBox(
-                  height: 24,
-                ),
-                Text(
-                  'Eduquez-vous sur le processus électoral en RDC',
-                  style: GoogleFonts.roboto(
-                      textStyle: const TextStyle(
-                          color: AppColorTheme.textColor,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700)),
-                ),
-                const SizedBox(
-                  height: 32,
-                ),
-                controller.newsEducationList.length > 0
-                    ? DesktopEducationContentsView(
-                        newsEducation:
-                            controller.newsEducationList.sublist(0, 4),
-                      )
-                    : NewsCardShimmerWidget(),
-                const SizedBox(
-                  height: 24,
-                ),
-              ]),
+            controller.newsList.isNotEmpty
+                ? DesktopRecentNewsView(
+                    newsList: controller.newsList.sublist(0, 3),
+                  )
+                : const NewsCardShimmerWidget(),
+            const SizedBox(
+              height: 24,
+            ),
+            Center(
+              child: Text(
+                '«Eduquez-vous sur le processus électoral en RDC»',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.roboto(
+                    textStyle: const TextStyle(
+                        color: AppColorTheme.textColor,
+                        fontSize: 36,
+                        fontWeight: FontWeight.bold)),
+              ),
+            ),
+          ]),
         ));
   }
 }

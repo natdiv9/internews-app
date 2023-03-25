@@ -6,27 +6,22 @@ class WelcomeController extends GetxController {
   final NewsRepository _newsRepository = new NewsRepository();
 
   final _newsModel = NewsModel().obs;
-  get newsModel => _newsModel.value;
-
+  NewsModel get newsModel => _newsModel.value;
   set newsModel(value) => _newsModel.value = value;
 
   final _newsList = <NewsData>[].obs;
   List<NewsData> get newsList => _newsList;
 
-  // News of type Education
-  final _newsEducationModel = NewsModel().obs;
-  get newsEducationModel => _newsEducationModel.value;
-  set newsEducationModel(value) => _newsEducationModel.value = value;
-
-  final _newsEducationList = <NewsData>[].obs;
-  List<NewsData> get newsEducationList => _newsEducationList;
+  /// Get and Set for the isBusy state
+  final _isBusy = true.obs;
+  bool get isBusy => _isBusy.value;
+  set isBusy(value) => _isBusy.value = value;
 
   @override
   void onInit() {
     super.onInit();
 
     getNews();
-    getNewsEducation();
   }
 
   @override
@@ -40,24 +35,12 @@ class WelcomeController extends GetxController {
   }
 
   getNews() {
+    isBusy = true;
     _newsRepository.getAll().then((NewsModel? data) {
-      if (data == null) {
-        print("GET NEWS $data");
-        return;
-      } else {
+      if (data != null) {
         newsModel = data;
         _newsList.value = newsModel.data!;
-      }
-    });
-  }
-
-  getNewsEducation() {
-    _newsRepository.getAll(type: 0).then((NewsModel? data) {
-      if (data == null) {
-        return;
-      } else {
-        newsEducationModel = data;
-        _newsEducationList.value = newsEducationModel.data!;
+        isBusy = false;
       }
     });
   }

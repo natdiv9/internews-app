@@ -89,7 +89,8 @@ class DesktopNewsScreen extends StatelessWidget {
                     decoration:
                         BoxDecoration(color: Colors.black.withOpacity(0.8)),
                     child: Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16.0, horizontal: 32),
                       child: Text(
                         //"L’élection présidentielle est fixée au 20 décembre 2023, selon le calendrier dévoilé officiellement ce samedi 26 novembre par Denis Kadima, président de la Commission électorale nationale indépendante...",
                         controller.getFiveNews()[index].titre!,
