@@ -159,4 +159,27 @@ class CentresProvider {
     }
     return Future.error('error');
   }
+
+  Future<CirconscriptionModel> search({required String searchKey}) async {
+    try {
+      var url = '$baseUrl/communes?search=$searchKey';
+      var response = await httpClient.get(Uri.parse(url));
+      if (response.statusCode == 200) {
+        Map<String, dynamic> jsonResponse =
+            Map<String, dynamic>.from(json.decode(response.body));
+        CirconscriptionModel circonLegislativeModel =
+            CirconscriptionModel.fromJson(jsonResponse);
+
+        return circonLegislativeModel;
+      } else {
+        print('erro');
+        return Future.error('erro');
+      }
+    } catch (_) {
+      print('ERREURE - CirconscriptionModel Search');
+
+      print(_.toString());
+    }
+    return Future.error('error');
+  }
 }

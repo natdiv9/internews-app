@@ -89,6 +89,22 @@ class CirconscriptionController extends GetxController {
     });
   }
 
+  void search(String searchKey) async {
+    isLoading = true;
+    await _centerRepository
+        .search(searchKey: searchKey)
+        .then((CirconscriptionModel? data) {
+      if (data != null) {
+        _circonscriptionModel.value = data;
+        _circonscriptionData.value = data.data!;
+        isLoading = false;
+      }
+    }).catchError((error) {
+      isBusy = false;
+      print(error);
+    });
+  }
+
   /// Get provinces
   // getProvinces() async {
   //   return await _centerRepository.getProvinces().then((ProvinceModel? data) {

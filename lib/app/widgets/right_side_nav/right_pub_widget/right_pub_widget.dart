@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../core/helpers/const.dart';
 import '../../../core/themes/color_theme.dart';
 import '../../no_data_widget.dart';
 import 'controller/right_pub_widget.controller.dart';
@@ -100,14 +101,16 @@ class RightPubWidget extends StatelessWidget {
                           return Column(
                             children: [
                               Container(
-                                height: 130,
-                                decoration: BoxDecoration(
+                                  height: 130,
+                                  clipBehavior: Clip.hardEdge,
+                                  decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8),
-                                    image: const DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/nangaa.jpg'),
-                                        fit: BoxFit.cover)),
-                              ),
+                                  ),
+                                  child: Image.network(
+                                    '$IMAGE_BASE_URL/candidats/${controller.candidatModel.data![index].avatar}',
+                                    fit: BoxFit.cover,
+                                    width: double.infinity,
+                                  )),
                               const SizedBox(
                                 height: 16,
                               ),

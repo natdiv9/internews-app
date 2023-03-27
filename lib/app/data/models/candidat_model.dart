@@ -81,6 +81,7 @@ class CandidatData {
   int? id;
   String? nom;
   String? sexe;
+  String? avatar;
   int? circonscriptionId;
   dynamic partiPolitique;
   dynamic description;
@@ -94,6 +95,7 @@ class CandidatData {
       {this.id,
       this.nom,
       this.sexe,
+      this.avatar,
       this.circonscriptionId,
       this.partiPolitique,
       this.description,
@@ -107,6 +109,7 @@ class CandidatData {
     id = json['id'];
     nom = json['nom'];
     sexe = json['sexe'];
+    avatar = json['avatar'];
     circonscriptionId = json['circonscription_id'];
     partiPolitique = json['parti_politique'];
     description = json['description'];
@@ -129,6 +132,7 @@ class CandidatData {
     data['id'] = id;
     data['nom'] = nom;
     data['sexe'] = sexe;
+    data['avatar'] = avatar;
     data['circonscription_id'] = circonscriptionId;
     data['parti_politique'] = partiPolitique;
     data['description'] = description;

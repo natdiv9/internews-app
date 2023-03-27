@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
 import 'package:mediaapp/app/data/models/candidat_model.dart';
 
+import '../../core/helpers/const.dart';
+
 class CandidatCardWidget extends StatelessWidget {
   const CandidatCardWidget(
       {super.key, required this.candidat, required this.subpage});
@@ -25,7 +27,16 @@ class CandidatCardWidget extends StatelessWidget {
         },
         child: Stack(
           children: [
-            Image.asset('assets/images/candidat1.jpg'),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              top: 0,
+              child: Image.network(
+                '$IMAGE_BASE_URL/candidats/${candidat.avatar}',
+                fit: BoxFit.cover,
+              ),
+            ),
             Positioned(
                 bottom: 0,
                 left: 0,

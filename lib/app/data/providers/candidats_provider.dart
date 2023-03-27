@@ -18,7 +18,7 @@ class CandidatsProvider {
     try {
       var url = '$baseUrl/candidats';
       var response = await httpClient.get(Uri.parse(url));
-      print(url);
+      // print(url);
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse =
             Map<String, dynamic>.from(json.decode(response.body));

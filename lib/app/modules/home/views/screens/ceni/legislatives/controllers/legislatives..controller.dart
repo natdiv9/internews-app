@@ -59,4 +59,6 @@ class LegislativeController extends GetxController {
       // print('IS BUSY: $isBusy');
     });
   }
+
+  void search(String trim) {}
 }

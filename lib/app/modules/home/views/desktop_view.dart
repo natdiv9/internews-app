@@ -53,7 +53,7 @@ class DesktopView extends GetView<HomeController> {
       case 'faq':
         return DesktopFAQScreen();
       case 'ceni':
-        print('CPI: ${controller.currentCandidatePageId}');
+        // print('CPI: ${controller.currentCandidatePageId}');
         if (controller.currentCandidatePageId != '' &&
             controller.currentCandidatePageId != null) {
           return DesktopCandidatsDetailsView();

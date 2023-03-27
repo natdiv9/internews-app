@@ -35,4 +35,8 @@ class CentersRepository {
     return _api.getAllCirconscription(
         province: province, ville: ville, legislative: legislative);
   }
+
+  Future<CirconscriptionModel> search({required String searchKey}) {
+    return _api.search(searchKey: searchKey);
+  }
 }

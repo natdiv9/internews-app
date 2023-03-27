@@ -20,11 +20,7 @@ class DesktopCirconscriptionScreen extends GetView<CirconscriptionController> {
   TextStyle contentStyle = GoogleFonts.poppins(
       textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500));
 
-  String? selectedProvince;
-
-  String? selectedVille;
-
-  String? selectedLegislative;
+  final TextEditingController _searchQuery = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -48,17 +44,62 @@ class DesktopCirconscriptionScreen extends GetView<CirconscriptionController> {
                         const SizedBox(
                           height: 24,
                         ),
-                        // Row(
-                        //   children: [
-                        //     if (controller.isVilleSelected)
-                        //       _legislativeDropDown(),
-                        //     const SizedBox(width: 8),
-                        //     _provincesDropDown(),
-                        //     const SizedBox(width: 8),
-                        //     if (controller.isProvinceSelected)
-                        //       _villesDropDown(),
-                        //   ],
-                        // ),
+                        Row(
+                          children: [
+                            Flexible(
+                              child: TextField(
+                                controller: _searchQuery,
+                                onSubmitted: (value) {
+                                  if (_searchQuery.text.trim().isNotEmpty) {
+                                    controller.search(_searchQuery.text.trim());
+                                  }
+                                },
+                                decoration: InputDecoration(
+                                  hintText: 'Rechercher une circonscription',
+                                  hintStyle: GoogleFonts.roboto(
+                                    color: AppColorTheme.textColor
+                                        .withOpacity(0.6),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                  suffixIcon: IconButton(
+                                    icon: const Icon(Icons.search),
+                                    color: AppColorTheme.textColor,
+                                    onPressed: () {
+                                      if (_searchQuery.text.trim().isNotEmpty) {
+                                        controller
+                                            .search(_searchQuery.text.trim());
+                                      }
+                                    },
+                                  ),
+                                  filled: true,
+                                  fillColor: AppColorTheme.primaryColor
+                                      .withOpacity(0.04),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                    borderSide: const BorderSide(
+                                      color: AppColorTheme.textColor,
+                                    ),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                    borderSide: BorderSide(
+                                      width: 0,
+                                      color: AppColorTheme.textColor
+                                          .withOpacity(0),
+                                    ),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                    borderSide: const BorderSide(
+                                      color: AppColorTheme.primaryColor,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                         controller.isLoading
                             ? const Padding(
                                 padding: EdgeInsets.all(32.0),
