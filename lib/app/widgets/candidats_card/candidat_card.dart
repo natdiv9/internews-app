@@ -20,7 +20,7 @@ class CandidatCardWidget extends StatelessWidget {
       child: InkWell(
         onTap: () {
           var url = '/ceni?subpage=$subpage&id=${candidat.id}';
-          print(url);
+          // print(url);
           Get.offNamed(url);
         },
         child: Stack(
@@ -36,13 +36,23 @@ class CandidatCardWidget extends StatelessWidget {
                     color: AppColorTheme.darkColor.withOpacity(0.60),
                     // borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Center(
-                      child: Text(candidat.nom!,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(candidat.nom!,
                           style: GoogleFonts.roboto(
                               textStyle: const TextStyle(
                                   color: AppColorTheme.whiteColor,
                                   fontSize: 18,
-                                  fontWeight: FontWeight.w500)))),
+                                  fontWeight: FontWeight.w500))),
+                      Text('Parti ${candidat.partiPolitique ?? ''}',
+                          style: GoogleFonts.roboto(
+                              textStyle: const TextStyle(
+                                  color: AppColorTheme.whiteColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400))),
+                    ],
+                  ),
                 ))
           ],
         ),

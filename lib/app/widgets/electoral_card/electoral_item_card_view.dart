@@ -49,25 +49,33 @@ class _ElectoralItemCardViewState extends State<ElectoralItemCardView> {
                 canTapOnHeader: true,
                 backgroundColor: Colors.transparent,
                 headerBuilder: (context, isExpanded) {
-                  return Text(
-                    widget.electoralData.titre,
-                    style: GoogleFonts.roboto(
-                        textStyle: const TextStyle(
-                            color: AppColorTheme.textColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500)),
+                  return Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    child: Text(
+                      widget.electoralData.titre,
+                      style: GoogleFonts.roboto(
+                          textStyle: const TextStyle(
+                              color: AppColorTheme.textColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500)),
+                    ),
                   );
                 },
                 body: Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    widget.electoralData.contenu,
-                    textAlign: TextAlign.start,
-                    style: GoogleFonts.roboto(
-                        textStyle: TextStyle(
-                            color: AppColorTheme.textColor.withOpacity(0.6),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400)),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    child: Text(
+                      widget.electoralData.contenu,
+                      textAlign: TextAlign.justify,
+                      style: GoogleFonts.roboto(
+                          textStyle: TextStyle(
+                              color: AppColorTheme.textColor.withOpacity(0.6),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400)),
+                    ),
                   ),
                 ),
               )

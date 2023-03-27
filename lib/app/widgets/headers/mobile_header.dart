@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../core/themes/color_theme.dart';
 
 AppBar MobileHeader(GlobalKey<ScaffoldState> scaffoldKey) {
@@ -8,10 +9,14 @@ AppBar MobileHeader(GlobalKey<ScaffoldState> scaffoldKey) {
     scrolledUnderElevation: 5,
     centerTitle: false,
     toolbarHeight: 80,
-    title: Image.asset(
-      'assets/images/logo.png',
-      scale: 5,
-      fit: BoxFit.fitHeight,
+    title: Text(
+      'U W A Z Z I',
+      style: GoogleFonts.publicSans(
+          textStyle: const TextStyle(
+              color: AppColorTheme.bleu,
+              fontSize: 32,
+              letterSpacing: 1.5,
+              fontWeight: FontWeight.bold)),
     ),
     automaticallyImplyLeading: false,
     actions: [

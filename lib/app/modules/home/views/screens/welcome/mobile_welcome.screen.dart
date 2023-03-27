@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mediaapp/app/core/themes/color_theme.dart';
-import 'package:mediaapp/app/modules/home/home_widgets/views/education_content_view/mobile_education_contents_view.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/key_words_view.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/main_banner_view.dart';
 import 'package:mediaapp/app/modules/home/home_widgets/views/recent_news_views/mobile_recent_news_view.dart';
@@ -21,11 +20,11 @@ class MobileWelcomeScreen extends GetView<WelcomeController> {
       child: ListView(
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            MainBannerView(),
+            const MainBannerView(),
             const SizedBox(
               height: 24,
             ),
-            KeyWordsView(),
+            const KeyWordsView(),
             const SizedBox(
               height: 24,
             ),
@@ -42,11 +41,11 @@ class MobileWelcomeScreen extends GetView<WelcomeController> {
               height: 24,
             ),
 
-            Obx(() => controller.newsList.length > 0
+            Obx(() => controller.newsList.isNotEmpty
                 ? MobileRecentNewsView(
                     newsList: controller.newsList.sublist(0, 4),
                   )
-                : NewsCardShimmerWidget()),
+                : const NewsCardShimmerWidget()),
             const SizedBox(
               height: 24,
             ),

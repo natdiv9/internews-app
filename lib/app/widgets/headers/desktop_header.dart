@@ -14,15 +14,14 @@ AppBar DesktopAppBar() {
     title: Row(
       //mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          height: 70,
-          width: 190,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/logo.png'),
-              fit: BoxFit.fitWidth,
-            ),
-          ),
+        Text(
+          'U W A Z Z I',
+          style: GoogleFonts.publicSans(
+              textStyle: const TextStyle(
+                  color: AppColorTheme.bleu,
+                  fontSize: 32,
+                  letterSpacing: 1.5,
+                  fontWeight: FontWeight.w800)),
         ),
         const SizedBox(
           width: 120,

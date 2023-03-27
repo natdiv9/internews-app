@@ -13,15 +13,14 @@ AppBar TabletAppBar(GlobalKey<ScaffoldState> scaffoldKey) {
     title: Row(
       //mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          height: 70,
-          width: 210,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/logo.png'),
-              fit: BoxFit.cover,
-            ),
-          ),
+        Text(
+          'U W A Z Z I',
+          style: GoogleFonts.publicSans(
+              textStyle: const TextStyle(
+                  color: AppColorTheme.bleu,
+                  fontSize: 32,
+                  letterSpacing: 1.5,
+                  fontWeight: FontWeight.bold)),
         ),
         const SizedBox(
           width: 36,

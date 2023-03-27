@@ -13,7 +13,7 @@ class NewsCardWidget extends StatelessWidget {
   var titleStyle = GoogleFonts.publicSans(
       textStyle: TextStyle(
           color: AppColorTheme.textColor.withOpacity(0.6),
-          fontSize: 20,
+          fontSize: 24,
           fontWeight: FontWeight.w500));
 
   @override
@@ -57,7 +57,7 @@ class NewsCardWidget extends StatelessWidget {
               Flexible(
                 child: Text(news.titre!,
                     textAlign: TextAlign.start,
-                    maxLines: 3,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: titleStyle),
               ),
@@ -121,7 +121,7 @@ class NewsCardWidget extends StatelessWidget {
               Flexible(
                 child: Text(news.titre!,
                     textAlign: TextAlign.end,
-                    maxLines: 3,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: titleStyle),
               ),

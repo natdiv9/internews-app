@@ -94,7 +94,7 @@ class RightPubWidget extends StatelessWidget {
                             aspectRatio: 1,
                             viewportFraction: 1,
                             autoPlay: true,
-                            autoPlayCurve: Curves.easeInOutExpo,
+                            autoPlayCurve: Curves.decelerate,
                             enlargeCenterPage: true),
                         itemBuilder: (context, index, realIndex) {
                           return Column(
