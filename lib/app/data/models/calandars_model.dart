@@ -1,3 +1,5 @@
+import 'shared/link.dart';
+
 class CalandarsModel {
   int? currentPage;
   List<CalandarsData>? data;
@@ -5,7 +7,7 @@ class CalandarsModel {
   int? from;
   int? lastPage;
   String? lastPageUrl;
-  List<Links>? links;
+  List<Link>? links;
   dynamic nextPageUrl;
   String? path;
   int? perPage;
@@ -41,9 +43,9 @@ class CalandarsModel {
     lastPage = json['last_page'];
     lastPageUrl = json['last_page_url'];
     if (json['links'] != null) {
-      links = <Links>[];
+      links = <Link>[];
       json['links'].forEach((v) {
-        links?.add(Links.fromJson(v));
+        links?.add(Link.fromJson(v));
       });
     }
     nextPageUrl = json['next_page_url'];
@@ -122,28 +124,6 @@ class CalandarsData {
     data['deleted_at'] = deletedAt;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
-    return data;
-  }
-}
-
-class Links {
-  String? url;
-  String? label;
-  bool? active;
-
-  Links({this.url, this.label, this.active});
-
-  Links.fromJson(Map<String, dynamic> json) {
-    url = json['url'];
-    label = json['label'];
-    active = json['active'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['url'] = url;
-    data['label'] = label;
-    data['active'] = active;
     return data;
   }
 }

@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 
 import '../../core/helpers/const.dart';
 import '../models/candidat_model.dart';
+import '../models/legislative_model.dart';
 
 //nossa url base
 const baseUrl = BASE_URL;
@@ -59,5 +60,78 @@ class CandidatsProvider {
       print(_.toString());
     }
     return null;
+  }
+
+  Future<CandidatModel> search({required String searchKey}) async {
+    try {
+      var url = '$baseUrl/candidats?search=$searchKey';
+      var response = await httpClient.get(Uri.parse(url));
+      // print(url);
+      if (response.statusCode == 200) {
+        Map<String, dynamic> jsonResponse =
+            Map<String, dynamic>.from(json.decode(response.body));
+        CandidatModel candidatModel = CandidatModel.fromJson(jsonResponse);
+
+        // print('DATA FETCH CandidatsProvider');
+        // print(candidatsModel);
+        return candidatModel;
+      } else {
+        print('erro');
+        return Future.error('erro');
+      }
+    } catch (_) {
+      print('ERREUR - CandidatsProvider Search');
+
+      print(_.toString());
+    }
+    return Future.error('error');
+  }
+
+  Future<LegislativeModel> getLislatives() async {
+    try {
+      var response = await httpClient.get(Uri.parse('$baseUrl/legislative'));
+      if (response.statusCode == 200) {
+        Map<String, dynamic> jsonResponse =
+            Map<String, dynamic>.from(json.decode(response.body));
+        LegislativeModel legislativeModel =
+            LegislativeModel.fromJson(jsonResponse);
+
+        return legislativeModel;
+      } else {
+        print('erro');
+        return Future.error('erro');
+      }
+    } catch (_) {
+      print('ERREUR - LegislativeModel');
+
+      print(_.toString());
+    }
+    return Future.error('error');
+  }
+
+  Future<CandidatModel> getCandidatsByLegislative(
+      {required String legislative}) async {
+    try {
+      var url = '$baseUrl/candidats?legislative=$legislative';
+      var response = await httpClient.get(Uri.parse(url));
+      // print(url);
+      if (response.statusCode == 200) {
+        Map<String, dynamic> jsonResponse =
+            Map<String, dynamic>.from(json.decode(response.body));
+        CandidatModel candidatModel = CandidatModel.fromJson(jsonResponse);
+
+        // print('DATA FETCH CandidatsProvider');
+        // print(candidatsModel);
+        return candidatModel;
+      } else {
+        print('erro');
+        return Future.error('erro');
+      }
+    } catch (_) {
+      print('ERREUR - CandidatsProvider By Legislative');
+
+      print(_.toString());
+    }
+    return Future.error('error');
   }
 }

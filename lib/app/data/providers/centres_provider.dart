@@ -98,15 +98,15 @@ class CentresProvider {
     return Future.error('error');
   }
 
-  Future<List<Circonscription>> getCirconscriptionsByVille(ville) async {
+  Future<List<CirconscriptionData>> getCirconscriptionsByVille(ville) async {
     try {
       var response = await httpClient.get(Uri.parse('$baseUrl/villes/$ville'));
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse =
             Map<String, dynamic>.from(json.decode(response.body));
-        List<Circonscription> data = [];
+        List<CirconscriptionData> data = [];
         for (var item in jsonResponse['circonscriptions']) {
-          data.add(Circonscription.fromJson(item));
+          data.add(CirconscriptionData.fromJson(item));
         }
 
         // print('Liste des Circonscription: ${data.toString()}');

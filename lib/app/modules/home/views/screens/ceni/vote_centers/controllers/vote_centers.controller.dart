@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:mediaapp/app/data/models/centres_model.dart';
 import 'package:mediaapp/app/data/repository/centers_repository.dart';
 
+import '../../../../../../../data/models/circonscription_model.dart';
 import '../../../../../../../data/models/province_model.dart';
 import '../../../../../../../data/models/ville_model.dart';
 
@@ -25,8 +26,8 @@ class VoteCentersController extends GetxController {
   set villes(value) => _villes.value = value;
 
   /// Get and Set for the Circonscriptions
-  final _circonscriptions = <Circonscription>[].obs;
-  List<Circonscription> get circonscriptions => _circonscriptions;
+  final _circonscriptions = <CirconscriptionData>[].obs;
+  List<CirconscriptionData> get circonscriptions => _circonscriptions;
 
   // final _subpage = ''.obs;
   // String get subpage => _subpage.value;
@@ -145,7 +146,7 @@ class VoteCentersController extends GetxController {
     print('villeName & provName: $villeName & $provName');
     _centerRepository
         .getCirconscriptions(ville)
-        .then((List<Circonscription>? data) async {
+        .then((List<CirconscriptionData>? data) async {
       if (data != null) {
         _circonscriptions.value = data;
         await getAll(province: provName!, ville: villeName!);

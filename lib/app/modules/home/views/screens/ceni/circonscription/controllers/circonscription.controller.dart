@@ -100,7 +100,7 @@ class CirconscriptionController extends GetxController {
         isLoading = false;
       }
     }).catchError((error) {
-      isBusy = false;
+      isLoading = false;
       print(error);
     });
   }

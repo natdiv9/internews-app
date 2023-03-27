@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:mediaapp/app/widgets/right_side_nav/become_writer_widget.dart';
 import 'package:mediaapp/app/widgets/right_side_nav/meteo_widget.dart';
 import 'package:mediaapp/app/widgets/right_side_nav/right_pub_widget/right_pub_widget.dart';
 

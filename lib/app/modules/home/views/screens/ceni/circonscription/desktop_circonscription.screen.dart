@@ -28,88 +28,82 @@ class DesktopCirconscriptionScreen extends GetView<CirconscriptionController> {
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: Obx(() {
         return (!controller.isBusy)
-            ? controller.circonscriptionData.isEmpty
-                ? const NoDataWidget()
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                        Text(
-                          "Circonscriptions",
-                          style: GoogleFonts.roboto(
-                              textStyle: const TextStyle(
-                                  color: AppColorTheme.textColor,
-                                  fontSize: 26,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        Row(
-                          children: [
-                            Flexible(
-                              child: TextField(
-                                controller: _searchQuery,
-                                onSubmitted: (value) {
-                                  if (_searchQuery.text.trim().isNotEmpty) {
-                                    controller.search(_searchQuery.text.trim());
-                                  }
-                                },
-                                decoration: InputDecoration(
-                                  hintText: 'Rechercher une circonscription',
-                                  hintStyle: GoogleFonts.roboto(
-                                    color: AppColorTheme.textColor
-                                        .withOpacity(0.6),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                  suffixIcon: IconButton(
-                                    icon: const Icon(Icons.search),
-                                    color: AppColorTheme.textColor,
-                                    onPressed: () {
-                                      if (_searchQuery.text.trim().isNotEmpty) {
-                                        controller
-                                            .search(_searchQuery.text.trim());
-                                      }
-                                    },
-                                  ),
-                                  filled: true,
-                                  fillColor: AppColorTheme.primaryColor
-                                      .withOpacity(0.04),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(4),
-                                    borderSide: const BorderSide(
-                                      color: AppColorTheme.textColor,
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(4),
-                                    borderSide: BorderSide(
-                                      width: 0,
-                                      color: AppColorTheme.textColor
-                                          .withOpacity(0),
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(4),
-                                    borderSide: const BorderSide(
-                                      color: AppColorTheme.primaryColor,
-                                    ),
-                                  ),
-                                ),
-                              ),
+            ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(
+                  "Circonscriptions",
+                  style: GoogleFonts.roboto(
+                      textStyle: const TextStyle(
+                          color: AppColorTheme.textColor,
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold)),
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                Row(
+                  children: [
+                    Flexible(
+                      child: TextField(
+                        controller: _searchQuery,
+                        onSubmitted: (value) {
+                          if (_searchQuery.text.trim().isNotEmpty) {
+                            controller.search(_searchQuery.text.trim());
+                          }
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'Rechercher une circonscription',
+                          hintStyle: GoogleFonts.roboto(
+                            color: AppColorTheme.textColor.withOpacity(0.6),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          suffixIcon: IconButton(
+                            icon: const Icon(Icons.search),
+                            color: AppColorTheme.textColor,
+                            onPressed: () {
+                              if (_searchQuery.text.trim().isNotEmpty) {
+                                controller.search(_searchQuery.text.trim());
+                              }
+                            },
+                          ),
+                          filled: true,
+                          fillColor:
+                              AppColorTheme.primaryColor.withOpacity(0.04),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4),
+                            borderSide: const BorderSide(
+                              color: AppColorTheme.textColor,
                             ),
-                          ],
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4),
+                            borderSide: BorderSide(
+                              width: 0,
+                              color: AppColorTheme.textColor.withOpacity(0),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4),
+                            borderSide: const BorderSide(
+                              color: AppColorTheme.primaryColor,
+                            ),
+                          ),
                         ),
-                        controller.isLoading
-                            ? const Padding(
-                                padding: EdgeInsets.all(32.0),
-                                child:
-                                    Center(child: CircularProgressIndicator()),
-                              )
-                            : Expanded(
-                                child: buildCenterTable(
-                                    controller.circonscriptionData)),
-                      ])
+                      ),
+                    ),
+                  ],
+                ),
+                controller.isLoading
+                    ? const Padding(
+                        padding: EdgeInsets.all(32.0),
+                        child: Center(child: CircularProgressIndicator()),
+                      )
+                    : controller.circonscriptionData.isEmpty
+                        ? const NoDataWidget()
+                        : Expanded(
+                            child: buildCenterTable(
+                                controller.circonscriptionData)),
+              ])
             : const NewsCardShimmerWidget();
       }),
     );

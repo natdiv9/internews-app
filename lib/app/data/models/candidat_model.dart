@@ -1,3 +1,6 @@
+import 'legislative_model.dart';
+import 'shared/link.dart';
+
 class CandidatModel {
   int? currentPage;
   List<CandidatData>? data;
@@ -5,7 +8,7 @@ class CandidatModel {
   int? from;
   int? lastPage;
   String? lastPageUrl;
-  List<Links>? links;
+  List<Link>? links;
   dynamic nextPageUrl;
   String? path;
   int? perPage;
@@ -41,9 +44,9 @@ class CandidatModel {
     lastPage = json['last_page'];
     lastPageUrl = json['last_page_url'];
     if (json['links'] != null) {
-      links = <Links>[];
+      links = <Link>[];
       json['links'].forEach((v) {
-        links?.add(Links.fromJson(v));
+        links?.add(Link.fromJson(v));
       });
     }
     nextPageUrl = json['next_page_url'];
@@ -236,7 +239,7 @@ class CandidatLegislative {
   int? legislativeId;
   String? createdAt;
   String? updatedAt;
-  Legislative? legislative;
+  LegislativeData? legislative;
 
   CandidatLegislative(
       {this.id,
@@ -253,7 +256,7 @@ class CandidatLegislative {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     legislative = json['legislative'] != null
-        ? Legislative?.fromJson(json['legislative'])
+        ? LegislativeData?.fromJson(json['legislative'])
         : null;
   }
 
@@ -267,53 +270,6 @@ class CandidatLegislative {
     if (legislative != null) {
       data['legislative'] = legislative?.toJson();
     }
-    return data;
-  }
-}
-
-class Legislative {
-  int? id;
-  String? designation;
-  dynamic createdAt;
-  dynamic updatedAt;
-
-  Legislative({this.id, this.designation, this.createdAt, this.updatedAt});
-
-  Legislative.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    designation = json['designation'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['id'] = id;
-    data['designation'] = designation;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    return data;
-  }
-}
-
-class Links {
-  String? url;
-  String? label;
-  bool? active;
-
-  Links({this.url, this.label, this.active});
-
-  Links.fromJson(Map<String, dynamic> json) {
-    url = json['url'];
-    label = json['label'];
-    active = json['active'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['url'] = url;
-    data['label'] = label;
-    data['active'] = active;
     return data;
   }
 }
